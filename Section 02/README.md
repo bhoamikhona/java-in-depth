@@ -8,6 +8,7 @@
   - [Table of Content](#table-of-content)
   - [Lessons Learned](#lessons-learned)
     - [What is Java \& Who is Using it?](#what-is-java--who-is-using-it)
+    - [Story Behind Java's Creation - A Brief History](#story-behind-javas-creation---a-brief-history)
   - [Author](#author)
 
 ## Lessons Learned
@@ -36,6 +37,8 @@
 - Java is used by companies like Google, LinkedIn, Apple, Netflix, Amazon, eBay, and more.
 - It was also used by NASA for their Mars Rover project called Spirit.
 - Popular Open Source Java Libraries: Apache Solr, Hadoop, Mahout.
+
+### Story Behind Java's Creation - A Brief History
 
 ## Author
 
