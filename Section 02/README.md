@@ -8,6 +8,7 @@
   - [Lessons Learned](#lessons-learned)
     - [What is Java and Who is Using it?](#what-is-java-and-who-is-using-it)
     - [Story Behind Java's Creation - A Brief History](#story-behind-javas-creation---a-brief-history)
+    - [Compilation](#compilation)
   - [Author](#author)
 
 ## Agenda
@@ -119,6 +120,95 @@
 - Always keep in mind that Java was mainly designed to work in a network environment consisting of heterogenous consumer devices.
 - The environment had some unique goals and that led to the development of Java.
 - Though it could not be adopted in the cable TV industry, it eventually found its success with the worldwide web; and especially, it soon evolved as a popular language for developing large scale web applications, standalone desktop applications, and mobile applications.
+
+### Compilation
+
+- We now know that platform independence is one of the key benefits of Java.
+- But, before understanding hwo Java achieves platform independence, we need to first understand what platform dependency is.
+- To understand platform dependency, we also need to know what compilation is.
+- Compilation is a very fundamental concept in computer science, and if you are new to programming and not completely sure about what compilation is, then this short discussion on compilation should be very helpful.
+- But if you are already familiar with programming and clearly understand what compilation is, then feel free to skip this lesson.
+- Let's start with absolute basic concepts of a computer.
+- Every computer has a fixed set of instructions that it understands and collectively they are referred to as <ins>the instruction set of a computer</ins>.
+- So, the CPU would understand these instructions.
+- A computer program is made up of some of these instructions.
+- The instructions help a computer program to perform something meaningful.
+- Each instruction tells the CPU to perform certain action, and each instruction is basically a sequence of 0s and 1s i.e. an instruction has a binary format.
+- Such instructions that computer understands is called as <ins>Machine Language</ins> i.e. the language which a machine understands, just like the way we humans understand our languages.
+- Machine language is also referred to as <ins>machine code</ins> and is sometimes also reffered to as <ins>native code</ins>.
+- Here is an example of a machine instruction which performs addition operation: `000000 00001 00010 00110 00000 100000`
+- The 6 digits on the right i.e. `100000` specify that it is an add operation.
+- A computer program would involve many such instructions, and obviously, it would be very frustrating for someone to write and also read such instructions which have only 0s and 1s.
+- So, it is very cumbersome and it has got to be simpler than that.
+- So, computer scientists came up with another language called <ins>assembly language</ins> which was much more easier to read and write.
+- Below is an example of adding two numbers in assembly language, which is much more expressive than machine code.
+
+```x86asm
+add $s0, $s1, $s2
+```
+
+- So, assembly language provides certain higher level notations for writing instructions, like add in this example.
+- But computers understand only machine language.
+- They do not understand assembly language.
+- So, there is a program called <ins>assembler</ins> that translates assembly language instructions into machine language instructions which a computer can understand.
+- Now, both machine language and assembly language are refferred to as low-level languages, and that's because they use low-level details of a computer.
+- One example would be specifying the memory locaton where we are storing data.
+- But, writing programs even in assembly language is still tedious, so programmers wanted programs to be expressed in a more easier way and they also wanted to hide low-level details.
+- So in time, they came up with high-level languages.
+- Some examples of high-level languages include FORTRAN, C, C++, Java, and C#.
+- They use English-like words like `public`, `private`, mathematical notations like `+` and `-` and punctuations to write programs.
+- So, they are much more easier to write and read, as we will see in this course.
+- Below is an example Java program, and as you can see, it uses English words, math notations, and punctuation; and of course, they hide low-level details of the computer:
+
+```java
+public class Math {
+  public static int sum(int x, int y) {
+    return x + y;
+  }
+}
+```
+
+- So today, we mostly use only high-level languages.
+- Assembly language is not very much used and is only used where performance is critical like in the case of operating systems of electronic devices.
+- In terms of terminology, <ins>source code</ins> is the term that is use to refer to any code expressed in a programming language.
+- So, source code is nothing but the programs that we write, like the Java program in the example above.
+- Now, like in the case of assembly language, source code also cannot be understood by a computer, so we need to translate source code into machine into machine language and that's where compiler comes in.
+- So, the translation from source code to machine code is done by this program called <ins>compiler</ins>.
+- Machine code, which is the executable program, is then executed directly by CPU in a separate step.
+- So, compilation and execution are two different steps.
+- First, compilation is performed in order to translate source code into machine code, and then, separately, the machine code will be executed.
+- So process is like this:
+  - Source code ==> Compiler ==> Target language
+- Note that here we are calling the translated languag as "target language" and not machine language.
+- This is because in some cases it may be something else too.
+- For example, in the case of C or C++, target language would be machine code.
+- However, in Java's case, it is <ins>Java Bytecode</ins> - which will be discussed later.
+- Sometimes target language can also be another programming language, for example ClojureScript is a language and it comes with a compiler which compiles ClojureScript programs into JavaScript, which is a different language.
+- Such compilers are also referred to as <ins>source-to-source compilers</ins> or <ins>transcompilers</ins>.
+- Source-to-source because it is converting one source code into another source code.
+- There are some core operations that a compiler performs, and let's see what those are:
+  - Verifying syntax and semantics of the source code is one of them.
+  - This ensures that the source code complies with the rules of the programming language.
+  - For example, a program is made up of statements, and in case of Java,every statement must end with a semicolon. That's a rule of Java programming language.
+  - If a statement does not end with a semi-colon, then the compiler detects it as a syntactic error and reports it to the developer.
+  - For example, here is a statement in Java that prints the text "hello!": `System.out.println("hello!");` and as you can see, the statement ends in a semi-colon.
+  - If we omit the semicolon, then the compiler reports it as a syntax error.
+  - Semantics is about meaning.
+  - For example, in Java, we write our programs as classes; and a class can also have somehting called a subclass, which is just another class but, a specialized version of the original class.
+  - But, if we declare the class with a keyword called `final`, then the compiler ensures that the class cannot have a subclass.
+  - So, if we happen to define a subclass, then the compiler reports it as an error.
+  - So, that's how the compiler is ensuring that the semantics associated with the `final` keyword is being respected i.e. it is not being violated.
+  - Compilers also perform certain code optimizations for faster execution of the program. Certain compilers do that.
+  - Finally, it generates machine code from the intermediate optimized code.
+  - So, the optimization is done and then the machine code is generated from that.
+- A compiler is a very complex program and these core operations are basic operations that any compiler supports.
+- And as you will see in this course, a Java compiler perform tons of additional operations to ease the programmer's task.
+- So, the compilation process can be slow due to the complexity in translation.
+- However, once compiled, machine code execution will be very fast and the machine code can be executed any time and any number of times.
+- But any change to the source code requires complete re-compilation.
+- Next, we will look at platform dependency, which will also give you an idea on how a C program is compiled on Windows and Linux machines.
+- We are not going to write any code for the discussion, but towards the end of the section, we will write, compile, and execute our first Java program.
+- So, in this section, we will only write one program, but as the course progresses, starting from the next section, we will write lots of programs.
 
 ## Author
 
