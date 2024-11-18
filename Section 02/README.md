@@ -7,6 +7,7 @@
   - [Agenda](#agenda)
   - [Lessons Learned](#lessons-learned)
     - [What is Java and Who is Using it?](#what-is-java-and-who-is-using-it)
+    - [Story Behind Java's Creation - A Brief History](#story-behind-javas-creation---a-brief-history)
   - [Author](#author)
 
 ## Agenda
@@ -68,6 +69,56 @@
 - Also, when it comes to open source libraries, probably most number of open source libraries are implemented in Java.
 - Example open source libraries: Hadoop, Apache Solr, Mahout
 - Companies like eBay and Apple use Apache Solr for providing search capability within their websites.
+
+### Story Behind Java's Creation - A Brief History
+
+- Before moving on, let's now spend some time understanding how Java came into existence.
+- Compared to languages like C and C++, Java has some unique features and there's a certain motivation behind creating Java with those features.
+- So, understanding the motivation will help us better appreciate the features that Java offers.
+- So, let's go ahead and learn the story behind Java's creation.
+- You must have heard of Sun Microsystems, which was a well-known Silicon Valley based company that got acquired by Oracle in 2010.
+- In 1991, having been in business for almost a decade, selling unique space computers, Sun wanted to see what the next wave in computing was.
+- So, they assembled a small team to brainstorm on this and they name the team as The Green Team.
+- The Green Team's initial conclusion was that a network of hetergenous consumer devices communicating with each other could be one significant trend.
+- These devices are small, they are reliable, distributed, real-time, embedded systems.
+- Based on this initial conclusion, they decided to build a prototype as a part of new project called The Green Project.
+- So, it is the Green team working the Green project.
+- The vision for this project was to build an interactive wireless hand-held device which would communicate with home entertainment devices like TV and VCR; and the software that the Green team develops would be installed on all of these devices.
+- The technology was expected to help in doing stuff like playing a certain TV channel or recording a particular favorite program, which is common these days but, not in early 90s.
+- However, realizing that this vision was pretty challenging as it had some unique goals:
+  - First goal is that the software should consume less memory as the target consumer devices are embedded devices which have limited resources like memory.
+  - Next, the technology should allow these devices to communicate with each other and also pass around any software programs.
+  - This leads us to the third and one of the most important goals, which is platform independence.
+  - So, when these software programs are delivered from one device to another, they should run on the target device without any issues i.e. the hardware and operating system of the target devices should not cause any issues; and that's basically platform independence.
+  - Similarly, when software programs are delivered to the target devices, they should not cause any harm to those devices.
+  - So, security is critical.
+  - Finally, the software should support multi-threading so that the devices can perform multiple activities at the same time.
+  - For instance, if a program is being downloaded from another consumer device, then the current device might want to perform some other activity while the program is being downloaded.
+- Initially, C++ was considered for this project, but it was rejected as it did not meet some of the project goals, which we just discussed, and platform independence was one of them.
+- So, the team decided to create a brand new technology.
+- Then one of the team members, James Gosling, created an entirely new language and named it <ins>Oak</ins>, after the tree outside his office.
+- Oak was later re-named to Java due to trademark issues.
+- So, Gosling is regarded as the Father of Java.
+- Soon, The Green Team came up with a working demo and the interactive hand-held device was called <ins>Star Seven</ins>.
+- It is interesting to note that this was way back in '92 and Star Seven already had a touch screen with feature similar to today's smartphones.
+- Just Google for Gosling Star Seven and you should be able to find an old video of James Gosling demonstrating \*7.
+- It is definitely worth watching.
+- Sun targeted the cable TV industry to sell this product, but the technology was far too advanced for them, and hence, the project did not meet sucess.
+- But, Sun soon realized that the newly popular world wide web was exactly identical to the Green project i.e. a network of heterogenous systems communicating with each other.
+- Before Java came into existence, internet involved moving around only static HTML content, and some believe that by integrating Java they can make webpages more interactive.
+- So, Sun developed a browser called HotJava and they showcased it at the SunWorld conference in 1995.
+- The browser allowed Java programs called applets to be embedded in HTML pages and this would allow web applications to be interactive.
+- But, for this to work, the client's browser should install Java, and the way it work is that an HTML page would include HTML tags corresponding to applets.
+- The applets would actually reside on some remote server.
+- When browser processes an HTML and when ti encounters these applet-related tags, it would then download the corresponding applets from the remote server and then execute them as it already had Java installed.
+- Now like HTML content, same applet can run on heterogenous client platforms i.e. platform independence capability of HTML pages is still supported.
+- Meaning that the applet might be on a Linux server and the client's browser might be on a Windows machine, but the downloaded applet from the Linux server would execute without any issues within the client's browser on the Windows machine.
+- At the same conference, Netscape also announced their popular Netscape Navigator browser would include Java suport, and with that, the entire tech industry was very excited about the Java technology as this integration could be verybig for the future of internet.
+- And soo, the first version of Java was released in January of 1996.
+- So, that's brief history of Java.
+- Always keep in mind that Java was mainly designed to work in a network environment consisting of heterogenous consumer devices.
+- The environment had some unique goals and that led to the development of Java.
+- Though it could not be adopted in the cable TV industry, it eventually found its success with the worldwide web; and especially, it soon evolved as a popular language for developing large scale web applications, standalone desktop applications, and mobile applications.
 
 ## Author
 
