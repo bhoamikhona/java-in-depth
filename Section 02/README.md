@@ -16,6 +16,7 @@
       - [Pros \& Cons of Interpreter](#pros--cons-of-interpreter)
         - [Pros](#pros)
         - [Cons](#cons)
+    - [Platform Independence in Java](#platform-independence-in-java)
   - [Author](#author)
 
 ## Agenda
@@ -354,6 +355,64 @@ public class Math {
   - It might not be a big deal but, ti is just something we need to know.
 - So, as we can see, though interpreters solve the platform independence issue, they do have other limitations like slow execution speed.
 - We will next see how Java takes care of the speed issue without compromising on platform independence.
+
+### Platform Independence in Java
+
+- Now let's see how Java achieves platform independence but, without affecting execution speed.
+- ![platform-independence-java-1](https://github.com/user-attachments/assets/702d23fa-b954-4221-a860-d04127a1ce46)
+- We discussed about compilation and interpretation, which offer contrasting benefits and limitations.
+- We have seen that with compilation we get fast execution speed but, without the benefit of platform independence.
+- We have also seen that with interpretation, we get the benefit of platform independence but, with much slower execution speed.
+- With Java, we get the best of both worlds i.e. Java uses compilation to achieve fast execution speed and it also uses interpretation to achieve platform independence.
+- So, let's see how that is accomplished in Java.
+- We have Java source code, which is first compiled by the Java compiler into something called Java bytecode.
+- ![platform-independence-java-2](https://github.com/user-attachments/assets/8adb4ef9-d7b9-4a08-9457-cbb6116a704a)
+- So, it is not the machine code that typical compilers generate, but it is an intermediate format called as the Java bytecode.
+- Then the compiled Java bytecode can be interpreted on any platform that has a Java interpreter installed.
+- ![platform-independence-java-3](https://github.com/user-attachments/assets/1662e908-0480-464d-bd28-b3129dd06cb0)
+- Earlier, we saw that an interpreter, interprets source code directly.
+- ![platform-independence-java-4](https://github.com/user-attachments/assets/6feb0366-ab80-4d6a-844a-c6dca0ba4495)
+- But here in Java world, the Java interpreter is interpreting the Java bytecode rather than the source code.
+- So, Java bytecode is an intermediate format generated from the source code.
+- Interpreting this compiled Java bytecode as opposed to interpreting source code directly is what makes executing Java programs much faster.
+- So, executing Java bytecode is much faster.
+- This Java interpreter is nothing but JVM, which stands for Java Virtual Machine i.e. a virtual machine that can execute Java programs, which include the Java bytecode.
+- ![platform-independence-java-5](https://github.com/user-attachments/assets/7589c12e-e635-4b08-86b4-78bebd0c3cf1)
+- So, as JVM is interpreting Java bytecode, we can think of Java as an interpreted language.
+- ![platform-independence-java-6](https://github.com/user-attachments/assets/3d2c8b1f-51c9-4519-854d-b6e87df336ab)
+- Also, just like any interpreter, JVM is platform specific, and that helps in achieving platform independence.
+- So, we learned earlier that platform-dependent interpreters help achieve platform independence.
+- ![platform-independence-java-7](https://github.com/user-attachments/assets/1425556f-ca7f-4cbd-887c-a1fb4f668ce9)
+- Similarly, with Java, platform dependent JVM would help achieve platform independence.
+- ![platform-independence-java-8](https://github.com/user-attachments/assets/08b266a1-fa58-43f1-ad4a-08ab9fbd807c)
+- It is just that JVM would interpret Java bytecode rather than source code directly. That's the main difference.
+- So, Java bytecode is platform independent while JVM is platform dependent, just like source code is platform independent, whereas an interpreter is platform dependent.
+- So, you can see the similarity there.
+- Now, let's also look at the commands used for compilation and execution in Java.
+- At the end of this lesson, we will also execute these commands on the terminal to compile and execute a Java program.
+- ![platform-independence-java-9](https://github.com/user-attachments/assets/02a6d946-bcad-468d-a8d6-3e3f29e72df2)
+- So, let's assume we have a Java program called `Hello.java`, which includes the source code.
+- So, the extension of the file is `.java` and `Hello.java` can then be compiled to generate a file called `Hello.class`, which includes the Java bytecode.
+- To compile, we use the command `javac Hello.java`
+- `javac` is the Java compiler.
+- Also, it does not matter whether we are compiling on Windows or Linux, the file generated would be `Hello.class`.
+- `Hello.class` can then be executed on any platform that has a JVM installed.
+- To execute the class file, we use the command `java Hello`.
+- Here `java` is the Java interpreter and it is the same command regardless of the platform.
+- This command, `java Hello`, creates an instance of JVM.
+- So, JVM is just a software and it creates an instance of JVM i.e. the operating system loads the JVM into memory as soon as we execute this command, and then the JVM executes `Hello.class`.
+- In other words, JVM interprets the Java bytecode present in `Hello.class` and as mentioned earlier, we will soon look at it in action.
+- Now coming back to execution speed, as mentioned earlier, interpreting Java bytecode is much faster than interpreting source code.
+- That's because Java bytecode is compact in comparison to source code and is designed specifically to be interpreted by JVM, while the source code is designed to be read and written by humans i.e. developers.
+- Moreover, it is already compiled, which means that things like syntax checking, which happens when interpreting source code is already done.
+- So, that save us time.
+- Also, the Java bytecode is up to a certain extent optimized with certain operations, which would make it run faster.
+- Next, to further speed up execution, JVM also performs additional optimization through a process called just-in-time compilation, which will be discussed in one of the subsequent lessons.
+- But this particular optimization will be done at execution time by the JVM so, it is not done by the compiler and it plays a very critical role in making Java programs run faster.
+- Finally, note that the Java bytecode's compact form also enables in quick transfer of bytecodes across networks.
+- Recall that Java was originally designed to work in a networked environment where transferring compiled Java programs, which are nothing but the Java bytecode across different devices was one of the goals.
+- So, that's about it.
+- We have now seen how Java bytecode and JVM were used to achieve platform independence without compromising on speed.
 
 ## Author
 
