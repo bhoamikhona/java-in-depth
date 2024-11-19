@@ -23,6 +23,10 @@
       - [JIT Compilation Example](#jit-compilation-example)
     - [An Overview of Java SE](#an-overview-of-java-se)
     - [Java SE Release Cycles \& Release History](#java-se-release-cycles--release-history)
+    - [Installing JDK on Windows](#installing-jdk-on-windows)
+    - [Installing Java on Mac](#installing-java-on-mac)
+    - [Installing Java on Linux](#installing-java-on-linux)
+    - [Setting Classpath Environment Variable](#setting-classpath-environment-variable)
   - [Author](#author)
 
 ## Agenda
@@ -715,6 +719,59 @@ public class Math {
 - That's about it.
 - Next, we will install one of the latest versions of a Java SE implementation.
 - We will install a JDK and we will get started.
+
+### Installing JDK on Windows
+
+- The JDK gets installed in C Drive => Program Files => Java => jdk-21
+- jdk-21 is the directory of your JDK.
+- If we go inside jdk-21 => bin, you will see all the executables, like the Java compiler, Java interpreter, and all the development tools that we need.
+- Some of the executables that we have in the bin folder are:
+  - javac - That's for comiling our programs
+  - java - Which is the Java interpreter so, it is anothe executable. This is for running our programs.
+  - javap - It is called as a disassembler. If you want to look at the bytecode that your compiler generates; your compiler generates a `.class` file which has Java bytecode - if you want examine that, you would use this tool.
+  - jar - This tool is used for packaging your software. So, once you have your software, you can create something called as a jar file. So, that's a unit of release and that jar file, you can give it to your clients or partners.
+- So, these are some of the development tools that you have in the bin directory.
+
+### Installing Java on Mac
+
+### Installing Java on Linux
+
+### Setting Classpath Environment Variable
+
+- We just installed Java, but before we write our first Java program we need to take a look at an envrionemnt variable called <ins>Classpath</ins>.
+- ![classpath-1](https://github.com/user-attachments/assets/02548dca-2bd1-4729-a93b-0e6e0f83d328)
+- An environment variable is simply a variable whose value is visible to the entire environment i.e. to all processes running within the system.
+- So, it is like a global variable.
+- Classpath, as the name implies, is simply a path on the file system for locating Java classes; and it can include more than one path too.
+- It is used during both, compilation as well as execution of Java programs.
+- So, classpath environment variable is specific to Java.
+- For instance, if you run a program by executing the command `java Hello`, then the Java interpreter needs to know where it can locate the `Hello` program, which is nothing but `Hello.class`; and to look at the program, it may use the classpath.
+- For instance, let's say that this is the class path: `C:\foo;C:\bar`, which includes two paths.
+- Then it would first look for `Hello.class` within the data tree `foo` within C drive.
+- So, that's the first path, and if it is not found there, then it would search in the second path, which includes the `bar` directory.
+- In this case, it finds it under `bar` directory and it would then execute `Hello.class`.
+- Note that this classpath is needed only when we are compiling and running our programs from the command line.
+- It would not be needed if we are using an IDE like Eclipse.
+- IDE stands for Integrated Development Environment.
+- Initially, we will write our programs in a regular text editor and we will compile and run those programs from the command line.
+- But later, we will switch over to Eclipse for writing our Java programs.
+- In the next lesson we will discuss a little bit more about why we are using a text editor initially, instead of Eclipse.
+- We won't get into details of Classpath here as it is a little bit more complicated, and we will do that in a later section.
+- For now, we are interested only in finding out whether we need to modify the classpath or not.
+- ![classpath-2](https://github.com/user-attachments/assets/fe9f3c3b-6a51-4283-97c2-4a235d790fdf)
+- First thing we would do is check if there is a classpath among the list of environment variables.
+- If it is not there, then we are good and there is nothing to do and we can move on.
+- We can also move on if classpath is there, but it also includes a `.` as a separate path.
+- It means that either you or somebody else has already added classpath.
+- However, if classpath exists but, it does not include a `.`, then we need to insert one.
+- `.` implies current directory.
+- So, if we execute `java Hello`, then the Java interpreter would look at the classpath and the `.` in the classpath tells Java interpreter to look for `Hello.class` within the same directory where the Java command is being executed.
+- Like we mentioned earlier, initially we will run our Java programs from command line before we switch to Eclipse and we will run those programs from the directory where those programs exist.
+- So, `.` should be there in the classpath, and if it is not there, we need to insert one.
+- Also, if there is no classpath then it is defaulted to current directory.
+- So, Java interpreter would look for the program in the current directory.
+- But, if classpath is there, then it overrides this default property and `.` needs to be present if Java interpreter has to search in the current directory.
+- Go through the rest of the lesson to understand how to set the classpath.
 
 ## Author
 
