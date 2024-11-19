@@ -22,6 +22,7 @@
       - [Performance](#performance)
       - [JIT Compilation Example](#jit-compilation-example)
     - [An Overview of Java SE](#an-overview-of-java-se)
+    - [Java SE Release Cycles \& Release History](#java-se-release-cycles--release-history)
   - [Author](#author)
 
 ## Agenda
@@ -655,6 +656,65 @@ public class Math {
   - Java Specification Request (JSR) - mainly describes features that got added within the particular release.
   - Java Community Process (JCP) - Formal mechanism/process to develop Java specifications.
 - [Java API](https://download.java.net/java/early_access/jdk24/docs/api/) documentation
+
+### Java SE Release Cycles & Release History
+
+- Let's now go ahead and look at the different Java SE releases.
+- So, in the last lesson we got a good understanding of the Java SE, like an overview of Java SE, and it has many releases over the years.
+- In this lesson, we will look at different releases and the release cycle, like how often a release is being made and generally what comes out from the release.
+- Also, we will look at a little bit about the history of releases.
+- Here we are: [Java SE Specification](https://docs.oracle.com/javase/specs/)
+- In a given year, currently they are doing 2 releases, one in March and one in September.
+- For instance, in 2019, in March, they released Java SE 12.
+- So, along with that, all of the providers were also trying to come up with the JDK implementation, like the Oracle, Amazon, the OpenJDK, Oracle, and so on.
+- So, every year they are doing one release in March and one in September.
+- So, that's a 6 month release cycle.
+- And this 6 month release cycle started from Java 10 onwards.
+- Before that, the releases were much less frequent.
+- So, they used to release anywhere from once every 2 years to 5 years.
+- For instance, Java 6 came out in 2006, and Java 7 came out in 2011. So, there is a gap of 5 years.
+- Java 8 came out in 2014 and Java 9 came out in 2017.
+- So, the problem with this is that Java was evolving very slowly, while other platforms and programming languages were evolving quickly as those were doing releases very quickly.
+- So, Java was not like that. It was very slow and not as agile as other platforms/programming languages.
+- Because of that, the innovation was kind of slow so, they wanted to make it faster.
+- The reason why it used happen like that is because the designers were always trying to bring out large, big features in every release.
+- For instance, in Java 8, there were Lambda expressions, and Java 8 was a very huge release.
+- Similarly in Java 9 they had something called as modules, the Java platform module system, which was also a very huge change.
+- So, they have certain deadlines to meet, but because those features are so complex, the deadlines were constantly getting extended and the release was not happening.
+- But, the problem with that is, in a release, apart from these big features, there would also be some smaller features, which were completed but we are unable to use it because the release itself is not happening.
+- So, the release was stopping those small features to see the light. So, we were unable to use those small features.
+- So, the Java designers wanted to change that, and hence they decided to do frequent releases from Java 10 onwards.
+- But the different is that in each release they will only have fewer features coming out.
+- Like if there are any smaller features, they would come out.
+- But, the larger features would also come out in one of the releases.
+- But in each release, you will only see a few changes being made.
+- So, that's the thing.
+- They wanted to be agile like all other platforms too.
+- This particular document: [Java SE Specification](https://docs.oracle.com/javase/specs/) only shows releases from Java 6 but, before Java 6 we also had 5 other releases dating back to 1996 when Java came into existence.
+- So, Java 1 was initially called JDK 1, then there was JDK 1.1 which came out in 1997.
+- The next version was J2SE. Recall that Java SE was earlier called as J2SE.
+- So, they had some inconsistent version numbers like J2SE, 1.2, 1.3, etc.
+- But in this course, let's call them as Java 1, Java 1.1, Java 2, Java 3, Java 6...
+- Let's now get an idea about what came out in those intial versions.
+- Before Java 6, they had only few hundred classes.
+- Recall that each release comes with the Java library and the Java library had only few 100 classes, and the platform itself in Java 1 and Java 1.1 was pretty slow.
+- Then Java 2 came out and it was a major release with addition of significant number of new classes.
+- So, there were large number of classes that got added, and more importantly, it was faster too, as it included the JIT compiler.
+- Then after that, Java 5 came out in around 2004.
+- It was also a pretty huge release.
+- In between there were Java 3 and Java 4, but probably they are not that significant.
+- Java 5 was really huge with new additions like generics and some new multi-threading features, and it had close to 2,500 classes.
+- Then later in Java 6, which we can see on [Java SE Specification](https://docs.oracle.com/javase/specs/) came out.
+- It did not add much to the language itself but, had some important changes in the JVM.
+- So, sometimes in certain releases, you will see more changes in JVM and fewer language changes.
+- But now in the recent releases, mostly only smaller features are coming out.
+- Some of those features are preview features.
+- For example, switch expressions was added as a preview feature in Java 12. It was still a preview feature in Java 13, and in Java 14 it became a permanent feature.
+- So, some of them are released as preview features. They are not standard and they may be removed in the next release too.
+- So, if the developers do not like them and they get a negative feedbacke, they might remove the feature.
+- That's about it.
+- Next, we will install one of the latest versions of a Java SE implementation.
+- We will install a JDK and we will get started.
 
 ## Author
 
