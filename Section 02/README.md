@@ -17,6 +17,10 @@
         - [Pros](#pros)
         - [Cons](#cons)
     - [Platform Independence in Java](#platform-independence-in-java)
+    - [Java Virtual Machine (JVM)](#java-virtual-machine-jvm)
+      - [JVM Architecture](#jvm-architecture)
+      - [Performance](#performance)
+      - [JIT Compilation Example](#jit-compilation-example)
   - [Author](#author)
 
 ## Agenda
@@ -413,6 +417,142 @@ public class Math {
 - Recall that Java was originally designed to work in a networked environment where transferring compiled Java programs, which are nothing but the Java bytecode across different devices was one of the goals.
 - So, that's about it.
 - We have now seen how Java bytecode and JVM were used to achieve platform independence without compromising on speed.
+
+### Java Virtual Machine (JVM)
+
+- We have seen that one of the unique selling points of Java is its platform independence capability without compromising on execution speed.
+- We also know that it is because of JVM.
+- Platform independence was possible because JVM installed on a particular platform can interpret Java bytecode without any issues; and since Java bytecode is designed specifically to be interpreted by JVM, we also get very fast execution speed.
+- We also said that JVM can additionally perform something called Just-in-Time (JIT) compilation, which makes executing Java programs even faster.
+- So, they can execute super fast.
+- So, JVM is the cornerstone of Java, and it has other important benefits too.
+- It is a very sophisticated software.
+- It is so good that even programs written in other popular programming languages like Scala and Groovy can be compiled into Java bytecode, which can then be run on any JVM.
+- That way, they also get the benefits of JVM such as platform independence and fast execution speed.
+- So, to run JVM, all you need to do is produce Java bytecode. So, you need compilers which can produce Java bytecode.
+- Since JVM plays such a vital role in making Java really attractive and making it one of the most popular languages out there, it is important to have a good understanding of JVM.
+- We have a separate section dedicated to JVM, but at this point, but at this point, let's at least get a good high-level understanding of JVM and also its architecture.
+- We will also see why Java programs run as fast as C or C++ programs.
+- It is very important to understand this viz why Java programs run very fast instead of just diving into the code.
+- Java Virtual Machine is called <ins>Virtual</ins> and that's because it is an abstract computing machine.
+- That is like a real computing machine, it has an instruction set which it executes, and its instruction set is the Java bytecode.
+- So, for a CPU, machine code serves as the instruction set, while for JVM, Java bytecode serves as the instruction set.
+- JVM also manipulates memory at runtime i.e. it uses memory to run its programs and to manipulate their data.
+- Note that the term "runtime" here refers to the time when the program is actually executed.
+- As mentioned earlier, JVM is the cornerstone of Java platform, and it has a few core responsibilities.
+- One of them is loading and interpreting Java bytecode.
+- We know that interpreting Java bytecode helps achieve platform independence along with fast execution speed.
+- So, it is a very fundamental responsibility of JVM.
+- Next is security.
+- Security is critical as Java was developed for a networked environment where programs can be downloaded from across the network, and you don't want those programs to perform any harmful activities on the user's machine.
+- Third is automatic memory management.
+- Unlike C or C++, Java relieves its programmers from directly manipulating memory; and it does that through its automatic memory management process.
+- This makes programming in Java easier and also makes Java programs a lot safer i.e. it will greatly minimize some really nasty memory-related errors that one might make if they are manipulating the memory directly.
+- And as we will soon see, JVM has separate components to manage these responsibilities.
+- Now, before we look at what constitutes a JVM, let's first look at what happens when a Java program is run.
+- Let's say we have a Java program called `Hello` and now when we execute this program using the command `java Hello`, an instance of JVM is created and is loaded into memory.
+- JVM then in-turn loads the `Hello` program into memory and executes it.
+- At this point, both JVM and `Hello` program are now in memory.
+- So, each Java application, like `Hello` program runs inside a JVM instance.
+- ![jvm-1](https://github.com/user-attachments/assets/827bde49-0f89-427c-a225-aa4129feb2a7)
+- So, we can see the JVM instance here.
+- Note that a JVM instance runs only one Java application.
+- If you want to run another program at the same time, then you can execute it separately.
+- For instance, while the `Hello` program is running, if you want to run another program called `Goodbye`, then you would just say `java Goodbye`.
+- This would then create yet another instance of JVM which will then execute the `Goodbye.class`.
+- So, two JVM instances are being run at the same time, just like the way you can have two instances of your browser running at the same time.
+- Now let's take a look at a typical architecture of JVM.
+
+#### JVM Architecture
+
+- Let's assume that we have a Java program called `Hello.java` which is compiled.
+- ![jvm-2](https://github.com/user-attachments/assets/c011e470-5c6a-4ea9-a128-543809d74ccb)
+- Next, we need to run it, and so we would say `java Hello`, and we know with that, JVM will be launched.
+- ![jvm-3](https://github.com/user-attachments/assets/fb358fb4-3a1b-4d18-9767-6c6be2ef7b8e)
+- That is, it will be loaded into memory.
+- At the same time, JVM will also get a chunk of memory from the underlying operating system, and we are referring it as <ins>runtime data areas</ins> aka JVM memory.
+- ![jvm-4](https://github.com/user-attachments/assets/751a64df-93a7-4bfa-9699-675045eb8fc7)
+- JVM now has to load `Hello.class` which includes that Java bytecode.
+- For this, JVM invokes a component called Class Loader, which as the name implies, locates `Hello.class` and loads the corresponding bytecode into memory.
+- ![jvm-5](https://github.com/user-attachments/assets/f4774725-e90b-49ba-98bd-56fa5fb542e7)
+- So, as the name Class Loader suggests, it loads the class.
+- And when we say memory, it would be these two areas called <ins>Heap</ins> and <ins>Method Area</ins>:
+- ![jvm-6](https://github.com/user-attachments/assets/b9bf6ff1-0d49-4550-93cc-5a761ac71a82)
+- Next, the bytecodes are verified by a component called <ins>Bytecode Verifier</ins>.
+- ![jvm-7](https://github.com/user-attachments/assets/8b1e6e2c-82d6-4bba-b83a-f0026667735f)
+- This is to ensure that the loaded class file is not corrupted.
+- This is very critical, because in certain Java application we know that classes can be downloaded from across the internet, like in the case of applets.
+- Those classes could have been created by some hackers.
+- So, bytecode verification is critical to ensure the integrity of JVM.
+- Once the bytecode has been verified and if there are no issues, then it can be safely executed by the execution engine, which includes the Java interpreter along with a JIT compiler.
+- ![jvm-8](https://github.com/user-attachments/assets/b54f9b45-308c-4efa-83cb-19c90e5c5bdc)
+- So, the interpreter here, interprets the Java bytecode.
+- So, this execution engine, which includes the interpreter and JIT compiler, gives us the benefit of platform independence and very fast execution speed.
+- So, it handles one of the core responsibilities of JVM which we discussed earlier.
+- Garbage collector is the component that is responsible for automatic memroy management, which as we mentioned earlier is another core responsibility of JVM.
+- ![jvm-9](https://github.com/user-attachments/assets/fb9af3f2-69e7-45ca-93a2-c1576786dfbe)
+- And as the name implies, Garbage collector, collects the garbage in our program, which would be things that are no longer useful.
+- This means that it would reclaim the memory accessed by those things.
+- Next, Security Manager is responsible for ensuring security, which is another core responsibility of JVM.
+- ![jvm-10](https://github.com/user-attachments/assets/2ad94df1-83be-4707-8b36-d6500763d700)
+- For example, if you want to restrict any bytecode from accessing your file system, then security manager can ensure this by running the bytecode in a more restricted environment called the <ins>sandbox environment</ins>.
+- Finally, there are also a few other components that constitute a JVM.
+- ![jvm-11](https://github.com/user-attachments/assets/f7b9d6ed-0e98-4090-ac27-f83fae10e1f5)
+- But, let's not worry about them.
+- We have discussed some of the main ones here, and it should give you a fair idea about what constitutes a JVM.
+- In JVM internals section, we will discuss many of these components in detail.
+- Now, let's spend a little bit of time discussing the JIT compiler, as it plays a critical role in making Java programs run very fast, just like in the case of C or C++.
+
+#### Performance
+
+- We already discussed this:
+  - Interpreting Java bytecode is much faster than interpreting source code.
+  - This is because bytecode is designed specifically for JVM, and is already compiled and also sometimes optimized.
+- So, let's see how JIT compilation helps in further speeding up the execution.
+  - As the program is executing and bytecode is being interpreted, JVM monitors frequency of execution of each piece of executed bytecode.
+  - Some of the code is more frequently executed than others, and the frequently executed code is referred to as "hot spots".
+  - Hot spots are then given to the JIT compiler, which is a component of JVM as we just saw.
+  - JIT compiler converts these hot spots to machine code.
+  - This machine code is then cached, which means that it is saved in memory for future use; and in future, whenever there is a need to execute these hot spots, the corresponding cached machine code is what gets executed, resulting in much faster performance.
+  - Rest of the code is still interpreted by the interpreter.
+  - So, the frequently executed code, that is the hot spots, is not interpreted every single time.
+  - Its corresponding cached machine code is what gets executed directly.
+  - This JIT compilation is referred to as <ins>dynamic compilation</ins>, as the compilation into machine code is done dynamically at runtime.
+- Now, let's just try to understand this JIT compilation process through a simple example.
+
+#### JIT Compilation Example
+
+- Let's consider that we have two methods called `foo()` and `bar()`.
+- ![jit-1](https://github.com/user-attachments/assets/438b6f4c-6b58-424e-b81e-e16e319f33d4)
+- NOTE: In some programming languages, methods are referred to as functions.
+- In Java they are simply called Methods, and we will discuss them in the next section.
+- Essentially, they are blocks of code that represent certain logic to be executed.
+- Here `foo()` would represent some logic and `bar()` would represent something else.
+- Now let's consider that the method `bar()` has 50 lines of code.
+- At runtime, the bytecode corresponding to each of these 50 lines of code is interpreted, and the corresponding machine code is executed.
+- ![jit-2](https://github.com/user-attachments/assets/b0c1a919-90c3-488b-87a3-894b9fbc4bff)
+- This happens the first time the method is executed, and it also happens the second time and so on, until say 1000 times.
+- And every single time, the bytecode corresponding to every line of code here is interpreted and its corresponding machine code is executed.
+- Now that it ran for 1000 times, this code in `bar()` method could be considered as frequently executed code.
+- So, JVM would designate it as a hot spot.
+- And with that, JIT compiler would then kick in, and it would generate its own machine code version of this entire method.
+- ![jit-3](https://github.com/user-attachments/assets/2452a17a-edc6-4b08-bb15-6ead60d9cb78)
+- And JIT compiler, like a regular compiler, could have done some optimizations too when it is generating this machine code.
+- This JIT generated machine code is then cached.
+- ![jit-4](https://github.com/user-attachments/assets/acd0f90c-97f6-4ea7-a79b-bb87a5df57dc)
+- And when bar is executed for the 1001st time, the cached machine code will executed directly.
+- So, there is no more interpretation of the bytecode corresponding to the 50 lines of code that the `bar()` method has.
+- Since machine code is being executed directly, it would run very fast, just like code written in C or C++, where CPU executes compiled machine code directly.
+- ![jit-5](https://github.com/user-attachments/assets/982779ec-1a52-4c66-ad7a-3353e61ab121)
+- So, you can see that there is no difference here.
+- So, that's why Java is considered as almost as fast as languages like C or C++.
+- Now here, if `bar()` is executed for say 2000 times, then it might trigger another round of optimization by the JIT compiler for further speed-up of execution.
+- ![jit-6](https://github.com/user-attachments/assets/68b1ce80-fc16-4ac1-a539-ef77a64ea709)
+- Note that method `foo()` may not be that frequently executed, and hence might be interpreted every single time.
+- So, this is how conceptually a JIT compiler would work.
+- The actual way in which it works could differ slightly, but conceptually this is how it would work.
+- That's about it. That's a high-level overview of JVM.
+- And as you can see, that it is a very highly sophisticate piece of software that makes Java programs run very fast and securely and also platform independently.
 
 ## Author
 
