@@ -21,6 +21,7 @@
       - [JVM Architecture](#jvm-architecture)
       - [Performance](#performance)
       - [JIT Compilation Example](#jit-compilation-example)
+    - [An Overview of Java SE](#an-overview-of-java-se)
   - [Author](#author)
 
 ## Agenda
@@ -553,6 +554,107 @@ public class Math {
 - The actual way in which it works could differ slightly, but conceptually this is how it would work.
 - That's about it. That's a high-level overview of JVM.
 - And as you can see, that it is a very highly sophisticate piece of software that makes Java programs run very fast and securely and also platform independently.
+
+### An Overview of Java SE
+
+- As mentioned at the beginning of the section, we can create Java applications for different devices like desktops, web servers, mobile applications, and so on.
+- There are separate platforms dedicated for developing these different types of applications.
+- This course is about one such platform called Java SE, which stands for Java Standard Edition.
+- In this lesson, let's get a good high-level understanding of what Java SE platform is.
+- The Java software family includes multiple platforms targeting different types of devices, and there are 3 main platforms that are most commonly used.
+- The first one is the Java Standard Edition or Java SE in short, which is the subject of this lesson as well as the course; and previously it was called as J2SE, and it used to develop standalone applications that typically run on desktops but, may also run on servers.
+- An example can be a hospital management system used with a hospital.
+- Such a system is a standalone system i.e. it would be installed on different desktops within the hospital and the hospital administration staff would use it enter information like patient details and which doctor will be treating the patient and so on and so forth.
+- Next is Java Enterprise Edition or Java EE in short, and this was previously called as J2EE.
+- It is used to develop large-scale applications that run on web servers.
+- When we say large-scale it implies large number of users will be using the application at any given instance of time.
+- An example would be an e-commerce website like Amazon.
+- You might hae heard of technologies like Servlets and JSPs and they fall under Java EE platform.
+- Java EE is built on top of Java SE platform.
+- So, Java SE technology serves as the foundation for Java EE.
+- Java SE is not constrained to just building standalone applications, but it is needed for building large-scale web applications too.
+- It is just that we need more than what Java SE offers and that's where some of the other technologies within Java EE come into play.
+- Note that in 2017, Java EE has been re-branded as Jakarta EE as Java EE's development has been shifted from Oracle to Eclipse Foundation.
+- Eclipse is a foundation which is also responsible for developing Eclipse IDE.
+- Eclipse foundation has chosen to rename it as Jakarta EE, but originally, it used to be with Oracle.
+- Third platform is Java Micro Edition or Java ME in short.
+- This was previously called J2ME, and it is used to develop applications for resource-constrained devices like mobile phones and set-top boxes.
+- So, it is mainly for small devices which have limited resources and limited processing power.
+- While Java EE is built on Java SE, Java ME uses a subset of Java SE.
+- In this course, we will be learning about Java SE as it represents the core Java programming language.
+- We will also briefly get into Java EE at the very end as the course project is a web application and we use some basic Java EE technologies like Servlets and JSPs.
+- Note that even if you want to develop Java EE or Java ME applications, you still need to have a solid foundation in Java as both Java EE and Java ME, as we can see, are based on Java SE.
+- You may also know that to develop full-featured Android apps, we need to know Java.
+- So, having sound foundation in Java is very important and this course is all about setting that foundation firmly.
+- Not having a good foundation in Java can really hurt your performance as a software engineer when you are developing Java EE or Android applications.
+- So, it is important to learn Java well, give it the time that it needs, and once you have a good background in Java, learning these other platforms is pretty easy and it shouldn't also take too much of time to acquire those skills.
+- Now, strictly speaking, each of these different platforms define one or more specifications.
+- A specification is simply a document that describes the technology in plain English.
+- So, it is not a software and just a document.
+- So the software, which is the implementation of the specification would be something different and an implementation can come from different providers like Oracle or Amazon or IBM, etc.
+- So, a specification is like a blueprint for a house and the implementation is the actual house itself.
+- Since this course is about Java SE, let's just focus on that now.
+- ![jse-1](https://github.com/user-attachments/assets/a7de2238-58f5-4bf7-b307-0c66dcf4edd0)
+- Java SE defines a few specifications, and one is Java Language Specification (JLS).
+- It defines the entire Java programming language itself i.e. it defines the syntax and semantics of the language, that is the rules of the language - and it is the most comprehensive and accurate document that you can get on Java as it is written by the Java Language designers themselves like James Gosling.
+- So, it is like any good book on Java but, it is not easy to understand, at least for a beginner.
+- Later we will also look at the JLS, which is online.
+- The next specification is Java Virtual Machine specification which defines how a JVM should work.
+- It also specifies the bytecode instruction set.
+- We will look at some of the bytecode instructions in the JVM internals section.
+- It also includes the Java API specification, which is nothing but the specification of the Java library.
+- So, that's what Java SE specification is and it has many implementations.
+- One is the official implementation from Oracle and it is reffered to as Oracle JDK, where JDK means Java Development Kit.
+- Then there is Oracle's OpenJDK.
+- So, they both come from Oracle.
+- The difference between Oracle JDK and OpenJDK is that OpenJDK is completely free while with Oracle JDK, you would have to pay Oracle if your are using it for commercial purpose; and with that you would get their support for fixing any bugs in the implementation.
+- Now, OpenJDK is completely free so, it is even free for commercial purpose.
+- But, since we are learning Java here, it is fine to use even Oracle JDK.
+- There are also many other providers and a few prominent ones are AdoptOpenJDK, Amazon Corretto, Red Hat's OpenJDK.
+- These are also free just like Oracle's OpenJDK.
+- Now each of these implementations is basically JDK, that is, Java development kit, and we need a JDK to write, compile, and execute our Java programs.
+- Soon we will install one of the latest versions of JDK.
+- Now let's see what a JDK would contain.
+- ![jse-2](https://github.com/user-attachments/assets/adc6e95c-bf4c-47fb-b233-25f27ed5ef81)
+- It would obviously include a JVM which implements the JVM specification.
+- It would also contain the actual Java API code that is the Java library code which is a pre-defined functionality that we can readily use when writing our Java programs.
+- It would also include development tools like the Java compiler so that we can compile our Java programs.
+- So, all JDKs that we get from the different providers would include these components.
+- JDK is also referred to as Java SDK, where SDK stands for <ins>software development kit</ins>.
+- SDK is more of a general term and many times developers may also refer to JDK as Java SE, although stictly speaking, Java SE is a set of specifications, just as we discussed.
+- The JVM and and the Java API are collectively referred to as JRE, which stands for <ins>Java Runtime Envrionment</ins>.
+- ![jse-4](https://github.com/user-attachments/assets/9bd3a20d-278c-41a0-8332-d30684c4b29b)
+- Oracle used to offer such a JRE separately from JDK although JDK includes a JRE.
+- That's because Java Runtime Environment (JRE), as its name suggests, is essentially a runtime environment.
+- That is, it is an environment used to only run Java applications.
+- So, you cannot develop Java applications using JRE.
+- So, if you are shipping your Java application to your clients, then your clients would only need to install a JRE to run it.
+- They do not need development tools like the Java compiler which comes with the JDK.
+- So, they do not need a JDK, but they need a JRE.
+- However, such a separate JRE was offered only till Java SE 10, where 10 is one of the versions of Java SE.
+- From Java SE 11 onwards, Oracle stopped offering it as they were including a tool called <ins>jlink</ins> which can be used to create a custom JRE.
+- This custom JRE can be smaller in size than a regular JRE, or one can simply install a JDK itself, as it also includes a JRE.
+- So, JRE is not included separately by Oracle from Java 11 onwards.
+- But, regardless of whether a separate JRE is available or not, we as developers who develop Java programs would need a JDK as it includes tools like Java compiler which is needed to compile our programs and since it also includes a JVM, we can also execute our programs.
+- So, JDK is what we need.
+- Now, earlier we mentioned some of the most prominent JDK providers.
+- Although these are different implementations, they are all based on the same source code and this source code is developed as part of the project called OpenJDK.
+- ![jse-6](https://github.com/user-attachments/assets/9eb8863d-2cdf-4170-ac02-a43426744528)
+- This source code is open source and it was originally proprietary to Oracle, but later Oracle made it open source so that anyone can contribute to it, including engineers from companies such as Oracle, Amazon, and IBM.
+- Now, when we say source code, it would mainly be the Java library or the Java API code and a JVM implementation called HotSpot.
+- HotSpot is written in C++.
+- So, all these different providers would include the same API code and the HotSpot JVM.
+- However, certain providers might add some non-core functionality and may also provide additional services like offering paid support like in the case of Oracle's JDK.
+- Now, AdoptOpenJDK also provides the option to use another JVM called OpenJ9 which is form the Eclipse foundation.
+- OpenJ9 is also open source and was originally developed by IBM.
+- So, HotSpot and OpenJ9 are two different implementations and both are great.
+- HotSpot is more like a standard one because it was originally developed by Oracle and it is also a part of OpenJDK.
+- But, OpenJ9 is also very good.
+- So, keep in mind that Java is open source.
+- Now let's briefly look at the [Java SE specifications](https://docs.oracle.com/javase/specs/) that are available on the web. (Go through the rest of lesson for the introduction)
+  - Java Specification Request (JSR) - mainly describes features that got added within the particular release.
+  - Java Community Process (JCP) - Formal mechanism/process to develop Java specifications.
+- [Java API](https://download.java.net/java/early_access/jdk24/docs/api/) documentation
 
 ## Author
 
