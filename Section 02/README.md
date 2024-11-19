@@ -9,6 +9,7 @@
     - [What is Java and Who is Using it?](#what-is-java-and-who-is-using-it)
     - [Story Behind Java's Creation - A Brief History](#story-behind-javas-creation---a-brief-history)
     - [Compilation](#compilation)
+    - [Platform Dependency](#platform-dependency)
   - [Author](#author)
 
 ## Agenda
@@ -209,6 +210,48 @@ public class Math {
 - Next, we will look at platform dependency, which will also give you an idea on how a C program is compiled on Windows and Linux machines.
 - We are not going to write any code for the discussion, but towards the end of the section, we will write, compile, and execute our first Java program.
 - So, in this section, we will only write one program, but as the course progresses, starting from the next section, we will write lots of programs.
+
+### Platform Dependency
+
+- Now that we have a basic understanding of what compilation is, let's take a look at what platform dependency is.
+- We will also do a short demo of platform dependency.
+- Let's first consider that we have a windows machine and let's also assume that we have written a C program called `Hello.c`.
+- To compile the program, we can use a compiler called GCC, and this would be the command, `gcc -o Hello Hello.c` where `Hello.c` is the file containing the C program, while `-o` is an option that tells compiler to name the output file as `Hello`, which will have a `.exe` extension on Windows.
+- So, on compiling `Hello.c` we get an executable file called `Hello.exe` which includes the machine code.
+- Here compilation step is also doing something called <ins>linking</ins>.
+- Generally, any software comprises of many source code files, and each source code file is compiled into a separate file called the object file, which has an extension `.o` or `.obj`.
+- For example, in this case it could be `Hello.o`.
+- These object files are then grouped or linked to form a final executable file.
+- This linking in many cases is done by the compiler itself.
+- However, it can also be done manually by programmers themselves using another program called a <ins>linker</ins>.
+- In this example, compiler does the linking and is generating an executable called `Hello.exe` which is finally executed by just typing in `Hello` at the command line.
+- Similarly, we can also compile the same `Hello.c` program on a Linux machine using the same command as on Windows.
+- this would also produce an executable, but in Linux the executable will be named as `Hello.out`.
+- So, the extension is `out` here rather than `exe`, which can then be executed by typing `./Hello`.
+- So, what we have here is both the executables being successfully executed on the machines on which those executables are generated.
+- ![platform-dependency-0](https://github.com/user-attachments/assets/9bbe260b-3cb8-4346-bd3c-d368ccb9e248)
+- But this wouldn't be possible:
+- `Hello` executable generated on Windows machine cannot be executed on Linux, and that is an example of platform dependency.
+- ![platform-dependency-1](https://github.com/user-attachments/assets/a6b47f58-ef29-43fa-82b7-3ff551712e7d)
+- So, `Hello.exe` can be run only on Windows operating system.
+- To run it on Linux, we would have to recompile `Hello.c` program on Linux.
+- Similarly, the `Hello` executable generated on Linux cannot be executed on a Windows machine.
+- You would have to recompile on Windows.
+- ![platform-dependency-2](https://github.com/user-attachments/assets/01591849-1731-4fac-a7e9-9d0f00e7f27d)
+- So, the generated executable is specific to the operating system.
+- So, platform dependency has to do with operating system and one main reason is due to the format of the executable file generated.
+- Windows uses a format called "PE" which stands for "Portable Executable", while Linux uses a format called "ELF" which stands for "Executable and Linkable Format".
+- In case you are interested about these formats, you can read more about them on Google.
+- Just search for portable executable or ELF, and you can read more about them.
+- Another reason for dependency on operating system is when the program makes system calls.
+- System calls are useful for performing operations like file opening, directory creation, or even printing to console or the terminal.
+- System calls are routed to the operating systems kernal.
+- Platform dependency can also be due to hardware.
+- For instance, machine code generated for a program on an x86 processor would be different from the machine code generated for the same program on an ARM processor.
+- So, the machine on which an executable is executed should be similar to the machine on which it has been generated.
+- Otherwise it has to be recompiled using an appropriate compiler.
+- So, both operating system, as well as hardware play a part in platform dependency.
+- Next, we will see how an interpreter can help resolve the platform dependency issue.
 
 ## Author
 
