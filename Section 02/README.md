@@ -27,6 +27,7 @@
     - [Installing Java on Mac](#installing-java-on-mac)
     - [Installing Java on Linux](#installing-java-on-linux)
     - [Setting Classpath Environment Variable](#setting-classpath-environment-variable)
+    - [Writing First Java Program](#writing-first-java-program)
   - [Author](#author)
 
 ## Agenda
@@ -772,6 +773,31 @@ public class Math {
 - So, Java interpreter would look for the program in the current directory.
 - But, if classpath is there, then it overrides this default property and `.` needs to be present if Java interpreter has to search in the current directory.
 - Go through the rest of the lesson to understand how to set the classpath.
+
+### Writing First Java Program
+
+- Structure of a Java Program.
+  - Java programs consists of classes.
+    - Variable declarations
+    - Constructors
+    - Methods
+    - Nested Classes
+- Classes
+  - The file name and class name are the same - it is a good practice.
+  - The `public` modifier makes it necessary to have the file name and the class name to be the same. Otherwise you get an error.
+  - You can also have more than one class per file but, that is not a normal practice.
+  - It is a good practice to have one class per file.
+  - Also, if you compile a file with two classes in it, two different `.class` files will be created, each for the separate classes.
+- Main Method
+  - This is where your program starts running.
+  - JVM first loads the bytecodes of your `.class` file into memory and then it invokes the `main()` method.
+  - It must be declared as `public`, `static`, and `void`.
+  - `public` keyword is required for JVM to invoke it. Otherwise, program will compile but, not execute.
+  - From the `main()` method, we typically invoke other classes that constitute the software and those other classes need not have a `main()` method.
+  - So, only the `class` that is getting executed will need to have the `main()` method.
+  - Program ends when the `main()` method ends.
+- Print Statement
+- Compiling and Running a Java program on a command prompt/terminal
 
 ## Author
 
