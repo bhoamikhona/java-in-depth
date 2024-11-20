@@ -6,6 +6,7 @@
   - [Table of Content](#table-of-content)
   - [Agenda](#agenda)
   - [Lessons Learned](#lessons-learned)
+    - [Classes \& Objects](#classes--objects)
   - [Author](#author)
 
 ## Agenda
@@ -28,6 +29,25 @@
 - So, constructors help with creating objects.
 
 ## Lessons Learned
+
+### Classes & Objects
+
+- Object Oriented Programming (OOP)
+  - OOP traces its roots in 1960s so, it is a very old programming paradigm.
+  - It was conceived to implement large, complex projects in a simple way.
+  - They help model real-world scenarios in a more natural way.
+- Object - their states (attributes or properties or fields) and behavior (methods)
+- `class` is like a blueprint and objects are instances of the `class`.
+- Variables and methods in a `class` are considered as the members of the `class`.
+- Variables (or state, or field, or attributes, or properties) hold data specific to that particular object instance of the `class`. This vary from one instance to another.
+- Methods (behavior) - this is common to all instances of the `class` and they define their behavior.
+- Creating a new object instance of a class using the `new` keyword.
+- Initializing the state of an object instance using the dot operator.
+- Invoking methods on object using the dot operator.
+
+> [!NOTE]
+>
+> In a real object-oriented software, you would have tons of objects communicating with each other, and the way they do that is by invoking a method of the object and passing any necessary data as input.
 
 ## Author
 
