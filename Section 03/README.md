@@ -7,6 +7,7 @@
   - [Agenda](#agenda)
   - [Lessons Learned](#lessons-learned)
     - [Classes \& Objects](#classes--objects)
+    - [Absolute Java Basics](#absolute-java-basics)
   - [Author](#author)
 
 ## Agenda
@@ -48,6 +49,32 @@
 > [!NOTE]
 >
 > In a real object-oriented software, you would have tons of objects communicating with each other, and the way they do that is by invoking a method of the object and passing any necessary data as input.
+
+### Absolute Java Basics
+
+- Naming rules for classes, methods, and variables
+  - First character: letter, underscore, $
+  - Remaining characters: letter, underscore, $, numbers
+  - No reserved keywords
+  - Cannot have duplicate names
+  - Cannot have duplicate methods
+- Java is case-sensitive
+- Printing to the console
+  - `System.out.println()` - advances cursor to the next line
+  - `System.out.print()` - advances cursor to the end of the same line
+  - `System` is just a `class` in Java library and it has a variable called `out`.
+  - So, we are saying `System.out` - and that's how we are accessing the variable `out`; and this variable `out` corresponds to an object.
+  - That object has the methods `print()` and `println()` so, that's how we are printing.
+- Comments/disabling code
+  - Single line comment: `// single line comment`
+  - Block comment: `/* block comment */`
+- Arithmetic operations
+  - `+`
+  - `-`
+  - `*`
+  - `/`
+  - `%`
+- Every statement in Java must end with a semi-colon
 
 ## Author
 
