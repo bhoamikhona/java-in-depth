@@ -8,6 +8,7 @@
   - [Lessons Learned](#lessons-learned)
     - [Classes \& Objects](#classes--objects)
     - [Absolute Java Basics](#absolute-java-basics)
+    - [Identitfiers - A Note on Naming Rules](#identitfiers---a-note-on-naming-rules)
   - [Author](#author)
 
 ## Agenda
@@ -75,6 +76,21 @@
   - `/`
   - `%`
 - Every statement in Java must end with a semi-colon
+
+### Identitfiers - A Note on Naming Rules
+
+- This is a minor note on naming rules that we discussed in previous lecture.
+- The names that we associate with classes, methods, variables, or any other user-defined item in the program are also sometimes formally referred to as Identifiers (or Java Identifiers).
+- You may come across this term in some resources such as Java Language Specification.
+- In the previous lecture, we also discussed the rules for these names, e.g., cannot start with a digit or cannot be a reserverd keyword.
+- In addition to what we discussed, it cannot also be `null`, `true`, `false`.
+- These are referred to as literals and will be discussed later in this section.
+- So, just to summarize, an identifier will have the following rules:
+  - It can include letters (a-z, A-Z), digits (0-9), the underscore character (\_), and the dollar sign ($).
+  - It cannot begin with a digit. Subsequent characters can include a digit.
+  - It cannot be a reserved keyword in Java (e.g., `class`, `interface`, `public`, `static`, etc.).
+  - It cannot be `null`, `true`, `false`
+  - Identifiers are case-sensitive (MyClass and myclass would be considered different).
 
 ## Author
 
