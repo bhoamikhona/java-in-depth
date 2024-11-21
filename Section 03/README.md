@@ -12,6 +12,7 @@
     - [Variables - Introduction](#variables---introduction)
     - [Declaring \& Re-initializing Variables](#declaring--re-initializing-variables)
     - [Assignment 01 - Currency Converter - Creating a Class with Variables](#assignment-01---currency-converter---creating-a-class-with-variables)
+    - [Variables - Primitive Types](#variables---primitive-types)
   - [Author](#author)
 
 ## Agenda
@@ -150,6 +151,26 @@
 - When `+` is used with numbers it is used as a plus operator. Both operands have to be numeric.
 
 ### Assignment 01 - Currency Converter - Creating a Class with Variables
+
+### Variables - Primitive Types
+
+- Java has 8 primitive data types:
+  - `boolean`
+  - Number
+    - Integer
+      - `byte`
+      - `short`
+      - `int`
+      - `long`
+    - Floating Point
+      - `float`
+      - `double`
+    - Character
+      - `char`
+- Except for `boolean` the rest of the data types are numeric data types, even `char` which can be used to represent an alphabet, is a numeric data type as it is internally represented as an unsigned integer.
+- So, `char` is also a numeric data type in Java and you should keep that in mind.
+- The 4 different kinds of data types to store integer values have different sizes to store a number. This is helpful to use memory efficiently in memory constraint devices.
+- The same is valid for floating point numbers.
 
 ## Author
 
