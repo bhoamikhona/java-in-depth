@@ -9,6 +9,7 @@
     - [Classes \& Objects](#classes--objects)
     - [Absolute Java Basics](#absolute-java-basics)
     - [Identitfiers - A Note on Naming Rules](#identitfiers---a-note-on-naming-rules)
+    - [Variables - Introduction](#variables---introduction)
   - [Author](#author)
 
 ## Agenda
@@ -91,6 +92,41 @@
   - It cannot be a reserved keyword in Java (e.g., `class`, `interface`, `public`, `static`, etc.).
   - It cannot be `null`, `true`, `false`
   - Identifiers are case-sensitive (MyClass and myclass would be considered different).
+
+### Variables - Introduction
+
+- Data types
+  - The type of the variable is define when it is first declared and once defined, it cannot be changed.
+  - Due to this, Java is referred to as <ins>Statically Typed Language</ins> because the type of the variable is static once defined.
+  - If you try to assign a value of different data type then compiler will throw an error and this type of checking by the compiler is called <ins>Static Type Checking</ins>.
+  - If the variable holds raw data like an integer literal `1000` then it is referred to as a <ins>primitive variable</ins>.
+  - Where as, the variable that holds an object is referred to as an <ins>object reference</ins>.
+    - It is holding a reference to an object, not holding the object itself.
+  - Java has 8 different primitive types. So, if a variable's data type is one of those primitive types, then it is a primitive variable.
+  - If the variable's type is a class, then the variable will be an object reference.
+  - It would also be an object reference if the variable's type is something called an interface.
+  - Note that `String` is a `class` in Java so, variables holding a `String` are also an object reference.
+- Declaring variables
+  - Declaring primitive variables
+  - Declaring object references using the `new` keyword.
+  - literals are raw data. Examples:
+    - `int id = 1000;` - 1000 is integer literal
+    - `boolean flag = true;` - `true` is boolean literal
+    - `String name = "john"` - "john" is string literal
+- Expressions:
+  - Something that gets evaluated to a single value. Example:
+    - `int id = x;`
+    - `int id = x + y;`
+    - `Student s = new Student();`
+- Declaration Statements
+  - They can appear anywhere in a `class`.
+  - Assignment statements.
+  - Re-assigning values to a variable. Example:
+    - `count = 23`;
+    - `count = x + y;`
+    - You cannot re-assign values to a variable at class-level.
+    - They can appear inside the members of a `class` such as methods.
+    - We will get a compilation error if we re-assign values to variables at class-level.
 
 ## Author
 
