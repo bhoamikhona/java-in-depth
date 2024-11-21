@@ -184,12 +184,12 @@
     - Higher the bit depth, larger is the range.
   - Fourth column indicates the default value of each data type.
 
-| Type    | Bit Depth | Value Range                                                                                       | Default |
-| ------- | --------- | ------------------------------------------------------------------------------------------------- | ------- |
-| `byte`  | 8 bits    | -2<sup>7</sup> to 2<sup>7</sup> - 1 [-128, 127]                                                   | 0       |
-| `short` | 16 bits   | -2<sup>15</sup> to 2<sup>15</sup> - 1 [-32,768, 32767]                                            | 0       |
-| `int`   | 32 bits   | -2<sup>31</sup> to 2<sup>31</sup> - 1 [-2,14,74,83,648, 2,14,74,83,647]                           | 0       |
-| `long`  | 64 bits   | -2<sup>63</sup> to 2<sup>63</sup> - 1 [-92,23,37,20,36,85,47,75,808, 92,23,37,20,36,85,47,75,807] | 0       |
+| Type    | Bit Depth | Value Range                           | Default |
+| ------- | --------- | ------------------------------------- | ------- |
+| `byte`  | 8 bits    | -2<sup>7</sup> to 2<sup>7</sup> - 1   | 0       |
+| `short` | 16 bits   | -2<sup>15</sup> to 2<sup>15</sup> - 1 | 0       |
+| `int`   | 32 bits   | -2<sup>31</sup> to 2<sup>31</sup> - 1 | 0       |
+| `long`  | 64 bits   | -2<sup>63</sup> to 2<sup>63</sup> - 1 | 0       |
 
 - If you try to assign a value to a variable outside its value range then you get a compilation error.
 - Note that we are using base 2 to define the value range and that is because computers use binary system, which deals with only 0s and 1s.
