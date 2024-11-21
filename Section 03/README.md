@@ -10,6 +10,7 @@
     - [Absolute Java Basics](#absolute-java-basics)
     - [Identitfiers - A Note on Naming Rules](#identitfiers---a-note-on-naming-rules)
     - [Variables - Introduction](#variables---introduction)
+    - [Declaring \& Re-initializing Variables](#declaring--re-initializing-variables)
   - [Author](#author)
 
 ## Agenda
@@ -127,6 +128,25 @@
     - You cannot re-assign values to a variable at class-level.
     - They can appear inside the members of a `class` such as methods.
     - We will get a compilation error if we re-assign values to variables at class-level.
+
+### Declaring & Re-initializing Variables
+
+- Indentation
+- Creating an object/instance of a `class` using the `new` keyword.
+- Invoking methods on an object using the dot operator.
+- Initialization is optional when declaring variables.
+  - This is because every primitive type has a default value assigned to them. So, if you do not give them a value of your own, they will take the default value.
+  - The variables declared within a method are called <ins>local variables</ins>; and local variables do not get any default value.
+  - So, if you were to declare a local variable, not initialize it and then use it for something, the compiler will complain.
+  - Only the variables declared at the class-level, without initialization take the default values.
+  - NOTE: The variables declared at class-level are called <ins>instance variables</ins>.
+  - We can also define a `static` variable at class-level.
+  - So both, static variables and instance variables take default values if we do not assign a value of our own to them.
+  - Local variables do not take default values if they are not initialized.
+  - NOTE: Cannot re-assign values at class-level. So, if you declared an instance variable or static variable without giving it a value at class level. After that, you try to assign a value to it using an assignment statement, it will give you an error.
+- Cannot use a variable before intializing/declaring it.
+- When `+` is used with strings it acts a concatenation operator. Even if one of them is a `String`, it will concatenate the two operands.
+- When `+` is used with numbers it is used as a plus operator. Both operands have to be numeric.
 
 ## Author
 
