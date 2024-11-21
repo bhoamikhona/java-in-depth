@@ -11,6 +11,7 @@
     - [Identitfiers - A Note on Naming Rules](#identitfiers---a-note-on-naming-rules)
     - [Variables - Introduction](#variables---introduction)
     - [Declaring \& Re-initializing Variables](#declaring--re-initializing-variables)
+    - [Assignment 01 - Currency Converter - Creating a Class with Variables](#assignment-01---currency-converter---creating-a-class-with-variables)
   - [Author](#author)
 
 ## Agenda
@@ -147,6 +148,8 @@
 - Cannot use a variable before intializing/declaring it.
 - When `+` is used with strings it acts a concatenation operator. Even if one of them is a `String`, it will concatenate the two operands.
 - When `+` is used with numbers it is used as a plus operator. Both operands have to be numeric.
+
+### Assignment 01 - Currency Converter - Creating a Class with Variables
 
 ## Author
 
