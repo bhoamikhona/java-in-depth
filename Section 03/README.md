@@ -19,6 +19,7 @@
     - [Floating-Point Pitfalls](#floating-point-pitfalls)
     - [Primitive Variables - Character Data Type](#primitive-variables---character-data-type)
     - [Alternate Ways to Initialize char Variables](#alternate-ways-to-initialize-char-variables)
+    - [Primitive Variables - Boolean Data Type](#primitive-variables---boolean-data-type)
   - [Author](#author)
 
 ## Agenda
@@ -408,6 +409,13 @@ System.out.println(first.add(second));
 - If you assign a `char` literal to an `int` data type, you will get the corresponding decimal value of the `char` literal.
 - Example: `int intChar = 'A';` - here the variable `intChar` will be assigned the value of `65` since that is the decimal value corresponding to the character `'A'`.
 - So, a `char` variable can be initialized with a `char` literal, or a unicode escape sequence, or an `int` literal and internally, it is stored as an unsigned 16-bit integer whose range is 0 to 65,535.
+
+### Primitive Variables - Boolean Data Type
+
+- Boolean can take either `true` or `false` as values and therefore, it is a binary data type.
+- By default, a `boolean` variable is initialized with `false` if you do not give it a value of your own.
+- It's bit depth is not precisely defined and it is specific to a particular JVM implementation i.e. it can vary from one JVM to another.
+- They are mostly used in control flow statements.
 
 ## Author
 
