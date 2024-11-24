@@ -18,6 +18,7 @@
     - [Primitive Variables - Floating-Point Numbers](#primitive-variables---floating-point-numbers)
     - [Floating-Point Pitfalls](#floating-point-pitfalls)
     - [Primitive Variables - Character Data Type](#primitive-variables---character-data-type)
+    - [Alternate Ways to Initialize char Variables](#alternate-ways-to-initialize-char-variables)
   - [Author](#author)
 
 ## Agenda
@@ -398,6 +399,15 @@ System.out.println(first.add(second));
 - This article also discusses about character encoding: [Link to Article](https://www3.ntu.edu.sg/home/ehchua/programming/java/DataRepresentation.html)
 - Empty character literal `''` is not allowed. But a space character `' '` is valid.
 - The wrapper class or the Boxed primitive for `char` is a `class` called `Character`.
+
+### Alternate Ways to Initialize char Variables
+
+- `char` variable can also be initialized using an `int` literal since internally, `char` value is represented using the unsinged integer scheme.
+- The value of the integer must be between 0 to 65,535 otherwise, we will get an error.
+- Since integer can also be represented in hexadecimal, octal, and binary. We can also assign a value to the `char` variable using those formats as long as they are within `char`'s value range.
+- If you assign a `char` literal to an `int` data type, you will get the corresponding decimal value of the `char` literal.
+- Example: `int intChar = 'A';` - here the variable `intChar` will be assigned the value of `65` since that is the decimal value corresponding to the character `'A'`.
+- So, a `char` variable can be initialized with a `char` literal, or a unicode escape sequence, or an `int` literal and internally, it is stored as an unsigned 16-bit integer whose range is 0 to 65,535.
 
 ## Author
 

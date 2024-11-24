@@ -35,26 +35,37 @@ public class BasicsDemo {
 
     int intOctal = 0101;
     System.out.println("intOctal: " + intOctal);
+
+    char charInt = 65;
+    char charHex = 0x0041;
+    char charBinary = 0b01000001;
+
+    System.out.println("charInt: " + charInt);
+    System.out.println("charHex: " + charHex);
+    System.out.println("charBinary: " + charBinary);
+
+    int intChar = 'A';
+    System.out.println("intChar: " + intChar);
   }
 
   public static void main(String[] args) {
 
-    System.out.println(1 - 0.9);
-    System.out.println(0.1 + 0.2);
+    // System.out.println(1 - 0.9);
+    // System.out.println(0.1 + 0.2);
 
-    double price = 1000;
-    double discountPercent = 0.9;
-    double discountAmount = price * discountPercent;
+    // double price = 1000;
+    // double discountPercent = 0.9;
+    // double discountAmount = price * discountPercent;
 
-    System.out.println(price - discountAmount);
-    System.out.println(price * (1 - discountPercent));
+    // System.out.println(price - discountAmount);
+    // System.out.println(price * (1 - discountPercent));
 
-    BigDecimal first = new BigDecimal("0.1");
-    BigDecimal second = new BigDecimal("0.2");
+    // BigDecimal first = new BigDecimal("0.1");
+    // BigDecimal second = new BigDecimal("0.2");
 
-    System.out.println(first.add(second));
+    // System.out.println(first.add(second));
 
-    // primitives();
+    primitives();
 
     // int i = 6;
     // int j = 2;
