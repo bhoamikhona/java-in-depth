@@ -20,6 +20,7 @@
     - [Primitive Variables - Character Data Type](#primitive-variables---character-data-type)
     - [Alternate Ways to Initialize char Variables](#alternate-ways-to-initialize-char-variables)
     - [Primitive Variables - Boolean Data Type](#primitive-variables---boolean-data-type)
+    - [Quiz 02 - Primitive Variables](#quiz-02---primitive-variables)
   - [Author](#author)
 
 ## Agenda
@@ -416,6 +417,8 @@ System.out.println(first.add(second));
 - By default, a `boolean` variable is initialized with `false` if you do not give it a value of your own.
 - It's bit depth is not precisely defined and it is specific to a particular JVM implementation i.e. it can vary from one JVM to another.
 - They are mostly used in control flow statements.
+
+### Quiz 02 - Primitive Variables
 
 ## Author
 

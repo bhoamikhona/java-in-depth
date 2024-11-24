@@ -30,7 +30,7 @@
     - [Writing First Java Program](#writing-first-java-program)
     - [Conclusion](#conclusion)
       - [Summary](#summary)
-    - [Quiz 1 - Chapter 02 Quiz](#quiz-1---chapter-02-quiz)
+    - [Quiz 01 - Chapter 02 Quiz](#quiz-01---chapter-02-quiz)
     - [Important Q\&A Discussions](#important-qa-discussions)
   - [Author](#author)
 
@@ -902,7 +902,7 @@ public class Math {
 - Let's learn it really well so that we don't have to come back in future and re-learn it.
 - Let's do it well the very first time.
 
-### Quiz 1 - Chapter 02 Quiz
+### Quiz 01 - Chapter 02 Quiz
 
 ### Important Q&A Discussions
 
