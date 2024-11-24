@@ -17,6 +17,7 @@
     - [Other Integer Literal Formats](#other-integer-literal-formats)
     - [Primitive Variables - Floating-Point Numbers](#primitive-variables---floating-point-numbers)
     - [Floating-Point Pitfalls](#floating-point-pitfalls)
+    - [Primitive Variables - Character Data Type](#primitive-variables---character-data-type)
   - [Author](#author)
 
 ## Agenda
@@ -324,6 +325,79 @@ System.out.println(first.add(second));
 > That is what we discussed in this lesson and along with that it also talks about using `BigDecimal` but, it has some more information beyond what we discussed in this lesson.
 >
 > So later, once you are through this course, give it a look.
+
+### Primitive Variables - Character Data Type
+
+- If we want our variables to hold single letter characters like alphabets, or a digit like 0, or a special symbol like dollar sign then in Java, you would declare such a variable with `char` data type.
+- Example: `char degree = 'B';`
+- We use `char` literals to assign values to `char` and we use double quotes around those values.
+- Although we are using characters, internally Java uses 16-bit unsigned integer scheme to represent characters.
+
+> [!NOTE]
+>
+> Read about 16-bit unsigned integer scheme. (Not necessary) [Link to Article](https://www3.ntu.edu.sg/home/ehchua/programming/java/DataRepresentation.html)
+
+- Unsigned integers represent 0 and positive numbers but, not negative numbers.
+- Essentially, characters are integers internally.
+- Example: char literal `'B'` would map to integer `66` internally.
+
+| Type   | Bit Depth | Value Range             | Default  |
+| ------ | --------- | ----------------------- | -------- |
+| `char` | 16 bits   | 0 to 2<sup>16</sup> - 1 | `\u0000` |
+
+- Bit depth for `char` data type is 16 bits so, `char` value will be represented in 16 bits.
+- Because it is unsigned, the range is 0 to 2<sup>16</sup> - 1 i.e. 0 to 65,535.
+- Note that here 2 is raised to the power of 16 unlike in the other cases of integer data types. This is because here we are dealing with unsinged integers i.e. no negative numbers.
+- In other words, we do not need any special signed bit as with any other integer data types in Java.
+- In other integer data types, we need a signed bit to distinguish between negative and positive numbers.
+- So, with unsinged integers, all of the bits together represent the magnitude.
+- Recall that with signed integers, the bits following the signed bit represent the magnitude.
+- This means that we can represent as many as 2<sup>16</sup> i.e. 65,536 characters in Java.
+- So, a `char` variable can take any of those 65,536 characters and the corresponding integer value will be stored internally in the memory.
+- For example the integer 66 will be stored in the memory for the character `B`.
+  If you are wondering what makes up all those 65,536 characters since we only have 26 English characters, and we can double that number to account for uppercase and lowercase alphabets, and we only have 0-9 digits and a few special symbols then what makes up for 65,536 characters?
+  We need to remember that we have many characters in the world and each of those languages have many characters.
+- So, we have many characters to represent.
+- For instance, we should be able to represent a character such as this: ఈ. This character belongs to one of the Indian languages called Telugu.
+- We even need to store emojis like this one: 😂
+- So, we have many such symbols that we need to be able to represent.
+- Therefore, there is a mapping between characters and the corresponding integer values get stored internally.
+- This mapping is defined by the Unicode character set.
+- Unicode is a standard character set like ASCII, but can represent all characters in all languages across the world.
+- It can represent all those exotic symbols too.
+- It does so by associating every character with a hexadecimal number called **code point**.
+- That hexadecimal number maps to some integer value, which is what is stored internally in binary format.
+- But Unicode is a standard specification and it can have different - implementations.
+- Java uses one such implementation called UTF-16.
+- Such an implmentation is referred to as an **encoding scheme**.
+- There are other schemes too like UTF-8 and UTF-32. They vary in the storage space they use.
+- For instance, UTF-16 might use 16 bits for a particular character while UTF-8 might use only 8 bits for the same character.
+- So, Unicode is a character set and UTF-16 is the encoding scheme that Java uses.
+- UTF-16 also defines hexadecimal numbers like Unicode.
+- For most characters, it uses the same hexadecimal numbers as Unicode.
+- So, in Java, every valid character literal is encoded as a UTF-16 hexadecimal number.
+- For instance, the `char` literal `'B'` would be encoded as UTF-16 hexadecimal number `0042`, and its corresponding 16-bit unsigned integer: `00000000 01000010` is what gets stored internally. `0100` is 4 in binary and `0010` is 2 in binary therfore `01000010` represents 42 in binary.
+- So, that's the benefit of hexadecimal numbers.
+- It can be easily mapped to the binary format.
+- And this 16-bit unsigned integer: `00000000 01000010` corresponds to the decimal value `66`.
+- So, that's how the character literal B is mapped to 66.
+- So, for every character, you can imagine such a tupple: `<'B', \u0042, 66>`.
+- Here we have the character uppercase `B` and it is associated with UTF-16 hexadecimal number `0042` and also decimal number `66`.
+- The binary equivalent of `66` is what is stored internally.
+- Note that both hexadecimal `0042` and `66` correspond to the same binary number.
+- In fact, the char variable degree can also be directly assgined such a hexadecimal number.
+- That is, we can assign a literal such as this one: `'\u0042'`.
+- This is called as Unicode Escape Sequence where we have a backslash followed by u, followed by the hexadecimal number 42.
+- `u` here stands for Unicode and it needs to be in lowercase. Otherwise, we will get a compiler error.
+- Typically, you would use `char` literals for variable initialization, but sometimes, if you have to represent certain special characters and if your editor does not support them, then you can use such **Unicode escape sequence** for initialization.
+- The default value for `char` is `\u0000` which is shown in the table above. This unicode represents a `null` character.
+- A `null` character is a control character. Meaning that it is not something that you can print.
+- In input/outpput section, one of the first lessons gives us a very detailed introduction to character encoding.
+- In fact, it is a prerequisite lesson for that section.
+- So, if you are not familiar with encoding, you can learn about it when you get there.
+- This article also discusses about character encoding: [Link to Article](https://www3.ntu.edu.sg/home/ehchua/programming/java/DataRepresentation.html)
+- Empty character literal `''` is not allowed. But a space character `' '` is valid.
+- The wrapper class or the Boxed primitive for `char` is a `class` called `Character`.
 
 ## Author
 

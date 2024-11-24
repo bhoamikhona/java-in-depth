@@ -6,6 +6,8 @@ public class Student {
 
   double gpa = 3.4d;
 
+  char degree = '\u0042';
+
   void compute() {
     int nextId = id + 1;
 
@@ -14,6 +16,7 @@ public class Student {
     System.out.println("age: " + age);
     System.out.println("phone: " + phone);
     System.out.println("gpa: " + gpa);
+    System.out.println("degree: " + degree);
   }
 
   public static void main(String[] args) {

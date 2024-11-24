@@ -39,7 +39,6 @@ public class BasicsDemo {
 
   public static void main(String[] args) {
 
-    ////////// Floating Point Pitfalls //////////
     System.out.println(1 - 0.9);
     System.out.println(0.1 + 0.2);
 
