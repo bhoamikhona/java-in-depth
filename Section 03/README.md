@@ -16,6 +16,7 @@
     - [Primitive Variables - Integers](#primitive-variables---integers)
     - [Other Integer Literal Formats](#other-integer-literal-formats)
     - [Primitive Variables - Floating-Point Numbers](#primitive-variables---floating-point-numbers)
+    - [Floating-Point Pitfalls](#floating-point-pitfalls)
   - [Author](#author)
 
 ## Agenda
@@ -276,6 +277,53 @@
 - Note that Game Development is one area where `float` is preferred over `double`.
 - Internally, Java uses IEEE 754 floating-point scheme to represent `float` and `double`.
 - Read about IEEE 754 floating-point scheme. (Not necessary) [Link to Article](https://www3.ntu.edu.sg/home/ehchua/programming/java/DataRepresentation.html)
+
+### Floating-Point Pitfalls
+
+- `float` and `double` are good for approximate results but, if you need exact and precise results then you should avoid them.
+- Example: For an e-commerce website you need precise calculations so, in that case you should avoid `float` and `double`.
+- This is because `float` and `double` are associated with some pitfalls.
+- Pitfall Example 01: The result for `1 - 0.9` is `0.09999999999999998`
+- Pitfall Example 02: The result for `0.1 + 0.2` is `0.30000000000000004`
+- The reason for this is that numbers like 0.1 and 0.2 cannot be accurately represented within computers.
+- This is due to the format that computers use.
+- Computers follow the IEEE 754 floating-point format and specifically, they use Binary Floating-point format.
+- In that format, such numbers cannot be accurately represented.
+- This is an issue with all languages, it is not just with Java.
+- The `0.1` in computers is represented like so: `0.0011001100110011...`
+- The `0011` part after the decimal keeps repeating infinitely in the way these numbers are represented in the computer.
+- However, both `float` and `double` have finite number of bits so, that huge value is truncated and/or rounded.
+- Therefore, there is an approximation and not precision.
+- The issue is that the denominator of these numbers are not power of 2.
+- For example, if you take the number `0.1`, then it is equivalent to `1/10`.
+- `10` in the denominator is not a power of 2.
+- If you pick `2/10` = `1/5` = `0.2`. Here again, `5` is not a power of 2.
+- If you take `5/10` = `1/2` = `0.5` - this has a denominator which is a power of 2 i.e. 2<sup>1</sup>. Therefore, this number can be accurately represented in computers.
+- But, most of the numbers cannot be.
+- This is especially an issue if we are dealing with money.
+- So, when you are dealing with money, you should not be used `float` and `double`. It would be disastrous if you use it.
+- Instead, use a recommended `class` in Java called `BigDecimal`.
+- This `class` comes with the Java library and you can use it, especially when you are dealing with money, where you need exact results.
+- Example:
+
+```java
+BigDecimal first = new BigDecimal("0.1");
+BigDecimal second = new BigDecimal("0.2");
+
+System.out.println(first.add(second));
+```
+
+- This `class` is a part of `java.math` package.
+- `BigDecimal` is slow but, if you application needs it, you have to use it.
+- So, any e-commerce application uses this if they are built using Java.
+
+> [!TIP]
+>
+> In the book Effective Java, there is an item #48 in 2nd Edition or item #60 in 3rd Edition (items are just rules or best practices), which states that "Avoid float and double if exact answers are required."
+>
+> That is what we discussed in this lesson and along with that it also talks about using `BigDecimal` but, it has some more information beyond what we discussed in this lesson.
+>
+> So later, once you are through this course, give it a look.
 
 ## Author
 
