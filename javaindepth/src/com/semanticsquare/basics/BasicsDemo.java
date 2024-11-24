@@ -22,15 +22,30 @@ public class BasicsDemo {
     System.out.println("");
   }
 
-  public static void main(String[] args) {
-    print();
+  static void primitives() {
+    System.out.println("\n\nInside primitives...");
 
-    int i = 6;
-    int j = 2;
-    System.out.println(i + j);
-    System.out.println(i - j);
-    System.out.println(i * j);
-    System.out.println(i / j);
-    System.out.println(i % j);
+    long longHex = 0x0041L;
+    System.out.println("longHex: " + longHex);
+
+    int intBinary = 0b0100_0001;
+    System.out.println("intBinary: " + intBinary);
+
+    int intOctal = 0101;
+    System.out.println("intOctal: " + intOctal);
+  }
+
+  public static void main(String[] args) {
+    primitives();
+
+    // int i = 6;
+    // int j = 2;
+    // System.out.println(i + j);
+    // System.out.println(i - j);
+    // System.out.println(i * j);
+    // System.out.println(i / j);
+    // System.out.println(i % j);
+
+    // print();
   }
 }

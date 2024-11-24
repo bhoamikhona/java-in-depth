@@ -14,6 +14,7 @@
     - [Assignment 01 - Currency Converter - Creating a Class with Variables](#assignment-01---currency-converter---creating-a-class-with-variables)
     - [Variables - Primitive Types](#variables---primitive-types)
     - [Primitive Variables - Integers](#primitive-variables---integers)
+    - [Other Integer Literal Formats](#other-integer-literal-formats)
   - [Author](#author)
 
 ## Agenda
@@ -222,6 +223,28 @@
   - `Integer.MAX_VALUE`
 - `Integer` is a `class` that comes with Java library. It is called as either a <ins>Wrapper class/type<ins> or <ins>Boxed primitive</ins>.
 - Every primitive data type has an associated boxed primitive.
+
+### Other Integer Literal Formats
+
+- Less commonly used
+- Hexadecimal
+  - Hexadecimal numbers start with `0x` where `x` can either be uppercase or lowercase.
+  - The numbers following `0x` is the actual hexadecimal number itself.
+  - Example: `0x0041` here `0041` is the actual hexadecimal number itself.
+  - `0x` is just used to indicate that it is a hexadecimal number.
+  - Hexadecimal format is very useful when representing very large or very small numbers.
+  - It is also very useful in performing something called bitwise operations.
+- Binary
+  - Similar to hexadecimal numbers, binary numbers in Java start with `0b`
+  - Example: `0b01000001` - where `0b` is used to indicate that it is a binary number and `01000001` is the actual binary number itself.
+- Octal
+  - For octal, the number starts with a `0` followed by the number itself. There is no single letter alphabet in between.
+  - Example: `0101` where `101` is the actual octal number.
+- Converting from Hexadecimal to Decimal and Binary to Decimal.
+- Read 2's complement scheme to understand this better. (Not necessary) [Link to Article](https://www3.ntu.edu.sg/home/ehchua/programming/java/DataRepresentation.html)
+- You can use underscore for readability in numbers even in hexadecimal, binary, and octal formats. Example: `0b0100_0001`
+  - Remember that the underscore has to be in-between the numbers, not at the beginning or at the end of the number.
+- These formats can also be used with `long` literals by using a trailing `L`. Example: `long intHex = 0x0041L;`
 
 ## Author
 
