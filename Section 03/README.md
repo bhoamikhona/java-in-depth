@@ -21,6 +21,11 @@
     - [Alternate Ways to Initialize char Variables](#alternate-ways-to-initialize-char-variables)
     - [Primitive Variables - Boolean Data Type](#primitive-variables---boolean-data-type)
     - [Quiz 02 - Primitive Variables](#quiz-02---primitive-variables)
+    - [Variable Kinds - Instance, Static, and Local Variables](#variable-kinds---instance-static-and-local-variables)
+      - [Instance Variables](#instance-variables)
+      - [Local Variables](#local-variables)
+      - [Static Variables](#static-variables)
+      - [Additional Notes](#additional-notes)
   - [Author](#author)
 
 ## Agenda
@@ -419,6 +424,61 @@ System.out.println(first.add(second));
 - They are mostly used in control flow statements.
 
 ### Quiz 02 - Primitive Variables
+
+### Variable Kinds - Instance, Static, and Local Variables
+
+- Java has three main types of variables: **Instance**, **Static**, and **Local**.
+
+#### Instance Variables
+
+- **Definition**: Variables that are specific to an object (instance) of a `class`.
+- **Key Points**:
+  - Hold the **state of an object**; each object has its own copy.
+  - Must be declared **at the class level** (not inside a method or constructor).
+  - **Access**:
+    - Within the same `class`, they can be accessed directly without using an object reference.
+    - Outside the `class`, they must be accessed using the **dot operator** with an object reference:  
+      `objectName.instanceVariable`.
+    - Cannot be accessed using the `class` name; doing so results in an error.
+  - **Defaults**: Automatically initialized to default values:
+    - `null` for object references.
+    - `0` for numeric types.
+    - `false` for boolean types.
+  - Cannot be re-initialized or re-assigned directly at the `class` level.
+  - Also referred to as **fields** or **attributes**.
+
+#### Local Variables
+
+- **Definition**: Variables declared inside a method or constructor, local to that block of code.
+- **Key Points**:
+  - Used for computations or temporary storage within methods.
+  - Must be explicitly initialized before use; they do **not** get default values.
+  - Cannot be accessed outside the method or block where they are declared.
+  - Method parameters are also treated as local variables.
+
+#### Static Variables
+
+- **Definition**: Variables associated with the `class` rather than any specific instance.
+- **Key Points**:
+  - Declared using the `static` keyword:
+    ```java
+    static int count = 0;
+    ```
+  - **Shared** among all objects of the `class`—maintains a **single copy**.
+  - **Access**:
+    - Recommended: Use the **class name** to access static variables:  
+      `ClassName.staticVariable`.
+    - While they can be accessed via an object reference, it is **not recommended**.
+  - **Defaults**: Automatically initialized to default values (like instance variables).
+  - Cannot be re-initialized or re-assigned directly at the `class` level.
+  - Also referred to as **class variables**.
+
+#### Additional Notes
+
+- The **dot operator (`.`)** is used to access variables and initialize an object's state.
+- **Default Values**:
+  - Primitive types (e.g., `int`, `double`) are initialized to `0`, `0.0`, etc.
+  - Object references (e.g., `String`) are initialized to `null`.
 
 ## Author
 
