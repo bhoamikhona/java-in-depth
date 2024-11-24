@@ -2,11 +2,9 @@ public class Student {
   int id = 1000;
 
   byte age = 18;
-  short rank = 165;
   long phone = 2_23_45_67_890L;
 
-  int minValue = Integer.MIN_VALUE;
-  int maxValue = Integer.MAX_VALUE;
+  double gpa = 3.4d;
 
   void compute() {
     int nextId = id + 1;
@@ -14,10 +12,8 @@ public class Student {
     System.out.println("id: " + id);
     System.out.println("nextId: " + nextId);
     System.out.println("age: " + age);
-    System.out.println("rank: " + rank);
     System.out.println("phone: " + phone);
-    System.out.println("minValue: " + minValue);
-    System.out.println("maxValue: " + maxValue);
+    System.out.println("gpa: " + gpa);
   }
 
   public static void main(String[] args) {

@@ -15,6 +15,7 @@
     - [Variables - Primitive Types](#variables---primitive-types)
     - [Primitive Variables - Integers](#primitive-variables---integers)
     - [Other Integer Literal Formats](#other-integer-literal-formats)
+    - [Primitive Variables - Floating-Point Numbers](#primitive-variables---floating-point-numbers)
   - [Author](#author)
 
 ## Agenda
@@ -245,6 +246,36 @@
 - You can use underscore for readability in numbers even in hexadecimal, binary, and octal formats. Example: `0b0100_0001`
   - Remember that the underscore has to be in-between the numbers, not at the beginning or at the end of the number.
 - These formats can also be used with `long` literals by using a trailing `L`. Example: `long intHex = 0x0041L;`
+
+### Primitive Variables - Floating-Point Numbers
+
+- Floating point numbers are real numbers like 3.14 and -0.014.
+- In Java, floating point numbers can be represented by either `float` data type or `double` data type.
+- The precision column in the table below represents the number of digits that we can have after the decimal point.
+- Trailing `f` indicates `float` and trailing `d` indicates `double`. These trailing letters are mandatory (especially for `float`).
+- If you do not include a trailing `f` for `float`, then the compiler will think that you are initializing a `float` data type with a `double` literal.
+- For the value range, the notation `E` is called as exponential or scientific notation and `E` can be in either upper or lower case.
+- Generally, such scientific notation is used only when representing very large or very small numbers.
+  - Example: `double num = 3.8e4;` - this will result in 38000.0
+- Range for `float`: -3.8 _ 10<sup>38</sup> to 3.8 _ 10<sup>38</sup>
+- Range for `double`: -1.7 _ 10<sup>308</sup> to 1.7 _ 10<sup>308</sup>
+
+| Type     | Bit Depth | Value Range         | Default | Precision              |
+| -------- | --------- | ------------------- | ------- | ---------------------- |
+| `float`  | 32 bits   | -3.4E38 to 3.4E38   | 0.0f    | 6 - 7 decimal digits   |
+| `double` | 64 bits   | -1.7E308 to 1.7E308 | 0.0d    | 15 - 16 decimal digits |
+
+- If a number has more decimal digits than what a `float` or `double` can represent, then it cannot be accurately represented and hence would be approximated. That is, the decimal digits will be reduced to 6 to 7 or 15 to 16 digits, depending on the data type, by rounding them.
+- Pi is one such example.
+- With real numbers, even with a small range of number like 0.1 and 0.2, we can have infinite real numbers.
+- So, many of these numbers cannot be accurately represented by either `float` or `double` because they have limited number of bits.
+- Of the two, it is recommended to use `double` as it is more precise.
+- In general, you should stick with `int` and `double`.
+- Use `long` when the integer falls outside of the range of `int`.
+- Use `byte`, `short`, and `float` only if memory saving is important or if you think it helps with readability.
+- Note that Game Development is one area where `float` is preferred over `double`.
+- Internally, Java uses IEEE 754 floating-point scheme to represent `float` and `double`.
+- Read about IEEE 754 floating-point scheme. (Not necessary) [Link to Article](https://www3.ntu.edu.sg/home/ehchua/programming/java/DataRepresentation.html)
 
 ## Author
 
