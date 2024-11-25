@@ -27,6 +27,12 @@
       - [Static Variables](#static-variables)
       - [Additional Notes](#additional-notes)
     - [Coding Exercise 01 - Cafe Order Processor - Putting Instance \& Static Variables to Work](#coding-exercise-01---cafe-order-processor---putting-instance--static-variables-to-work)
+    - [Multi-Variable Declaration Statements](#multi-variable-declaration-statements)
+      - [Example 01: Using a comma](#example-01-using-a-comma)
+      - [Example 02: Initializing Variables Based on Another](#example-02-initializing-variables-based-on-another)
+      - [Example 03: Re-initializing Variables in a Declaration](#example-03-re-initializing-variables-in-a-declaration)
+      - [Key Points to Remember](#key-points-to-remember)
+      - [Conclusion](#conclusion)
   - [Author](#author)
 
 ## Agenda
@@ -482,6 +488,82 @@ System.out.println(first.add(second));
   - Object references (e.g., `String`) are initialized to `null`.
 
 ### Coding Exercise 01 - Cafe Order Processor - Putting Instance & Static Variables to Work
+
+### Multi-Variable Declaration Statements
+
+- In Java, it is valid to declare multiple variables in a single statement, provided all variables are of the same type.
+
+#### Example 01: Using a comma
+
+```java
+// Correct: Both variables are of the same type and declared on one line.
+double tuitionFees = 12000.0, internationalFees = 5000.0;
+
+// Correct: `tuitionFees` is declared but not initialized, so it gets a default value of 0 if declared at the class level.
+// Inside a method, this will result in a compilation error unless `tuitionFees` is explicitly initialized before use.
+double tuitionFees, internationalFees = 5000.0;
+
+// Incorrect: Specifying the data type for each variable in the same statement is not allowed.
+double tuitionFees = 12000.0, double internationalFees = 5000.0; // Error
+double tuitionFees = 12000.0, int internationalFees = 5000;      // Error
+```
+
+#### Example 02: Initializing Variables Based on Another
+
+```java
+// Correct: `internationalFees` is initialized using `tuitionFees`.
+// The scope of `tuitionFees` begins immediately after its initialization.
+double tuitionFees = 100, internationalFees = tuitionFees + 5000.0;
+```
+
+#### Example 03: Re-initializing Variables in a Declaration
+
+```java
+// Correct: `tuitionFees` is re-initialized to 5000.0, and that value is also assigned to `internationalFees`.
+double tuitionFees = 100.0;
+double internationalFees = tuitionFees = 5000.0;
+```
+
+#### Key Points to Remember
+
+1. Class-Level Variables (Static and Instance):
+
+- At the class level, variables cannot be re-initialized using a standalone assignment statement.
+- Re-intialization is allowed if it is part of a declaration statement.
+
+```java
+// Error: Reassignment of `tuitionFees` at the class level.
+double tuitionFees = 100.0;
+tuitionFees = 5000.0; // Compilation error
+
+// Correct: Reassignment as part of a declaration statement.
+double tuitionFees = 100.0;
+double internationalFees = tuitionFees = 5000.0;
+```
+
+2. Scope and Initialization
+
+- Variables declared at teh class level are automatically initialized to their default values (e.g. `0` for numeric types).
+- Variables declared inside a method do not receive default values and must be initialized explicitly before use.
+
+```java
+double tuitionFees, internationalFees = 5000.0; // Correct at class level
+```
+
+3. Declaration Dependency:
+
+- If a variable is used as a part of a declaration statement before it is declared, a compilation error occurs.
+
+```java
+// Error: `tuitionFees` is used before it is declared.
+double internationalFees = tuitionFees = 5000.0; // Compilation error
+```
+
+#### Conclusion
+
+- You can declare multiple variables in the same statement, provided they are of the same type.
+- The tpe can only be specified once in the statement.
+- Re-initialization of variables is allowed as part of a declaration statement, even at class level, but standalone re-assignment is not.
 
 ## Author
 
