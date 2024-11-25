@@ -26,6 +26,7 @@
       - [Local Variables](#local-variables)
       - [Static Variables](#static-variables)
       - [Additional Notes](#additional-notes)
+    - [Coding Exercise 01 - Cafe Order Processor - Putting Instance \& Static Variables to Work](#coding-exercise-01---cafe-order-processor---putting-instance--static-variables-to-work)
   - [Author](#author)
 
 ## Agenda
@@ -479,6 +480,8 @@ System.out.println(first.add(second));
 - **Default Values**:
   - Primitive types (e.g., `int`, `double`) are initialized to `0`, `0.0`, etc.
   - Object references (e.g., `String`) are initialized to `null`.
+
+### Coding Exercise 01 - Cafe Order Processor - Putting Instance & Static Variables to Work
 
 ## Author
 
