@@ -48,7 +48,39 @@ public class BasicsDemo {
     System.out.println("intChar: " + intChar);
   }
 
+  static void typeCasting() {
+    System.out.println("\n\nInside typeCasting...");
+    // Explicit casting
+    long y = 42;
+    // int x = y;
+    int x = (int) y;
+
+    // Information loss due to out-of-range assignment
+    byte narrowedByte = (byte) 123456;
+    System.out.println("narrowedByte: " + narrowedByte);
+
+    // Truncation
+    int iTruncated = (int) 0.99;
+    System.out.println("iTruncated: " + iTruncated);
+
+    // Implicit cast (int to long)
+    y = x;
+
+    // Implicit cast (char to int)
+    char cChar = 'A';
+    int iInt = cChar;
+    System.out.println("iInt: " + iInt);
+
+    // byte to char using an explicit cast
+    byte bByte = 65;
+    cChar = (char) bByte; // special conversion (widening from byte --> int followed by narrowing from int
+                          // --> char)
+    System.out.println("cChar: " + cChar);
+  }
+
   public static void main(String[] args) {
+
+    typeCasting();
 
     // System.out.println(1 - 0.9);
     // System.out.println(0.1 + 0.2);
@@ -65,7 +97,7 @@ public class BasicsDemo {
 
     // System.out.println(first.add(second));
 
-    primitives();
+    // primitives();
 
     // int i = 6;
     // int j = 2;

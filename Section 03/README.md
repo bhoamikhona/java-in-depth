@@ -33,6 +33,17 @@
       - [Example 03: Re-initializing Variables in a Declaration](#example-03-re-initializing-variables-in-a-declaration)
       - [Key Points to Remember](#key-points-to-remember)
       - [Conclusion](#conclusion)
+    - [Variables - Type Casting](#variables---type-casting)
+      - [Implicit Casting](#implicit-casting)
+      - [Explicit Casting](#explicit-casting)
+      - [Information Loss in Explicit Casting](#information-loss-in-explicit-casting)
+        - [Out-of-Range Assignments](#out-of-range-assignments)
+        - [Truncation](#truncation)
+      - [Information Loss in Implicit Casting](#information-loss-in-implicit-casting)
+      - [Casting Use Cases](#casting-use-cases)
+        - [Implicit Casting](#implicit-casting-1)
+        - [Explicit Casting](#explicit-casting-1)
+      - [Conclusion](#conclusion-1)
   - [Author](#author)
 
 ## Agenda
@@ -564,6 +575,207 @@ double internationalFees = tuitionFees = 5000.0; // Compilation error
 - You can declare multiple variables in the same statement, provided they are of the same type.
 - The tpe can only be specified once in the statement.
 - Re-initialization of variables is allowed as part of a declaration statement, even at class level, but standalone re-assignment is not.
+
+### Variables - Type Casting
+
+- So far we looked at the different data types and we also know that Java is a statically-typed language i.e. once a variable is declared with a particular type, it can only be assigned values of that type.
+- However, sometimes we may have to assign the variables with a value which is of some other data type and in that case, that value must be casted i.e. converted to the data type of the variable and that's where type casting comes into play.
+- So, type casting is necessary when we want to assign a variable or a literal of one data type to a variable of another type.
+- Type casting is possible only between numeric primitive types.
+- Cannot type cast to `boolean` or vice versa.
+- Type casting can either be implicit or explicit.
+
+#### Implicit Casting
+
+- Implicit casting is required when we want to assign a variable or a literal of smaller type to a variable of larger type.
+- In this case, we say that the **widening conversion** is being performed as the type of the value on the right is being widened.
+- Here the notion of smaller and larger types is based on the range of values they support.
+
+```java
+// Example:
+int x = 65;
+long y = x; // Implicit casting by compiler
+```
+
+- Implicit casting is performed by the compiler, automatically.
+- In the example, the value assigned to variable `y` will be casted so that it will have 64 bits as bit depth since that is the bit depth of `long` data type.
+- Note that `x` will still have the value 65 with the bit depth of 32.
+- The diagram below shows the order of implicit casting performed by the compiler:
+- ![order-of-implicit-casting](https://github.com/user-attachments/assets/c395952d-fcaa-48e3-ba83-c74ed97d75ce)
+- As an exmaple, you can see that assigning `byte` to `short` or to any other data type except `char` is implicit.
+- Assigning `byte` to `char` would be explicit, we will learn why soon.
+- Assigning integer to a floating point variable would also fall under implicit casting since the range of value for `float` or `double` is larger than any of the integer data types.
+- So, range of values is what is dictating this order.
+- Assigning `char` to `int` is also implicit as the range of `char` is well within the range of `int` data type.
+- We know that `char` is internally represented by a 16 bit unsigned integer.
+- Likewise, assigning `char` to other, larger data types like `long`, `float`, or `double` would also be implicit.
+- If we reverse the direction of arrows then we would get the order of explicit casting.
+
+#### Explicit Casting
+
+- ![order-of-explicit-casting](https://github.com/user-attachments/assets/70ea07ba-a378-499d-b36d-29ec636661b1)
+- We need explicit casting if we want to assign a variable or a literal of larger type to a variable of smaller type.
+- In this case, we say that a narrowing conversion is being performed as we are narrowing down the type.
+- In this diagram, apart from reversing the direction of the arrows, two new bi-directional arrows have been added connecting `char` & `byte` and `char` & `short` implying that any assignments between them would require an explicit cast.
+- This is because `char` is not within the range of `byte` or `short`.
+- Note that even though `char` and `short` have a bit depth of 16, assigning `char` to `short` would still require an explicit cast.
+- That's because, for `char` the range is 0 to 2<sup>16</sup> - 1 but, for `short`, 2 is raised to the power of 15 and that's because the range is -2<sup>15</sup> to 2<sup>15</sup> - 1.
+- So, `char` can fall outside this range.
+- Just note that casting to `char` is always explicit and the reason for this is all the other numeric data types can have negative values while `char` is represented by an unsigend integer which can be 0 or positive but, not negative.
+
+```java
+// Example
+long y = 42;
+int x = (int) y; // int in parentheses is the explicit cast
+```
+
+- Applied cast should be compatible with the data type of the variable on the left side i.e. the type specified with the cast has to be the same or of a lower type but, not larger type.
+- In the example above, it has to be `int` or any type smaller than `int`, including `char` as it is unsigned integer.
+- Without the cast, we would get a compiler error even though 42 is a valid `int`.
+- That's because `y` on the right hand side is an expression which would get evaluated to 42 only at runtime.
+- Compiler just does not know that and all it knows is that `y` is of type `long` and it warns us that we might be doing something wrong here by assigning a larger variable to a smaller one.
+- So, we need to inform the compiler that we are fine with the assignment by inserting an explicit cast.
+- Just note that with regards to implicit casting, although it is taken care of by the compiler, if you want, you can stil apply a superfluous cast.
+
+```java
+// Example
+byte b = 65;
+char c = (char) b; // c = 'A'
+```
+
+- In this example, a `byte` is casted to a `char`.
+- Since the `byte` value is 65, the corresponding UTF-16 value uppercase 'A' is assigned to the variable `c`.
+- Here, both widening and narrowing conversion is being applied.
+- First, `byte` is converted to `int` through widening conversion and then the resulting `int` is converted to `char` through a narrowing conversion.
+
+```java
+// Example
+char c = 65; // c ='A'
+```
+
+- Here, `char` variable is assigned an `int` literal 65.
+- In this case, we do not need an explicit cast since 65 is within the range of `char`.
+- However, if the literal is outside the range of `char`, then we would need to insert an explicit cast to avoid a compilation error.
+
+```java
+// Example
+short s = 'A'; // s = 65
+```
+
+- Here a `short` variable is assigned a character literal.
+- The variable `s` gets assigned the decimal equivalent 65.
+- Once again, no explicit cast is required since 65 is within the range of `short`.
+- A cast would be needed if the assigned literal was outside `short` range.
+- But out of range assignments would also lead to information loss so, let's look at that.
+
+#### Information Loss in Explicit Casting
+
+##### Out-of-Range Assignments
+
+```java
+// Example
+byte narrowByte = (byte) 123456; // 64
+```
+
+- Here is one scenario where there is information loss due to out of range assignment.
+- The value 123456 is outside the range of `byte` and there is an explicit cast in the example and the variable get assigned a weird number, which in this case is 64.
+- 64 is assigned because JVM discards all but the lower eight bits of the binary equivalent of the number 123456.
+- And those lower 8 bits which appear on the right side of the bit pattern corresponds to the decimal 64.
+- So, if we convert 123456 to binary then it equals to 11110001001000000.
+- Recall that the bit depth of `byte` is 8 bits. So, it can only store 8 bits of data but here, the number we are trying to store is of 17 bits. So, it will store the last 8 bits as its size and the rest of the bits will be discarded.
+- Therefore:
+  byte narrowedByte = (byte) 123456; -->
+  byte narrowedByte = (byte) 111100010**01000000**; -->
+  byte narrowedByte = 01000000; -->
+  byte narrowedByte = 64;
+- That's how we get the number 64.
+- Here, only lower 8 bits are considered as the variable is a `byte` which has only 8 bits.
+- So, there is an information loss here.
+- Essentially what is happening here is that the variable is a small container since it is a `byte` and we are trying to fill it with something that is not going to fit inside that container.
+- So, some of the stuff that we are trying to fill it with is going to spill and hence, there is information loss.
+
+##### Truncation
+
+- Second scenario of information loss is when we try to cast a floating point literal or a floating point (`float`, `double`) variable to an integer (`byte`, `short`, `int`, or `long`) or char variable.
+- In this case, it will always truncate the number.
+
+```java
+// Example:
+int x = (int) 3.14f; // x = 3
+
+int y = (int) 0.9; // y = 0
+
+
+// first 65.5 is converter to int, then that int is converted to corresponding character in UTF-16
+char c = (char) 65.5; // c = 'A'
+```
+
+- Explicit casting could be needed even if we are dealing with letters.
+- Just keep in mind that the main reason for explicit casting is because the value assigned could be outside the range of the variable on the left hand side.
+
+#### Information Loss in Implicit Casting
+
+- Generally, you not encounter information loss with implicit casting.
+- Lot of books and instructors say that there is no information loss with implicit casting but, to be precise, for a few assignments, there is a possibility of some information loss.
+- For example, let's consider the depiction of implicit casting order once again.
+- ![information-loss-implicit-cast](https://github.com/user-attachments/assets/92685e87-c11a-4eab-8a2d-eff743777502)
+- Here, assigning an `int` to `float` or a `long` to `float` could lead to loss of precision as the resulting value may lose some of the least significant bits of the value that is being assigned.
+- This loss of precision may also happen when a `long` is assigned to a `double`.
+- Note that `int` to `double` is fine.
+- Let's look at this simple example:
+
+```java
+int oldVal = 1234567890;
+float f = oldVal; // implicit cast
+int newVal = (int) f; // 1234567936
+```
+
+- Here an `int` variable called `oldVal` is assigned to a `float`.
+- In this case, there would be a loss of precision.
+- In the next statement, we are casting that `float` back to `int` variable `newVal`.
+- When we print `newVal`, we will see that it is significantly larger than `oldVal`.
+- So, when `oldVal` was assigned to `float`, it was rounded to a larger number and hence there is a slight loss of precision.
+- So, there can be some loss of information even with implicit casting, but that's a pretty uncommon case.
+
+#### Casting Use Cases
+
+##### Implicit Casting
+
+```java
+float f1 = 3.133f;
+float f2 = 4.135f;
+
+go (double d1, double d2) {
+  ...
+}
+
+go(f1, f2);
+```
+
+- In this case, when we are calling the `go()` method, the variable `f1` will be assigned to parameter `d1` and variable `f2` will be assigned to parameter `d2`. So, to make this happen, an implicit cast will be performed from `float` to `double`.
+- This kind of implicit casting is pretty common when dealing with methods.
+
+##### Explicit Casting
+
+```java
+double avg = (2 + 3) / 2; // 2.0, not 2.5
+```
+
+- In Java, this calculation would result in 2.0 instead of 2.5 since both, 2 and 3 here are int literals.
+- Although we have a `double` on the left side, we still end up with the value 2.
+- We will discuss the reasoning for this when we learn about arithmetic operators.
+- To get the right value i.e. 2.5, we would have to apply explicit cast, like so:
+
+```java
+double avg = (double) (2 + 3) / 2;
+```
+
+- So, if you are performing such kinds of arithmetic operations involving division operator, there is a chance you may have to insert explicit cast.
+
+#### Conclusion
+
+- Casting is mainly needed when we want to assign a variable or a literal of one type to a variable of another type.
+- An explicit cast comes into play when there is an issue with the range of values.
 
 ## Author
 
