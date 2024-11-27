@@ -78,9 +78,15 @@ public class BasicsDemo {
     System.out.println("cChar: " + cChar);
   }
 
-  public static void main(String[] args) {
+  static int count = 25;
 
-    typeCasting();
+  public static void main(String[] args) {
+    count = 34;
+
+    if (count < 49) {
+    }
+
+    // typeCasting();
 
     // System.out.println(1 - 0.9);
     // System.out.println(0.1 + 0.2);

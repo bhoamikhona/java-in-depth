@@ -45,6 +45,7 @@
         - [Explicit Casting](#explicit-casting-1)
       - [Conclusion](#conclusion-1)
     - [Variables - Object References](#variables---object-references)
+    - [Statements](#statements)
   - [Author](#author)
 
 ## Agenda
@@ -824,6 +825,56 @@ s.updateProfile(); // NullPointerException
 ```
 
 - `NullPointerException` is simply an error that occurs at runtime.
+
+### Statements
+
+- Every statement in Java ends with a semi-colon and it is basically a **command** to be executed.
+  - Declare a variable
+  - Change the value of a variable
+  - Invoke a method
+- A statement basically changes program's state i.e. as a statement is executed, the state of the program also gets affected.
+- Statements is made up of one or more expressions.
+  - A variable can be assigned a literal or an expression.
+  - Expression is something that gets evaluated to a single value.
+  - This evaluation happens at runtime.
+  - An expression can be built using literals, variables, operators, and method calls.
+- Example:
+
+```java
+int count = x * getCount();
+```
+
+- This statement includes four expressions:
+  - `x`
+  - `getCount()`
+  - `x * getCount()`
+  - `count = x * getCount()`
+- The last two are referred to as **compound expressions**.
+- So, compound expressions are generated from smaller expressions.
+- Every expression, regardless of whether it is compound or not, gets evaluated to a single value at runtime.
+- Statments can be of three kinds:
+  - Declaration Statement
+    - `int count = 25;`
+  - Expression Statements
+    - If expressions appear separately with a semicolon, then they are referred to as expression statements.
+    ```java
+    // Examples
+    count = 25; // assignment statement
+    getCount(); // method invocation statement
+    count++; // increment statement
+    ```
+  - Control Flow Statements
+    - Control flow statements regulate the order in which statements get executed.
+    - `if (count < 100) { ... }`
+- Among these three types of statements, ONLY declaration statements can be defined at class level.
+- Expression or control flow statements can be a part of methods or other similar class level declarations e.g. constructors, nested classes, interfaces, or initializer blocks.
+- We will get a compiler error if we declare expressions or control flow statements at class level.
+- At class level you can have:
+  - Field/Properties/Attributes/State declarations
+  - Method declarations
+  - Constructor declarations
+  - Nested class & interface declarations
+  - Instance and static initializers
 
 ## Author
 
