@@ -51,6 +51,8 @@
     - [2D Arrays](#2d-arrays)
       - [Array with Irregular Rows](#array-with-irregular-rows)
       - [Array Operations](#array-operations)
+    - [3D Arrays](#3d-arrays)
+      - [3D Array Creation \& Initialization](#3d-array-creation--initialization)
   - [Author](#author)
 
 ## Agenda
@@ -1053,6 +1055,131 @@ int[] row = myArray[2];
 - Later, in the first version of our project, we will use 2D arrays.
 - Similar to the way we extended the syntax from 1 to 2 dimensions, we can further extend to higher dimensions.
 - However, dimensions higher than 2D are pretty rare in practice.
+
+### 3D Arrays
+
+- We mentioned that dimensions higher than 2D are pretty rare in practice but, to get a really firm grasp of how adding new dimensions would impact the syntax, let's take a look at a 3D array.
+- ![3d-array-1](https://github.com/user-attachments/assets/5a0b6314-8981-4b52-ab30-fd2d5b413803)
+- Let's take an example of an electronic store whose sales data is represented by a data cube.
+- So, what you see in the image above is a data cube.
+- Usually data warehousing software store data in such cubes.
+- This data cube has 3 dimensions viz cities, time-in-months, and products.
+- So, the store sells 4 products and they have franchises in 4 cities, and this cube only shows data for 4 months - from Jan to April.
+- Actual data is number of units sold.
+- In this diagram, 850 implies that 850 iPads were sold in the month of April in New York's store alone.
+- All the relevant dimensions are highlighted in green.
+- Such a data group, which has 3 dimensions can be implemented using a 3D array.
+- If we call this array as `myArray` and if cities represent the 1st dimension, time represents 2nd dimension, and products represent the 3rd dimension, then `myArray` at index 0, 3, and 1 would return the value 850 as shown in the diagram above.
+
+```java
+myArray[0][3][1] = 850;
+```
+
+- So, 0 in the first bracket corresponds to NY, 3 in second bracket corresponds to April, and 1 in the third bracket corresponds to iPad.
+
+#### 3D Array Creation & Initialization
+
+- Like in the case of 1 and 2 dimensional arrays, there are 3 ways to create 3D arrays and they also use a similar syntax.
+
+```java
+// FIRST WAY OF CREATING 3D ARRAY
+int [][][] myArray = new int[4][4][4]; // cities, time, products - in that order
+
+// initialize the array like so:
+myArray[0][3][1] = 850;
+
+```
+
+- Here is the illustration of our 3D array:
+- ![3d-array-2](https://github.com/user-attachments/assets/d7aaac30-d153-47f2-91de-e433caeb41eb)
+- Here the second layer represents the first dimension which is cities, and the first rectangle in the cities layer corresponds to NYC.
+- NYC represents next dimension which is time-in-months, where each rectangle represents a month and on each slot in the rectangle can be viewed as the third dimension - which is products.
+- The value in the slot is the number of units of that product sold.
+- The diagram also represents the example data-value which is 850.
+- 850 is a number of iPad sold in the month of April in NYC alone.
+- The index numbers to locate this data are shown in blue.
+- 0 corresponds to NYC, 3 corresponds to April, and 1 corresponds to iPad.
+- Now if you recall our discussion on 2D arrays, we had a similar illustration.
+- Even there, the second layer represented the first dimension, which is rows. And the element in each rectangle was basically the second dimension i.e. the actual data itself.
+- So, there we only had 2 layers because it was 2D and here we have 3 layers.
+- Now let's do a quick demo where we will quickly look at the other two ways of creating 3D arrays.
+- A new method called `threeDimensionalArrays()` has been added to the `BasicsDemo` class, which you can have a look at ../javaindepth/src/com/semanticsquare/basics/BasicsDemo.java
+
+```java
+// full code at ../javaindepth/src/com/semanticsquare/basics/BasicsDemo.java
+
+static void threeDimensionalArrays() {
+    System.out.println("\nInside threeDimensionalArrays ...");
+
+  // SECOND WAY OF CREATING A 3D ARRAY
+  int[][][] unitsSold = new int[][][] {
+        { // New York
+            { 0, 0, 0, 0 }, // Jan
+            { 0, 0, 0, 0 }, // Feb
+            { 0, 0, 0, 0 }, // Mar
+            { 0, 850, 0, 0 }// Apr
+        },
+        { // San Francisco
+            { 0, 0, 0, 0 }, // Jan
+            { 0, 0, 0, 0 }, // Feb
+            { 0, 0, 0, 0 }, // Mar
+            { 0, 0, 0, 0 } // Apr
+        },
+        {
+            { 0, 0, 0, 0 },
+            { 0, 0, 0, 0 },
+            { 0, 0, 0, 0 },
+            { 0, 0, 0, 0 }
+        },
+        {
+            { 0, 0, 0, 0 },
+            { 0, 0, 0, 0 },
+            { 0, 0, 0, 0 },
+            { 0, 0, 0, 0 }
+        }
+    };
+
+    System.out.println("unitsSold[0][3][1]: " + unitsSold[0][3][1]);
+}
+```
+
+```java
+// full code at ../javaindepth/src/com/semanticsquare/basics/BasicsDemo.java
+
+static void threeDimensionalArrays() {
+    System.out.println("\nInside threeDimensionalArrays ...");
+
+  // THIRD WAY OF CREATING A 3D ARRAY
+  int[][][] unitsSold = {
+        { // New York
+            { 0, 0, 0, 0 }, // Jan
+            { 0, 0, 0, 0 }, // Feb
+            { 0, 0, 0, 0 }, // Mar
+            { 0, 850, 0, 0 }// Apr
+        },
+        { // San Francisco
+            { 0, 0, 0, 0 }, // Jan
+            { 0, 0, 0, 0 }, // Feb
+            { 0, 0, 0, 0 }, // Mar
+            { 0, 0, 0, 0 } // Apr
+        },
+        {
+            { 0, 0, 0, 0 },
+            { 0, 0, 0, 0 },
+            { 0, 0, 0, 0 },
+            { 0, 0, 0, 0 }
+        },
+        {
+            { 0, 0, 0, 0 },
+            { 0, 0, 0, 0 },
+            { 0, 0, 0, 0 },
+            { 0, 0, 0, 0 }
+        }
+    };
+
+    System.out.println("unitsSold[0][3][1]: " + unitsSold[0][3][1]);
+}
+```
 
 ## Author
 
