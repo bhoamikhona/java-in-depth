@@ -48,6 +48,9 @@
     - [Statements](#statements)
     - [Arrays](#arrays)
     - [Assignment 02 - Currency Converter - Array Creation \& Accessing its Elements](#assignment-02---currency-converter---array-creation--accessing-its-elements)
+    - [2D Arrays](#2d-arrays)
+      - [Array with Irregular Rows](#array-with-irregular-rows)
+      - [Array Operations](#array-operations)
   - [Author](#author)
 
 ## Agenda
@@ -925,6 +928,131 @@ int [] scores = {90, 70, 80, 100}; // short-hand version of the second way of cr
 > You can access another class from your current class if it is the same folder and create its object.
 
 ### Assignment 02 - Currency Converter - Array Creation & Accessing its Elements
+
+### 2D Arrays
+
+- Let's now look at two dimensional (2D) arrays. What we saw in the previous lesson was a one dimensional array.
+- A one dimensional (1D) array can be visualized as a sequence of elements laid out along a line.
+- In a 2D array, you can visualize elements to be laid out in a grid form, like a matrix.
+- In fact matrices are usually implemented in a 2D array.
+- It is also possible to have arrays of higher dimensions but, they are very rare in practice.
+- So, let's now go ahead and see how 2D arrays are created.
+- ![2d-array-1](https://github.com/user-attachments/assets/cfd43540-2a95-40bc-9955-d735ea708e5f)
+- In a 2D array, elements are arranged in rows and columns.
+- In the image above, we have a 2D array that has 4 rows and 2 columns and has a total of 8 elements.
+- Like a 1D array, a 2D array is aloso an object in Java, and it can store both, primitives and object references.
+- Index numbering for both rows and columns begin with 0.
+- Now, if this array (image above) is named as `myArray`, then `myArray[0][1]` would return the element from 0th row and 1st column, which has the value of `11` in this case.
+- So, matrices can be implemented using such 2D arrays.
+- Similarly, if you take our student example and consider their assignement scores in a particular course, then we can store that information in a 2D array.
+- Each row can correspond to a student and the value stored in each row can be the assignment scores.
+- Like in the case for 1D arrays, there 3 ways to create a 2D array.
+- They are also created using similar syntax.
+- Let's look at how we can create our `myArray` example.
+- Here is the first way to do it:
+
+```java
+int[][] myArray = new int[4][2];
+```
+
+- Similar to 1D array, we use the keyword `new`.
+- In 1D array, we have only one pair of square brackets on either side of the assignment statement.
+- Since we now have 2 dimensions, we will now have 2 pairs of square brackets on either side of the assignment statement.
+- On the right hand side, the number of rows is indicated in the first square bracket while the number of columns is indicated in second square brackets.
+- ![2d-array-2](https://github.com/user-attachments/assets/de4d2462-c6f5-40c8-8d0a-f859a443aef8)
+- The square brackets on the left hand side will be empty.
+- Let's see how JVM internally implements this 2D array.
+- JVM basically creates a 1D array with 4 elements corresponding to the 4 rows.
+- ![2d-array-3](https://github.com/user-attachments/assets/6fcfc228-5c36-4230-a40e-784a57dc3eac)
+- These four elements do not contain the raw data but, each of the elements is actually an object reference, referring to another `int` array with 2 elements.
+- ![2d-array-4](https://github.com/user-attachments/assets/6e13527f-71f6-4dd8-bf9c-6df6378c312c)
+- These referenced `int` arrays represent the actual rows and they contain the actual data.
+- As the type for the array is `int`, all of the internal arrays are initialized with default of 0.
+- You can also see the 2D index numbers associated with each element.
+- ![2d-array-5](https://github.com/user-attachments/assets/ea984d43-7bae-42a6-a5ad-95cda3fa119d)
+- So, you can see that a 2D array is actually implemented as a 1D array, and their elements are simply object references, which are in-turn referencing 1D arrays.
+- This fact can be observed in the 2D array declaration itself.
+- So, let's review the declaration once again.
+- We know that an array declaration includes a type followed by a set of square brackets, which is then followed by the array name, and we can read it as array of type.
+- ![2d-array-6](https://github.com/user-attachments/assets/f229588a-d9b9-4ee8-b4e3-c8440c889829)
+- Now if the type is `int`, we can read it as the array of `int`, and we know it is an one dimensional array.
+- ![2d-array-7](https://github.com/user-attachments/assets/845892e5-ab27-4d92-a8c4-7dddae0d2300)
+- Now if the type itself is "array of int" then we can read it as "array of array of int" or in other words, an array of an `int` array.
+- ![2d-array-8](https://github.com/user-attachments/assets/b2061715-7081-4a24-b895-41bf90784b6c)
+- So, although it represents a 2D array, in reality it is an 1D array.
+- Now in our `myArray` example, elements were initialized with default values.
+- So, next we need to initialize them explicitly and we can do that as shown here:
+- ![2d-array-9](https://github.com/user-attachments/assets/e251829c-825b-4005-99bf-9b231c76ee3d)
+- This is the illustration of how the array looks after the element initialization:
+- ![2d-array-10](https://github.com/user-attachments/assets/542cbbb5-dfdd-4a97-ba97-5a787dd6aec3)
+- Here is the second way to create a 2D array:
+- ![2d-array-11](https://github.com/user-attachments/assets/63d6645f-0e02-4363-aa4c-06c61688aaf2)
+- In a 1D array we only comma separated values but, we know that a 2D array is an "array of array of some type".
+- So, we have one array, and within that array we have nested arrays with each nested array corresponding to a row.
+- ![2d-array-12](https://github.com/user-attachments/assets/a9b77656-5353-4d32-90a6-97ed36854b19)
+- For each nested array, we will have a pair of nested braces and the actual data will reside in the nested braces.
+- Finally, as in the case of an 1D array, we have this simplest notation:
+- ![2d-array-13](https://github.com/user-attachments/assets/61753e59-a79f-40ae-98d8-a13b00830baa)
+
+#### Array with Irregular Rows
+
+- Now here we have something interesting.
+- In our `myArray` example, we saw that there were 4 rows and all of the rows were storing the same number of elements i.e. 2 elements.
+- So, each will have 2 elements but, due to the way Java implements 2D arrays, it is also possible for different rows in a 2D array to have different number of elements.
+- So, let's see how that's possible and also where it can be useful.
+- Here we created 2D arrays with 2 rows:
+
+```java
+int [][] myArray = new int[2][];
+```
+
+- But, we didn't specify any value for the number of columns.
+- Next we create the first row, which would have 5 elements of 5 columns.
+
+```java
+int [][] myArray = new int[2][];
+myArray[0] = new int[5];
+```
+
+- The second row would be created with 2 elements:
+
+```java
+int [][] myArray = new int[2][];
+myArray[0] = new int[5];
+myArray[1] = new int[2];
+```
+
+- So, as you can see, the column size is not fixed.
+- First row now has 5 columns, while the second row has only 2 columns.
+- One example use of this kind of array creation is a symmetric matrix.
+- ![2d-array-14](https://github.com/user-attachments/assets/66366bb4-6467-4826-ba4a-d662fb2a81de)
+- Where the number of rows is equal to the number of columns - and elements above the diagonal (shown in red) are simply duplicate of elements below the diagonal (shown in blue)
+- So, by creating an array with irregular row sizes, we can avoid storing the duplicates in red.
+- So, the symmetric matrix can now be a triangular matrix as shown in the image below:
+- ![2d-array-15](https://github.com/user-attachments/assets/89a64a5e-6a4f-4f5c-a67d-67c57c7a9fbd)
+- Each row will be represented by an array of different length.
+- In this example, the first row would be an array of length 1.
+- The second row would be an array of length 2, and so on and so forth.
+- So, that's a pretty cool way to save some storage space, and it could be very useful for very large matrices.
+
+#### Array Operations
+
+- Like in the case of 1D arrays, `length` field can also be used on a 2D array.
+- However, since internally 2D array is implemented as an 1D array, accessing the `length` field on the array would return the number of rows.
+- In our `myArray` example which had 4 rows and 2 columns, `length` would return as 4.
+- Accessing length on the first element of `myArray` would return 2.
+- The example below shows how we can make a reference to one of the rows, which is a sub-array.
+
+```java
+int[] row = myArray[2];
+```
+
+- So, here a variable called `row`, which is an `int` array is assigned the third row, since index numbering begins with 0.
+- That's the end of our discussion on 2D arrays.
+- 2D arrays are sometimes very useful but, are much less commonly used than 1D arrays.
+- Later, in the first version of our project, we will use 2D arrays.
+- Similar to the way we extended the syntax from 1 to 2 dimensions, we can further extend to higher dimensions.
+- However, dimensions higher than 2D are pretty rare in practice.
 
 ## Author
 
