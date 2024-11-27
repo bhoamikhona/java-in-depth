@@ -46,6 +46,7 @@
       - [Conclusion](#conclusion-1)
     - [Variables - Object References](#variables---object-references)
     - [Statements](#statements)
+    - [Arrays](#arrays)
   - [Author](#author)
 
 ## Agenda
@@ -875,6 +876,52 @@ int count = x * getCount();
   - Constructor declarations
   - Nested class & interface declarations
   - Instance and static initializers
+
+### Arrays
+
+- We know that a variable is like a container that holds a single value be it primitive or an object reference.
+- However, sometimes we would have a collection of similar values and we would want a variable to hold such a collection.
+- Such a variable that holds a collection of similar values is like a collection of containers, and would represent some data structure.
+- For instance, if we have to keep track of all the course titles that a student has registered for, then instead of having a separate variable to hold each of those course titles, we can store all of those in a single data structure which is represented by some variable.
+- A data structure is an organized collection of similar data, and software gets lot of its power through different data structures that it uses.
+- So, data structures are very fundamental to any programming language.
+- Now, let's look at one very basic and fundamental data structure, which is also built into every programming language, and it is an array.
+- In fact, it is so basic that even some of the data structures that we will study later are built on top of arrays.
+- An array is basically a container **object** that holds **fixed** number of values of a **single type**.
+- The term "object" in this definition implies a Java object i.e. in Java an array is basically an object hence, it will be stored in the heap like any other object.
+- So, in Java, an object can be an array, or it can also be an instance of a `class`.
+- Since array is an object, the variable referencing it is an object reference.
+- By "fixed number" we mean that the number of items an array can store is specified at the array creation time, and that number cannot be changed thereafter.
+- So, the size of an array is fixed in Java.
+- By "single type" we mean that the items in an array should be of a single data type like an `int`, `double`, `char`, or even some `class` i.e. it can also store object references but, the only condition is that they all have to be of the same data type.
+- Each item in an array is referred to as an element of the array, and an element is accesed by its index number, where the index number is the numerical position of the element.
+- Index numbering starts with 0.
+- Three ways to create an array:
+
+```java
+// FIRST
+int [] scores = new int[4]; // 4 is the size (length) of the array
+
+// SECOND
+int [] scores = new int[] {90, 70, 80, 100}; // 90, 70, 80, 100 are the values that will be initialized with the array. We do not need to mention the size of the array here since it is implicitly implied or we will get an error.
+
+// THIRD
+int [] scores = {90, 70, 80, 100}; // short-hand version of the second way of creating an array.
+```
+
+- If you do not initialize the values for an array, the default values of the data type of the array will be applied to each element of the array.
+- You can also set and access the elements of an array using their index and square brackets notation. Example: `scores[0] = 100` this will set the first element of the `scores` array to 100.
+- This is also a valid way of declaring an array: `int scores[] = new int[4]`
+- All of the elements of the array must be of the same type otherwise, we will get an error.
+- The second and third way of creating an array is used when you have a small array and you know the values. Otherwise, the first way of creating the array is used.
+- Since array is an object, if you do not initialize it, you will get `null`. Example: `int[] scores;`
+- Note that the third way of creating an array, the part of initialization i.e. `{90, 70, 80, 100}` can only be used in a declaration statement. This kind of syntax cannot be used for re-initialization or re-assigning values to an array.
+- To get the length of an array, we use the `.length` property on the array.
+- Negative indexing is not allowed in Java.
+
+> [!NOTE]
+>
+> You can access another class from your current class if it is the same folder and create its object.
 
 ## Author
 
