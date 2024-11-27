@@ -32,6 +32,8 @@ public class Student {
     System.out.println("computeCount: " + computeCount);
   }
 
+  static Student student3;
+
   public static void main(String[] args) {
     Student student1 = new Student();
     student1.id = 1000;
@@ -55,7 +57,7 @@ public class Student {
     student2.international = true;
     student2.compute();
 
-    Student student3 = new Student();
+    // Student student3 = new Student();
     student3.id = 1002;
     student3.name = "Anita";
     student3.gender = "Female";

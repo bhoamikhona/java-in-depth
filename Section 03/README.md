@@ -44,6 +44,7 @@
         - [Implicit Casting](#implicit-casting-1)
         - [Explicit Casting](#explicit-casting-1)
       - [Conclusion](#conclusion-1)
+    - [Variables - Object References](#variables---object-references)
   - [Author](#author)
 
 ## Agenda
@@ -776,6 +777,53 @@ double avg = (double) (2 + 3) / 2;
 
 - Casting is mainly needed when we want to assign a variable or a literal of one type to a variable of another type.
 - An explicit cast comes into play when there is an issue with the range of values.
+
+### Variables - Object References
+
+- Variables of reference type.
+- Reference type can either be a `class` or an `interface`.
+- Object reference variable types hold reference to an object.
+- In other words, they hold bits that reference an object in memory.
+
+```java
+Student s = new Student();
+```
+
+- Creating a new object reference has 3 parts in it and each of these parts inform JVM to do something.
+- The first part `Student s` tells JVM to allocate space in the memory for a reference variable.
+- The part `new Student()` tells JVM to allocate space for a new `Student` object in the memory.
+- At this point, we have space in memory for a reference variable and a `Student` object.
+- Finally, the assignment operator `=`, assigns the memory address of the `Student` object to the variable `s`.
+- So, variable `s` now holds the memory address of the `Student` object.
+- ![object-reference-1](https://github.com/user-attachments/assets/287c89b0-e2e7-4b86-81e5-54052067eb40)
+- Objects are stored in a special area of memory, which is assigned to JVM.
+- When JVM starts up, like any process, it gets a chunk of memory from the underlying operating system in order to run its programs.
+- One area of this memory is referred to as heap.
+- All objects are stored in the heap.
+- In our example, variable `s` references one `Student` object on the heap.
+- Bit depth is JVM specific for object references i.e. bit depth of an object reference on one JVM may be smaller or larger than bit depth of an object reference on another JVM.
+- However, on a given JVM, all object references will have the same bit depth, regardless of objects that they reference.
+- So, the size of the object does not matter.
+- One object may have 20 instance variables, while another might just have one instance variable.
+- But, the object references that are referencing them will have the same bit depth.
+- Default value for an object reference is `null`.
+- So, if you do not initialize an object reference, it gets a default of value of `null`, and it is called a null reference, and it implies that object reference is not pointing to anything.
+- Just think of `null` as a special literal.
+- You can also explicitly initialize an object reference with `null`.
+- In the example below, the variable `s` will be assigned the default value of `null`.
+
+```java
+Student s; // Initialized to null
+```
+
+- Using a dot operator on `s`, which has a value of `null`, will lead to an exception called `NullPointerException`.
+
+```java
+Student s; // Initialzied to null
+s.updateProfile(); // NullPointerException
+```
+
+- `NullPointerException` is simply an error that occurs at runtime.
 
 ## Author
 
