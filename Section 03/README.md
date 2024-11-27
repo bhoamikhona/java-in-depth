@@ -47,6 +47,7 @@
     - [Variables - Object References](#variables---object-references)
     - [Statements](#statements)
     - [Arrays](#arrays)
+    - [Assignment 02 - Currency Converter - Array Creation \& Accessing its Elements](#assignment-02---currency-converter---array-creation--accessing-its-elements)
   - [Author](#author)
 
 ## Agenda
@@ -922,6 +923,8 @@ int [] scores = {90, 70, 80, 100}; // short-hand version of the second way of cr
 > [!NOTE]
 >
 > You can access another class from your current class if it is the same folder and create its object.
+
+### Assignment 02 - Currency Converter - Array Creation & Accessing its Elements
 
 ## Author
 
