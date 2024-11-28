@@ -77,6 +77,7 @@
       - [Relationship Between Instance and Static Methods](#relationship-between-instance-and-static-methods)
       - [Special Notes](#special-notes-1)
       - [Summary](#summary)
+    - [Summary on Accessibility of Members from Static \& Instance Methods](#summary-on-accessibility-of-members-from-static--instance-methods)
   - [Author](#author)
 
 ## Agenda
@@ -1493,6 +1494,16 @@ class MyClass {
 | Access      | Can access static and instance members | Can access only static members |
 | Invocation  | Via an object                          | Via the class name             |
 | Purpose     | Manipulate object-specific state       | Perform utility tasks          |
+
+### Summary on Accessibility of Members from Static & Instance Methods
+
+- Accessibility from static methods:
+  - Cannot directly access instance variables/methods defined in the same class as the static method.
+  - Can directly access static variables/methods defined in the same class.
+  - Can access anything via an object reference. So, from a static method by using an object reference, we can access instance variables/mehtods.
+- Accessibility from instance methods:
+  - Can access anything from an instance method.
+  - So, we can even access static variables/methods defined in the same class as the instance method.
 
 ## Author
 
