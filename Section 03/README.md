@@ -69,6 +69,14 @@
       - [Benefits of Methods](#benefits-of-methods)
       - [Special Notes](#special-notes)
       - [Additional Example: Reusing Logic](#additional-example-reusing-logic)
+    - [Method Types - Instance \& Static Methods](#method-types---instance--static-methods)
+      - [Instance Methods](#instance-methods)
+      - [Syntax](#syntax)
+      - [Static Methods](#static-methods)
+        - [Key Characteristics](#key-characteristics)
+      - [Relationship Between Instance and Static Methods](#relationship-between-instance-and-static-methods)
+      - [Special Notes](#special-notes-1)
+      - [Summary](#summary)
   - [Author](#author)
 
 ## Agenda
@@ -1338,6 +1346,153 @@ int square (int x) {
   return multiply (x * x); // Reuses multiply() logic
 }
 ```
+
+### Method Types - Instance & Static Methods
+
+- Methods in Java can be of two types:
+  - Instance Methods
+  - Static Methods
+- A class can contain:
+  - Only instance methods
+  - Only static methods
+  - Both instance and static methods
+
+#### Instance Methods
+
+- Instance methods are associated with an instance of a class (i.e. an object).
+- They represent the behavior of objects and are accessed via object reference.
+
+#### Syntax
+
+```java
+// Accessing an instance method
+objectReference.methodName();
+```
+
+- Instance methods:
+  - Are invoked to perform actions on behalf of the object.
+  - Typically affect the state of the object by manipulating instance variables.
+  - Can call other instance methods within the same class, which may also affect the object's state.
+- Example
+
+```java
+class MyClass {
+  int count;
+
+  void increment() {
+    count++;
+  }
+
+  void display() {
+    System.out.println("Count: " + count);
+  }
+}
+
+// Usage
+MyClass obj = new MyClass();
+obj.increment();
+obj.display(); // Output: Count: 1
+```
+
+#### Static Methods
+
+- Static methods are declared using the `static` keyword.
+- The absence of the `static` keyword implies the method is an instance method.
+
+##### Key Characteristics
+
+1. Class-Level Methods
+
+- Static methods are associated with the `class`, not an instance.
+- They do not depend on an object's state.
+
+2. Access Restrictions
+
+- Static methods cannot directly access instance variables or instace methods within the same `class`.
+- Attemptying to directly access an instance varaible or invoke an instance method from a static method will result in compiler error.
+
+3. Utility Method:
+
+- Static methods are often used as utility methods.
+- They typically take input parameters, perform an action, and return a result without depending on instance-specific data.
+- Example:
+
+```java
+static double sum(double x, double y) {
+  return x + y;
+}
+```
+
+- Static methods can access:
+  - Static variables (class-level variables shared across all objects)
+  - Other static methods within the same class
+- Syntax:
+
+```java
+// Accessing a static method
+className.methodName();
+```
+
+- Example:
+
+```java
+class MathUtils {
+  static double sum(double x, double y) {
+    return x + y;
+  }
+}
+
+// usage
+double result = MathUtils.sum(5.5, 4.5); // output: 10.0
+```
+
+#### Relationship Between Instance and Static Methods
+
+1. Static Method Access:
+
+- Static methods cannot directly access instance variables or instance method because they are specific to a particular object.
+
+2. Instance Method Access:
+
+- Instance methods can directly access:
+  - Static variables
+  - Static methods
+- This is because static members are global to the class.
+
+#### Special Notes
+
+- The main method is an example of a static method.
+- Static methods are often preferred for tasks un-related to an object's state, such as mathematical operations, data formatting, etc.
+- To call an instance method from a static method (like the main method), you must first create an instance of the `class`.
+- Example:
+
+```java
+class MyClass {
+  void instanceMethod() {
+    System.out.println("Instance method called!");
+  }
+
+  public static void main(String[] args) {
+    // create an object to access the instance method
+    MyClass obj = new MyClass();
+    obj.instanceMethod(); // Output: Instance method called!
+  }
+}
+```
+
+- Static variables:
+  - Can be accessed by both instance and static methods
+  - Are shared across all objects of the class
+
+#### Summary
+
+| Feature     | Instance Methods                       | Static Methods                 |
+| ----------- | -------------------------------------- | ------------------------------ |
+| Association | Instance (object-specific)             | Class (global to the class)    |
+| Keyword     | No `static` keyword                    | Declared with `static` keyword |
+| Access      | Can access static and instance members | Can access only static members |
+| Invocation  | Via an object                          | Via the class name             |
+| Purpose     | Manipulate object-specific state       | Perform utility tasks          |
 
 ## Author
 
