@@ -53,6 +53,22 @@
       - [Array Operations](#array-operations)
     - [3D Arrays](#3d-arrays)
       - [3D Array Creation \& Initialization](#3d-array-creation--initialization)
+    - [Methods - Introduction](#methods---introduction)
+      - [Calling a Method](#calling-a-method)
+      - [Parameters](#parameters)
+      - [Output](#output)
+        - [Rules for Return Type](#rules-for-return-type)
+      - [Method Syntax](#method-syntax)
+        - [Method Declaration Syntax](#method-declaration-syntax)
+        - [Method Invocation Syntax](#method-invocation-syntax)
+      - [Key Concepts](#key-concepts)
+      - [Examples](#examples)
+        - [Example: Method Declaration and Invocation](#example-method-declaration-and-invocation)
+        - [Example: Void Method](#example-void-method)
+      - [Passing Arrays to Methods](#passing-arrays-to-methods)
+      - [Benefits of Methods](#benefits-of-methods)
+      - [Special Notes](#special-notes)
+      - [Additional Example: Reusing Logic](#additional-example-reusing-logic)
   - [Author](#author)
 
 ## Agenda
@@ -1178,6 +1194,148 @@ static void threeDimensionalArrays() {
     };
 
     System.out.println("unitsSold[0][3][1]: " + unitsSold[0][3][1]);
+}
+```
+
+### Methods - Introduction
+
+- An object has **state** and **behavior**, and behavior is defined by **methods**.
+- Methods represent logic that can be used repeatedly.
+- A software's **business logic** or **algorithms** are coded into methods. Methods are essential for achieving meaningful functionality.
+- Methods typically:
+  1. Receive **input data** (optional)
+  2. Perform **processing**
+  3. Generate **output data**
+
+#### Calling a Method
+
+- Calling a method means invoking its logic.
+- If the method requires input, it passes data (referred to as **arguments** into the method)
+
+#### Parameters
+
+- Parameters are the **input data** required by a method.
+- Parameters:
+  - Are **optional**. If no parameters are needed, the method requires no input.
+  - Are **variables**, and thus have:
+    - A name
+    - A data type
+  - Can be either **primitive types** or **object references**.
+
+#### Output
+
+- A method returns a value using a **`return` statement**.
+  - The `return` statement uses teh reserved keyword `return` in Java.
+  - The returned value can be:
+    - A **primitive type**
+    - An **object reference**
+    - A **variable**
+    - A **literal**
+  - The method's **return type** is declared in the method definition, **before the method name**.
+
+##### Rules for Return Type
+
+1. Declaring the return type is **mandatory** in the method declaration.
+2. The **return type** must match the type of value being returned by the method.
+3. If a method does not return a value, its return type must be `void`.
+
+#### Method Syntax
+
+##### Method Declaration Syntax
+
+```java
+returnType methodName (type param1, type param2, ...) {
+  // method logic
+  return someValue; // optional if return type is `void`
+}
+```
+
+##### Method Invocation Syntax
+
+```java
+type var = methodName(arg1, agr2, ...);
+```
+
+#### Key Concepts
+
+- Method Signature:
+  - A method's name and parameter list together form the **method signature**.
+  - The return type is not part of the method signature.
+- Arguments vs. Parameters:
+
+  - **Parameters** (also known as **Formal Parameters**) are declared in the method definition.
+  - **Arguments** (also known as **Actual Parameters**) are the input values passed during method invocation.
+    > [!NOTE]
+    >
+    > The number, type, and order of arguments must match the method's parameters.
+
+- Empty Parentheses:
+  - If a method does not take any input, it will have empty parentheses in both its declaration and invocation.
+
+#### Examples
+
+##### Example: Method Declaration and Invocation
+
+```java
+// Method Declaration
+int add(int a, int b) {
+  return a + b;
+}
+
+// Method Invocation
+int result = add(5, 10); // result = 15
+```
+
+##### Example: Void Method
+
+```java
+// Void Method Declaration
+void printMessage(String message) {
+  System.out.println(message);
+}
+
+// Invocation
+printMessage("Hello, World!"); // Outputs: Hello, World!
+```
+
+#### Passing Arrays to Methods
+
+- You can pass arrays as arguments in two ways:
+  1. Using a variable holding the array reference.
+  2. Directly creating a new array inline:
+  ```java
+  myMethod(new int[] {1, 2, 3});
+  ```
+- You cannot pass an array like this:
+
+```java
+myMethod({1, 2}); // Error: Invalid syntax
+```
+
+- This syntax is only valid for array declarations and cannot be used elsewhere.
+
+#### Benefits of Methods
+
+- Avoid code duplication.
+- Re-usable code.
+- Cleaner and more readable code.
+- Encapsulation of logic.
+
+#### Special Notes
+
+- The return type in the method declaration must match the type of variable used to store the returned value during invocation.
+- Methods **must return a value** if the return type is anything other than `void`. Otherwise, a **compilation error** will occur.
+- `void` methods do not return any value, but they can optionally have a `return;` statement to indicate no value is returned.
+
+#### Additional Example: Reusing Logic
+
+```java
+int multiply (int a, int b) {
+  return a * b;
+}
+
+int square (int x) {
+  return multiply (x * x); // Reuses multiply() logic
 }
 ```
 
