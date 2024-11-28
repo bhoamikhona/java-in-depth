@@ -79,6 +79,17 @@
       - [Summary](#summary)
     - [Summary on Accessibility of Members from Static \& Instance Methods](#summary-on-accessibility-of-members-from-static--instance-methods)
     - [Assignment 03 - Currency Converter - Invoking Methods of an Object](#assignment-03---currency-converter---invoking-methods-of-an-object)
+    - [How Data is Passed to Methods in Java](#how-data-is-passed-to-methods-in-java)
+      - [Key Differences Between Primitives and Object References](#key-differences-between-primitives-and-object-references)
+      - [Pass by Value and Its Implications](#pass-by-value-and-its-implications)
+        - [Primitives in Memory](#primitives-in-memory)
+        - [Object References in Memory](#object-references-in-memory)
+      - [Pass by Value in Java](#pass-by-value-in-java)
+      - [Pass by Value - Primitives](#pass-by-value---primitives)
+      - [Pass by Value - Object References](#pass-by-value---object-references)
+      - [Re-assignment of Object References](#re-assignment-of-object-references)
+      - [Passing Data](#passing-data)
+      - [Conclusion](#conclusion-2)
   - [Author](#author)
 
 ## Agenda
@@ -1507,6 +1518,189 @@ class MyClass {
   - So, we can even access static variables/methods defined in the same class as the instance method.
 
 ### Assignment 03 - Currency Converter - Invoking Methods of an Object
+
+### How Data is Passed to Methods in Java
+
+- So far, we have covered how methods are defined and how they can be invoked.
+- We have also seen that data can be passed to methods during invocation.
+- The way this data is passed however, can vary across programming languages.
+- To understand this, let's look at a simple example.
+
+```java
+void updateId(int newId) {
+  newId = 1001;
+}
+```
+
+- In this example, we have a method called `updateId()` which accepts a single parameter `newId` of type `int`.
+- The method re-assigns `newId` to 1001.
+- Now, suppose we invoke the `updateId()` method with a variable `id`, initialized to 1000.
+
+```java
+void updateId(int newId) {
+  newId = 1001;
+}
+
+int id = 1000;
+updateId(id);
+System.out.println(id);
+```
+
+- The question is: if we print the variable `id` after invoking `updateId()`, will it display 1000 or 1001? Since `updateId()` modifies its input parameter, you would expect it to be 1001, right?
+- In Java, it would remain 1000, whereas, in some other programming languages, it might update to 1001.
+- This happens because in Java, primitive data types are passed by value.
+- Now, let's consider what happens when we pass an object reference instead of a primitive.
+
+```java
+void updateId(Student s1) {
+  s1.id = 1001;
+}
+```
+
+- This `updateId()` method now takes an object reference as its parameter, specifically a `Student` object.
+- In this case, the `id` variable from the previous example has been moved to the `Student` class.
+- Let's see the invocation:
+
+```java
+void updateId(Student s1) {
+  s1.id = 1001;
+}
+
+Student s = new Student();
+s.id = 1000;
+updateId(s);
+System.out.println(s.id);
+```
+
+- Here, we create an instance of the `Student` class, assign `id = 1000`, and then pass the `Student` object `s` to the `updateId()` method.
+- The question now is: will the value of `id` in the `Student` object change to 1001 after `updateId(s)` is invoked?
+- In Java, it will change to 1001 because we are passing a reference to the object, not the object itself.
+
+#### Key Differences Between Primitives and Object References
+
+- When a primitive is passed to a method, Java creates a copy of the value. Changes to the parameter inside the method do not affect the original variable in the calling environment.
+- When an object reference is passed, Java passes the memory address of the object. Changes to the object's state inside the method affect the original object in the calling environment.
+- To summarize:
+  - In Java, primitive data types are passed by value, meaning the method gets a copy of the value.
+  - Object references are also passed by value, but the value being passed is the memory address of the object. Thus, the method can modify the state of the object, but not the reference itself.
+
+#### Pass by Value and Its Implications
+
+##### Primitives in Memory
+
+- Let's first understand how primitive variables are stored in memory. Consider the following:
+
+```java
+int id = 1000;
+```
+
+- The variable `id` consists of:
+  - The logical name (`id`)
+  - The memory address where the value is stored
+  - The value of the variable (`1000`)
+- The compiler assigns a memory address to the variable and stores the value at that address. At runtime, the memory address holds the value, not the variable name.
+
+##### Object References in Memory
+
+- Now, consider the case of an object reference. When you create a `Student` object:
+
+```java
+Student s = new Student();
+```
+
+- Here, `s` holds a reference to the `Student` object. In memory:
+  - `s` holds the memory address of the object.
+  - The object itself is stored at a different memory location.
+  - The object's data (like `id`) is stored at the object's memory address.
+- So, `s` contains the memory address of the object, not the object itself.
+
+#### Pass by Value in Java
+
+- Java uses the pass-by-value mechanism when passing data to methods. This means that:
+  - If the argument is a primitive, a copy of the primitive value is passed.
+  - If the argument is an object reference, a copy of the reference (i.e. the memory address) is passed.
+
+#### Pass by Value - Primitives
+
+- Let's look at how primitives are passed by value. Consider the following code:
+
+```java
+void updateId(int newId) {
+  newId = 1001;
+}
+
+int id = 1000;
+updateId(id);
+```
+
+- The variable `id` is initialized with the value 1000.
+- The `updateId()` method is invoked, passing `id` as an argument.
+- Inside the method, a copy of the value `1000` is assigned to `newId`.
+- `newId` is updated to `1001`, but this change only affects `newId`, not the original `id`.
+- After the method completes, the value of `id` in the calling environment remains 1000.
+- Thus, passing primitives by value ensures that changes to the parameter do not affect the original argument.
+
+#### Pass by Value - Object References
+
+- When an object reference is passed, Java still uses pass-by-value, but it is important to understand that the value passed is the memory address of the object, not the object itself.
+- Consider the following:
+
+```java
+void updateId(Student s1) {
+  s1.id = 1001;
+}
+
+Student s = new Student();
+s.id = 1000;
+updateId(s);
+```
+
+- A new `Student` object is created, and its `id` field is initialized to 1000.
+- When `updateId(s)` is invoked, the memory address of the `Student` object is passed to the method.
+- Inside the method, `s1` references the same `Student` object as `s`. The `id` field of the object is updated to 1001.
+- Because both `s` and `s1` reference the same object, the change is reflected in the calling environment, so `s.id` becomes 1001.
+
+#### Re-assignment of Object References
+
+- What happens if you re-assign the method parameter to a new object? For example:
+
+```java
+void updateId(Student s1) {
+  s1 = new Student();
+  s1.id = 1001;
+}
+```
+
+- In this case:
+  - The `Student` object is first passed to the method, and `s1` references it.
+  - Then, `s1` is re-assigned to a new `Student` object with `id = 1001`.
+  - The original `Student` object (referenced by `s`) remains unchanged, as `s1` now points to a new object.
+
+#### Passing Data
+
+- Passing data to a method behaves similarly to variable assignements. For instance:
+
+```java
+int id = 1000;
+int newId = id; // variable assignment
+newId = 1001; // New value assigned to newId, but id remains 1000
+```
+
+- Similarly, for object references:
+
+```java
+Student s = new Student();
+s.id = 1000;
+Student s1 = s; // variable assignment
+s1.id = 1001; // both s and s1 reference the same object, so s.id = 1001
+```
+
+#### Conclusion
+
+- Java uses pass0by-value for both primitives and object references.
+- When passing primitives, only the value is passed, and the changes to the parameter do not affect the original variable.
+- When passing object references, the reference (memory address) is pased by value, so changes to the object's state inside the method are reflected in the calling environment. However, re-assigning the reference inside the method does not affect the original reference in the calling environment.
+- Understanding this mechanism is crucial for grasping how Java handles method arguments and how variables are affected by method calls.
 
 ## Author
 

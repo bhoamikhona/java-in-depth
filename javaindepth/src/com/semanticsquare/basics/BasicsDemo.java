@@ -164,16 +164,26 @@ public class BasicsDemo {
     return true;
   }
 
+  static void go(int[] array) {
+    System.out.println("array[0]: " + array[0]);
+    System.out.println("array[1]: " + array[1]);
+    array[1] = 22;
+  }
+
   public static void main(String[] args) {
-    float d = (float) sum(2.0f, (float) 3.0);
-    System.out.println(d);
+    int[] array = { 1, 2 };
+    go(array);
+    System.out.println("array[1]: " + array[1]);
 
-    double d2 = avg(3.0, 2.0);
-    System.out.println(d2);
+    // float d = (float) sum(2.0f, (float) 3.0);
+    // System.out.println(d);
 
-    int[] list = { 1, 2 };
-    search(list, 2);
-    search(new int[] { 1, 2 }, 2);
+    // double d2 = avg(3.0, 2.0);
+    // System.out.println(d2);
+
+    // int[] list = { 1, 2 };
+    // search(list, 2);
+    // search(new int[] { 1, 2 }, 2);
 
     // threeDimensionalArrays();
 
