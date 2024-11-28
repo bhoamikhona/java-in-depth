@@ -1,6 +1,6 @@
 public class CurrencyConverter {
   // Currency exchange rates of different currencies relative to 1 US dollar
-  double[] exchangeRates;
+  double[] exchangeRates = { 63.0, 3.0, 3.0, 595.5, 18.0, 107.0, 2.0 };
 
   void setExchangeRates(double[] rates) {
     exchangeRates = rates;

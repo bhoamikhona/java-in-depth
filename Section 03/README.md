@@ -78,6 +78,7 @@
       - [Special Notes](#special-notes-1)
       - [Summary](#summary)
     - [Summary on Accessibility of Members from Static \& Instance Methods](#summary-on-accessibility-of-members-from-static--instance-methods)
+    - [Assignment 03 - Currency Converter - Invoking Methods of an Object](#assignment-03---currency-converter---invoking-methods-of-an-object)
   - [Author](#author)
 
 ## Agenda
@@ -1504,6 +1505,8 @@ class MyClass {
 - Accessibility from instance methods:
   - Can access anything from an instance method.
   - So, we can even access static variables/methods defined in the same class as the instance method.
+
+### Assignment 03 - Currency Converter - Invoking Methods of an Object
 
 ## Author
 
