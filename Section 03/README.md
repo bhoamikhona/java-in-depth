@@ -106,6 +106,7 @@
       - [Integration with `main()` method](#integration-with-main-method)
       - [Behavior in Overloaded Methods:](#behavior-in-overloaded-methods)
       - [Conclusion](#conclusion-3)
+    - [Brief Summary on varargs Parameter](#brief-summary-on-varargs-parameter)
   - [Author](#author)
 
 ## Agenda
@@ -1914,6 +1915,16 @@ void foo(int... items) {}
 
 - The `varargs` feature in Java 5 provides a simplifies and flexible way to handle variable length arguments, making method invocation more intuitive and versatile.
 - It combines the power of arrays with cleaner syntax, enhancing usability while adhering to a few basic rules.
+
+### Brief Summary on varargs Parameter
+
+- We can declare a method with a `varargs` parameter if the method's last parameter (or the only parameter) is an array, but we want to provide the invoker of the method with a flexible way of invoking it, such as:
+  - by passing an array,
+  - providing comma-separated values, or
+  - passing nothing at all
+- So, if one invoker of this method has a large array to pass, then teh array can be passed directly.
+- Similarly, if another invoker has just few values to pass, then they can be passed simply as a comma-separated values instead of creating an array for those value and passing the array.
+- Essentially, `varargs` parameter provides a flexible way of invoking a method and applies to only those methods whose last parameter is an array.
 
 ## Author
 
