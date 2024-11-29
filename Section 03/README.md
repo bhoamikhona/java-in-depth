@@ -97,6 +97,15 @@
       - [Method Binding](#method-binding)
       - [Invalid Method Overloading Examples](#invalid-method-overloading-examples)
       - [Summary of Valid Overloading Requirements](#summary-of-valid-overloading-requirements)
+    - [Methods - varargs](#methods---varargs)
+      - [Key Characteristics:](#key-characteristics-1)
+      - [How it works:](#how-it-works)
+      - [Advantages of `varargs`:](#advantages-of-varargs)
+      - [Restrictions](#restrictions)
+      - [Printing using varargs](#printing-using-varargs)
+      - [Integration with `main()` method](#integration-with-main-method)
+      - [Behavior in Overloaded Methods:](#behavior-in-overloaded-methods)
+      - [Conclusion](#conclusion-3)
   - [Author](#author)
 
 ## Agenda
@@ -1819,6 +1828,92 @@ static void updateProfile(int newId) {}
   - Number of parameters
   - Types of parameters
   - Order of parameter types
+
+### Methods - varargs
+
+- Prior to Java 5, methods could only accept a fixed number of arguments, matching the method's parameter count.
+- Java 5 introduced `varargs` (variable-length arguments) to allow methods to accept a variable number of arguments.
+
+#### Key Characteristics:
+
+- A `varargs` parameter allows passing 0, 1, or multiple arguments to a method using a single parameter.
+- The `varargs` parameter:
+  - Must be the last parameter in the method.
+  - Can be the only parameter in the method.
+- Syntax: The parameter type is followed by three dots (`...`).
+  - Example: `void foo(boolean flag, int... items) {}`
+
+#### How it works:
+
+- During invocation, the arguments passed to the `varargs` parameter can be:
+  - An array: `foo(true, new int[] {1, 2, 3})`
+  - A comma-separated list: `foo(true, 1, 2, 3)`
+- The compiler converts the arguments into an array, meaning within the method, the `varargs` parameter is treated as a normal array.
+- Examples of invocation:
+  - `foo(true, 1, 2, 3)` -> compiler converts arguments into an `int[]`
+  - `foo(true)` -> compiler passes an empty array.
+
+#### Advantages of `varargs`:
+
+- Cleaner and more flexible syntax:
+  - You can pass a sequence of values as comma-separated arguments.
+  - If there are no values to pass, nothing needs to be explicitly provided.
+- Simplifies method invocation compared to using explicit arrays:
+  - No need to create or pass `null`/empty arrays manually.
+- Works well for methods accepting both few or many arguments.
+
+#### Restrictions
+
+- A method cannot have more than one `varargs` parameter.
+- The `varargs` parameter must always be the last parameter in the method.
+- A method signature using a `varargs` parameter is considered equivalent to using an array.
+- Example:
+
+```java
+// Both of these are basically the same
+void foo(boolean flag, int... items) {}
+void foo(boolean flag, int[] items) {} // Invalid overload - since they both are the same
+```
+
+#### Printing using varargs
+
+- `printf()` method was introduced in Java 5 and it is used to print formatted text.
+- It is similar to `println()` and `print()`.
+- First parameter of `printf()` is the text to be printed, while the second is a `varargs` parameter.
+- Type of the second parameter is an `Object` - a class in Java.
+  - Syntax: `System.out.printf(String format, Object... args)`
+  - Example:
+  ```java
+  System.out.printf("DOB: %d/%d/%d", 1, 1, 1978);
+  ```
+  - In this example the first argument is text to be printed while, 2nd, 3rd, and 4th arguments correspond to the `varargs` parameter.
+  - The `%d` serve as placeholders which are replaced by the `varargs` values (1, 1, 1978) during runtime.
+
+#### Integration with `main()` method
+
+- The main method can also use `varargs`
+
+```java
+public static void main(String... args) {}
+```
+
+- This works the same as `String[] args`.
+
+#### Behavior in Overloaded Methods:
+
+- If a method is overloaded, and one version uses `varargs`, the `varargs` method is matched last during invocation.
+
+```java
+void foo(int a) {}
+void foo(int... items) {}
+```
+
+- A call like `foo(10)` matches the first method (exact match) before considering the `varargs` version.
+
+#### Conclusion
+
+- The `varargs` feature in Java 5 provides a simplifies and flexible way to handle variable length arguments, making method invocation more intuitive and versatile.
+- It combines the power of arrays with cleaner syntax, enhancing usability while adhering to a few basic rules.
 
 ## Author
 
