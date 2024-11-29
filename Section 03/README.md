@@ -90,6 +90,13 @@
       - [Re-assignment of Object References](#re-assignment-of-object-references)
       - [Passing Data](#passing-data)
       - [Conclusion](#conclusion-2)
+    - [Method Overloading](#method-overloading)
+      - [Key Rules for Method Overloading](#key-rules-for-method-overloading)
+      - [Examples of Valid Overloaded Methods](#examples-of-valid-overloaded-methods)
+      - [Method Invocation and Resolution](#method-invocation-and-resolution)
+      - [Method Binding](#method-binding)
+      - [Invalid Method Overloading Examples](#invalid-method-overloading-examples)
+      - [Summary of Valid Overloading Requirements](#summary-of-valid-overloading-requirements)
   - [Author](#author)
 
 ## Agenda
@@ -1701,6 +1708,117 @@ s1.id = 1001; // both s and s1 reference the same object, so s.id = 1001
 - When passing primitives, only the value is passed, and the changes to the parameter do not affect the original variable.
 - When passing object references, the reference (memory address) is pased by value, so changes to the object's state inside the method are reflected in the calling environment. However, re-assigning the reference inside the method does not affect the original reference in the calling environment.
 - Understanding this mechanism is crucial for grasping how Java handles method arguments and how variables are affected by method calls.
+
+### Method Overloading
+
+- **Method Overloading** allows maintaining multiple versions of a method within the same class.
+- Methods with the **same name** but **different parameter lists** are considered overloaded methods.
+- It can serve as:
+  - A **requirement** in certain scenarios.
+  - A **convenience** for clients (method invokers).
+
+#### Key Rules for Method Overloading
+
+- Methods must have:
+  - Same name
+  - Different Parameter List
+- Changing only the return type does not qualify as overloading.
+- Both instance methods and static methods can be overloaded.
+
+#### Examples of Valid Overloaded Methods
+
+```java
+void updateProfile(int newId) {}
+void updateProfile(int newId, char gender) {}
+void updateProfile(char gender, int newId) {}
+void updateProfile(short newId) {}
+```
+
+- Parameter Order
+  - In the second and third examples, the order of parameters differs (`int, char` vs. `char, int`).
+- Parameter Types
+  - The fourth example uses `short`, while the first uses `int`. Even though both are integer types, they are distinct, making the overload valid.
+
+#### Method Invocation and Resolution
+
+- When invoking an overloaded method, the compiler determines the most appropriate version based on the arguments provided.
+- Example 01:
+  - Method invoked: The second method (`int, char`)
+
+```java
+updateProfile(1000, 'F');
+```
+
+- Example 02:
+  - Method invoked: The first method (`int`)
+  - Reason: The `1000` literal is an `int`, which matched the parameter exactly.
+
+```java
+updateProfile(1000);
+```
+
+- Example 03 (Using `byte`):
+  - Method invoked: The fourth method (`short`)
+  - Reason:
+    - The compiler first looks for an exact match (a method with a `byte` parameter).
+    - If none exists, it selects the next compatible and most specific type, which in this case is `short`.
+
+```java
+byte b = 50;
+updateProfile(b);
+```
+
+#### Method Binding
+
+- Method binding is the process by which:
+  - The compiler determines which method to invoke during compilation.
+  - The JVM uses this information at runtime to ensure the correct overloaded method is executed.
+
+#### Invalid Method Overloading Examples
+
+- Changing only the return types
+  - Error: Duplicate Method
+  - Reason: Changing the return type alone does not create a valid overload.
+
+```java
+// original method
+void updateProfile(int newId) {}
+
+// invalid overload
+boolean updateProfile(int newId) {}
+```
+
+- Changing only the parameter name:
+  - Error: Duplicate method
+  - Reason: Changing the parameter naem (`newId` vs `id`) does not make the methods distinct.
+
+```java
+// original method
+void updateProfile(int newId) {}
+
+// invalid overload
+boolean updateProfile(int id) {}
+```
+
+- Mixing Static and Instance Contexts
+  - Error: Duplicate method
+  - Reason: Static vs. Instance context does not qualify as overloading.
+
+```java
+// original method
+void updateProfile(int newId) {}
+
+// invalid overload
+static void updateProfile(int newId) {}
+```
+
+#### Summary of Valid Overloading Requirements
+
+- The method name must remain the same.
+- The parameter list must differ in at least one of the following ways:
+  - Number of parameters
+  - Types of parameters
+  - Order of parameter types
 
 ## Author
 
