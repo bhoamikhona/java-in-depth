@@ -107,6 +107,13 @@
       - [Behavior in Overloaded Methods:](#behavior-in-overloaded-methods)
       - [Conclusion](#conclusion-3)
     - [Brief Summary on varargs Parameter](#brief-summary-on-varargs-parameter)
+    - [Constructors](#constructors)
+      - [Key Features of Constructors](#key-features-of-constructors)
+      - [Default (No-Args) Constructor](#default-no-args-constructor)
+      - [Constructor with Parameters](#constructor-with-parameters)
+      - [Empty `return` Statements in Constructors](#empty-return-statements-in-constructors)
+      - [Important Notes on Constructors](#important-notes-on-constructors)
+      - [Summary](#summary-1)
   - [Author](#author)
 
 ## Agenda
@@ -1925,6 +1932,129 @@ void foo(int... items) {}
 - So, if one invoker of this method has a large array to pass, then teh array can be passed directly.
 - Similarly, if another invoker has just few values to pass, then they can be passed simply as a comma-separated values instead of creating an array for those value and passing the array.
 - Essentially, `varargs` parameter provides a flexible way of invoking a method and applies to only those methods whose last parameter is an array.
+
+### Constructors
+
+- A constructor is a special block of code within a class, primarily used to initialize the state of an object by setting instance variables.
+- While we have been creating objects using statements like `Student s = new Student();`, the compiler implicitly provided a constructor in the absence of a user-defined one.
+- A constructor handles object creation and state initialization, streamlining the process compared to manually setting state using object references.
+
+#### Key Features of Constructors
+
+1. Syntax
+
+- A constructor has the same name as the class.
+- It has no return type, not even `void`.
+- It can have parameters, including `varargs`.
+
+2. Differences from Methods:
+
+- While similar to methods, a construcotr is invoked during object creation and does not have a return type.
+- Syntax-wise, it resembles a method but, focuses on initializing objects.
+
+3. Example:
+
+```java
+class Student {
+  int id;
+
+  // constructor
+  Student(int newId) {
+    id = newId;
+  }
+}
+```
+
+- The constructor `Student(int newId)` initializes `id` field with the value passed during object creation.
+
+4. Object Creation and Constructor Invocation:
+
+```java
+Student s = new Student(1001);
+```
+
+- Steps:
+  - Allocates memory for a reference variable (`Student s`)
+  - Allocates memory for a new `Student` object (`new Student()`)
+  - Invokes the constructor (`Student()`), which initializes the `id` field to `1001`.
+
+#### Default (No-Args) Constructor
+
+- If no constructor is explicitly defined in a class, the compiler provides a default constructor:
+  - A no-args constructor, which has no parameters.
+  - Used to create objects without initializing specific state.
+- Example:
+
+```java
+class Student {
+    int id;
+}
+
+// Compiler automatically adds a no-args constructor
+Student s = new Student(); // Valid
+```
+
+- If a class has any user-friendly constructor (with or without parameters), the compiler does not insert a default constructor. To use a no-args constructor in such cases, you must define it manually.
+
+#### Constructor with Parameters
+
+- A parameterized constructor allows initializing object state at the time of creation.
+- Example:
+
+```java
+class Student {
+  int id;
+
+  // Parameterized constructor
+  Student(int newId) {
+    id = newId;
+  }
+}
+
+// Usage
+Student s = new Student(1001); // Initialized id to 1001
+```
+
+#### Empty `return` Statements in Constructors
+
+- Constructors can include an empty `return` statement to exit early.
+- If a return statement is followed by other code, it leads to a compilation error due to unreachable code.
+- Example:
+
+```java
+class Student {
+  Student(int id) {
+    if (id < 0) {
+      System.out.println("Invalid ID");
+      return; // Exit early
+    }
+    this.id = id; // Executed only if the condition is false
+  }
+}
+```
+
+#### Important Notes on Constructors
+
+1. Behavior:
+
+- A constructor can invoke methods to perform additional initialization tasks.
+- Typically used to initialize state but, can include other options as needed.
+
+2. Restrictions:
+
+- Constructors cannot have a return type.
+- If a class has no constructors, the compiler inserts a no-args constructor.
+- If any constructor is defined (with or without parameters), no default constructor is added.
+
+3. Invoking Methods:
+
+- From a constructor, you can call other methods for additional processing.
+
+#### Summary
+
+- A constructor is integral to object creation, handling initialization efficiently.
+- It reduces the manual effort of setting object state using methods or field references.
+- Constructors enhance code readability, maintainability, and proper encapsulation.
 
 ## Author
 

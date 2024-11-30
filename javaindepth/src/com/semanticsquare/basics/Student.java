@@ -1,9 +1,9 @@
 public class Student {
-  static int computeCount = 0;
+  static int studentCount = 0;
   int id;
-  int age;
   String name;
   String gender;
+  int age;
   long phone;
   double gpa;
   char degree;
@@ -11,12 +11,23 @@ public class Student {
 
   double tuitionFees = 12000.0, internationalFees = 5000.0;
 
-  void compute() {
-    computeCount = computeCount + 1;
+  Student(int newId, String newName, String newGender, int newAge, long newPhone, double newGpa, char newDegree,
+      boolean isInternational) {
+    id = newId;
+    name = newName;
+    gender = newGender;
+    age = newAge;
+    phone = newPhone;
+    gpa = newGpa;
+    degree = newDegree;
+    international = isInternational;
+
+    studentCount = studentCount + 1;
     int nextId = id + 1;
 
     if (international) {
       tuitionFees = tuitionFees + internationalFees;
+      return;
     }
 
     System.out.println();
@@ -29,45 +40,21 @@ public class Student {
     System.out.println("gpa: " + gpa);
     System.out.println("degree: " + degree);
     System.out.println("tuitionFees: " + tuitionFees);
-    System.out.println("computeCount: " + computeCount);
+    System.out.println("computeCount: " + studentCount);
   }
 
-  static Student student3;
+  Student() {
+  }
+
+  // static Student student3;
 
   public static void main(String[] args) {
-    Student student1 = new Student();
-    student1.id = 1000;
-    student1.name = "John";
-    student1.gender = "Male";
-    student1.age = 18;
-    student1.phone = 223_456_7890L;
-    student1.gpa = 3.8;
-    student1.degree = 'B';
-    student1.international = false;
-    student1.compute();
+    Student student1 = new Student(1000, "John", "Male", 18, 223_456_7890L, 3.8, 'B', false);
 
-    Student student2 = new Student();
-    student2.id = 1001;
-    student2.name = "Raj";
-    student2.gender = "Male";
-    student2.age = 21;
-    student2.phone = 223_456_9999L;
-    student2.gpa = 3.4;
-    student2.degree = 'M';
-    student2.international = true;
-    student2.compute();
+    Student student2 = new Student(1001, "Raj", "Male", 21, 223_456_9999L, 3.4, 'M', true);
 
-    // Student student3 = new Student();
-    student3.id = 1002;
-    student3.name = "Anita";
-    student3.gender = "Female";
-    student3.age = 20;
-    student3.phone = 223_456_8888L;
-    student3.gpa = 4.0;
-    student3.degree = 'M';
-    student3.international = true;
-    student3.compute();
+    Student student3 = new Student(1002, "Anita", "Female", 20, 223_456_8888L, 4.0, 'M', true);
 
-    System.out.println("Student.computeCount: " + Student.computeCount);
+    System.out.println("Student.studentCount: " + Student.studentCount);
   }
 }
