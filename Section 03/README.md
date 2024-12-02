@@ -114,6 +114,7 @@
       - [Empty `return` Statements in Constructors](#empty-return-statements-in-constructors)
       - [Important Notes on Constructors](#important-notes-on-constructors)
       - [Summary](#summary-1)
+    - [Constructor Overloading](#constructor-overloading)
   - [Author](#author)
 
 ## Agenda
@@ -2055,6 +2056,173 @@ class Student {
 - A constructor is integral to object creation, handling initialization efficiently.
 - It reduces the manual effort of setting object state using methods or field references.
 - Constructors enhance code readability, maintainability, and proper encapsulation.
+
+### Constructor Overloading
+
+- We know that a constructor helps in constructing objects, and it can also help in initializing state of those object.
+- In the last lesson, we re-factored our `Student` class to define a parameterized constructor, which helped with creating `Student` objects and also, initializing their state.
+- In `Student` class, we defined a single constructor but, a `class` can also have multiple constructors.
+- If there are multiple constructors, they would all have the same constructor name since constructors are named after their `class`.
+- So, what we have is one or more constructors with same name, but different parameters, and that's nothing but, constructor overloading.
+- So, we have overloaded constructors, and it is similar to method overloading where we have multiple methods in the same class having the same name, but different parameter lists.
+- Providing such overloaded constructors make it convenient for clients to construct objects.
+- So, let's go ahead and learn about constructor overloading.
+- Constructor overloading, as mentioned previously, is the same as method overloading.
+- So, we have the same overloading rules as methods.
+- That is, the constructor must have different parameter list, otherwise we would have duplicate constructors and would get a compilation error.
+- Objects can be created using any of the overloaded constructors.
+- Why do we need overloaded constructors?
+- The reason is convenience.
+- They make it convenient for clients to construct objects.
+- That is, the help in having simpler object creation statements.
+- Let's look at an example from the Java library.
+
+```java
+FileOutputStream(String name, boolean append);
+FileOutputStream(String name);
+FileOutputStream(File file);
+FileOutputStream(File file, boolean append);
+FileOutputStream(FileDescriptor fdObj);
+```
+
+- This is from a `class` called as `FileOutputStream`, which we will discuss later.
+- This `class` is helpful if you want to write some data to a particular file on the disk.
+- As we can see, this `class` has 5 overloaded constructors, and they have different parameters.
+- Now, let's consider the 4th constructor, which has 2 parameters.
+- `File` here is simply another class in the Java library, and let's not worry about it, we will look at it later, but it simply represents the file into which we want to write our data.
+- The second parameter is to indicate whether we want to append data to the file or override the file.
+- So, if the file already exists on the disk and you simple want to append data to it i.e. you want to write some data at the end of the file, then you would pass `true` for the second parameter.
+- But, if you want to override the contents of the file, then would pass `false`.
+- NOTE: If the file does not exist on the disk, then this constructor would create a new file.
+- So, if there is a file called text.txt and you want to simply overwrite its contents, then you would create a `FileOutputStream` object like so:
+
+```java
+new FileOutputStream(new File("text.txt"), false);
+```
+
+- As you can see, in the first argument we are creating a `File` object corresponding to text.txt, and then we are passing `false` for the second argument.
+- Now, instead of doing this, we can actually use the second constructor, which is provided only for overwriting.
+- So, if we use the second constructor, we would create our `FileOutputStream` object like so:
+
+```java
+new FileOutputStream("text.txt");
+```
+
+- As you can see, it is much simpler and we just pass the file name.
+- So, we don't have to create the `File` object, and there is no boolean argument that we need to pass.
+- However, the 2nd constructor internally invokes the 4th constructor and passses the `File` object for the `file` parameter and passes a `false` for the `append` parameter.
+- So, the 2nd constructor is simply delegating to the 4th constructor.
+- So, the library designers have provided the 2nd constructor so that we can easily create our objects.
+- Similarly, if we want to append data, we can invoke the first constructor and pass it through for the second parameter.
+- First parameter is for the file name, and using this constructor is convenient than using the 4th one as we don't have to create a `File` object.
+- The first constructor also internally delegates to the 4th one.
+- So, sometimes we can have this sort of overloaded constructor where there is a primary constructor like the 4th one, and others simply delegate to it.
+- However, we can also have overloaded constructors where there is no such delegation and the constructors are completely independent of each other.
+- There is a `class` called `TreeMap` in the Java library, which has such overloaded constructors that are independent from each other.
+- However, even in `TreeMap`'s case, the constructors still provide the convenience factor i.e. without them, extra code would have to be written to construct `TreeMap` objects.
+- `TreeMap` will be discussed later in the collections framework section, and it is a `class` in the Java library.
+- Constructors are also associated with certain capability i.e. they help in constructing objects that have certain capability.
+- For instance, the 2nd constructor helps in creating objects that can help in overriding file content.
+- Similarly, first constructor can be used to construct objects that can help with appending data to the end of the files.
+- So, each constructor is helping in constructing objects with certain capability or property.
+- For the second constructor, the capability is overwriting and for the first constructor, the capability is appending, but that need not be the case all the time i.e. objects created from the different overloaded constructors can have the same capability too, however, that is not very commom but, that is possible.
+- For instance, let's say the program only has partial data available i.e. it has only values for some of the instance variables, in that case, we may have a constructor only for those variables, and for the remaining variables, we get default values.
+- But, if we have all of the data, then we can have a constructor that takes all of the values, and that would be the primary constructor.
+- When you want to invoke the primary constructor from another overloaded constructor, we use `this()` invocation statement and we pass in all the values required by the primary constructor within the parentheses, just like we would pass arguments when calling a method.
+- NOTE: When you are delegating the task from one constructor to the primary constructor, the values that are missing must be provided from the constructor that is calling the primary constructor, and those values are essentially default values for the fields.
+- There are certain rules that we need to remember when it comes to the `this()` invocation statement:
+
+  - Within a constructor, the `this()` invocation statement has to be the first statement.
+  - If we have any other statement before the `this()` invocation statement, we get a compilation error.
+  - You cannot have more than one `this()` invocation statement in a constructor.
+  - There cannot be a recursive invocation i.e. you cannot invoke the same constructor.
+  - Example 01 - A constructor calling itself using `this()` invocation statement:
+
+  ```java
+  public class Student {
+    int id;
+    String name;
+    double gpa;
+
+    // this is calling itself using the `this()` invocation statement
+    // i.e. recursive invocation
+    // this is invalid
+    Student(int newId, String newName) {
+      this(1001, "John");
+    }
+
+    Student(int newId, String newName, double newGpa) {
+      id = newId;
+      name = newName;
+      gpa = newGpa;
+    }
+  }
+  ```
+
+  - Example 02 - First constructor calling the second one, and second constructor calling the first one:
+
+  ```java
+  public class Student {
+    int id;
+    String name;
+    double gpa;
+
+   // this constructor is calling the primary constructor using `this()`
+    Student(int newId, String newName) {
+      this(1001, "John", 3.5);
+    }
+
+    // this constructor is calling the other constructor using `this()`
+    Student(int newId, String newName, double newGpa) {
+      this(1001, "John");
+    }
+  }
+  ```
+
+  - In this example, they both are calling each other and this is called as **indirect recursive invocation** and this is invalid as well.
+  - When passing arguments to another constructor while invoking `this()`, we cannot use instance variable, it has to be a local variable.
+  - Recall that parameters are also local variable, so those are the ones we can pass when using `this()` invocation statement. We cannot use instance variables.
+  - So, in the example above, when invoking `this()` we can pass `newId` but, not `id`.
+  - The reason for this is that `id` is not initialized when invoking `this()` invocation statement. The variable which is initialized at that point is `id`.
+  - So, the control from secondary constructor is getting passed to the primary constructor using the `this()` invocation statement.
+  - In the primary constructor, before `id = newId` is executed, the constructor of the superclass is invoked.
+
+    - There is something called as superclass in Java which also has a constructor.
+    - We will learn about it when we learn about a concept called as inheritance, which is a very important OOP concept.
+    - When we are dealing with inheritance, we have this notion of superclass and subclass.
+    - So, `Student` is like a subclass and there is a superclass, which is like a parent class.
+    - So, when the control reaches to the line of `this(newId, newName)` in the primary constructor, the control moves into the superclass' constructor.
+    - At that instance, all of the instance in the superclass and the entire superclass constructor will be executed.
+    - The the control comes back to the subclass, then the rest of the lines of code are executed and the instance variables get their defaults.
+    - So, there is an implicit call to the superclass constructor.
+    - You might ask, where is the superclass? It is implicit.
+    - So, if we just execute the code below:
+
+    ```java
+    public class Student {
+      int id;
+      String name;
+      double gpa;
+
+      Student(int newId, String newName) {
+        // using the instance variable `id` here instead of local variable `newId`
+        // invalid
+        this(id, "John", 3.5); // Error: cannot reference id before supertype constructor has been called
+      }
+
+      Student(int newId, String newName, double newGpa) {
+        id = newId;
+        name = newName;
+        gpa = newGpa;
+      }
+    }
+    ```
+
+    - We get the error which says "cannot reference id before supertype constructor has been called"
+    - So, supertype constructor has not been called at this point: `this(id, "John", 3.5)`, it will be called in the primary constructor, so when the control comes to the primary constructor, supertype will be invoked.
+    - Supertype is nothing but the superclass or the parent class.
+    - So, there is a parent or a superclass involved here and it is being used implicitly, and that class is called as the `Object` class.
+    - The name of the class itself is `Object` and we will look at while learning about inheritance.
 
 ## Author
 
