@@ -115,6 +115,7 @@
       - [Important Notes on Constructors](#important-notes-on-constructors)
       - [Summary](#summary-1)
     - [Constructor Overloading](#constructor-overloading)
+    - [Constructor Overloading - Alternate Way of Delegating](#constructor-overloading---alternate-way-of-delegating)
   - [Author](#author)
 
 ## Agenda
@@ -2223,6 +2224,32 @@ new FileOutputStream("text.txt");
     - Supertype is nothing but the superclass or the parent class.
     - So, there is a parent or a superclass involved here and it is being used implicitly, and that class is called as the `Object` class.
     - The name of the class itself is `Object` and we will look at while learning about inheritance.
+
+### Constructor Overloading - Alternate Way of Delegating
+
+- In the previous lesson, we learned about delegating from a constructor which has fewer number of parameters to the one which has more number of parameters - more common way of delegation.
+- In this lesson, we will learn how to do the reverse i.e. delegating from constructor which has more number of parameters to a constructor which has fewer number of parameters.
+- Example:
+
+```java
+public class Student {
+  int id;
+  String name;
+  double gpa;
+
+  Student(int newId, String newName) {
+    id = newId;
+    name = newName;
+  }
+
+  Student(int newId, String newName, double newGpa) {
+    this(newId, newName); // delegating to the constructor with fewer parameters
+    gpa = newGpa;
+  }
+}
+```
+
+- This lesson is just for you to know that this is possible.
 
 ## Author
 
