@@ -118,6 +118,7 @@
     - [Constructor Overloading - Alternate Way of Delegating](#constructor-overloading---alternate-way-of-delegating)
     - [Minor Note on Method Invocation \& Implicit Narrowing Conversion](#minor-note-on-method-invocation--implicit-narrowing-conversion)
     - [`this` Reference](#this-reference)
+    - [Reinitializing Object References](#reinitializing-object-references)
   - [Author](#author)
 
 ## Agenda
@@ -2528,6 +2529,111 @@ public class Student {
   }
 }
 ```
+
+### Reinitializing Object References
+
+```java
+  public static void main(String[] args) {
+    Student student1 = new Student(1000, "Joan", "Male", 18, 223_456_7890L, 3.8,
+        'B');
+
+    Student student2 = new Student(1001, "Raj", "Male", 21, 223_456_9999L, 3.4,
+        'M', true);
+
+    Student student3 = new Student(1002, "Anita", "Female", 20, 223_456_8888L,
+        4.0, 'M', true);
+
+    System.out.println("\nStudent.studentCount: " + Student.studentCount);
+
+    System.out.println("\nName of Student 1: " + student1.name);
+    System.out.println("Name of Student 2: " + student2.name);
+    System.out.println("Name of Student 3: " + student3.name);
+
+    student1.updateProfile("John");
+    System.out.println("\nUpdated name of Student 1: " + student1.name);
+
+    Student student4 = student1;
+    System.out.println("Name of student 4: " + student4.name);
+
+    student4.updateProfile("Mike");
+    System.out.println("Name of student 1: " + student1.name);
+
+    student4 = student2;
+    System.out.println("Name of student 4: " + student4.name);
+
+    student2 = student1;
+    System.out.println("Name of student 4: " + student4.name);
+    System.out.println("Name of student 2: " + student2.name);
+
+    student4 = new Student();
+    student4.updateProfile("Alex");
+    System.out.println("Name of student 4: " + student4.name);
+    System.out.println("Name of student 2: " + student2.name);
+    System.out.println("Name of student 1: " + student1.name);
+  }
+```
+
+- When working with object references in Java, understanding how re-assignments affect the connection between references and objects is crucial.
+- Initial Object Creation
+  - `Student student1` is created with initial values.
+    - It points to a `Student` object with the name "Joan"
+    - Memory reference: let's call it `ObjectA`.
+  - `Student student2` is created with initial values.
+    - It points to a `Student` object with the name "Raj"
+    - Memory reference: let's call it `ObjectB`.
+  - `Student student3` is created with initial values.
+    - It points to a `Student` object with the name "Anita"
+    - Memory reference: let's call it `ObjectC`.
+  - Output:
+    - The names of all three students and the total student count are printed.
+- Updating an Object's State
+  - `student1.updateProfile("John")` updates `ObjectA`
+    - The name in `ObjectA` changes from "Joan" to "John"
+    - `student1` continues to point to `ObjectA`
+  - Output: The updated name "John" is printed
+- Assigning `student1` to `student4`
+  - `Student student4 = student1`
+    - `student4` now references the same object (`ObjectA`) as `student1`
+  - Output: The name of `student4` ("John") is printed
+- Modifying the Object via `student4`
+  - `student4.updateProfile("Mike")` updates `ObjectA`.
+    - The name in `ObjectA` changes from "John" to "Mike"
+    - Both `student1` and `student4` point to `ObjectA`, so the change is reflected in both.
+  - Output: The name of `student1` ("Mike") is printed.
+- Reassigning `student4` to `student2`
+  - `student4 = student2;`
+    - `student4` now references `ObjectB` (the same object as `student2`), which has the name "Raj"
+    - `student1` remains pointing to `ObjectA`.
+  - Output: The name of `student4` ("Raj") is printed
+- Reassigning `student2` to `student1`
+  - `student2 = student1;`
+    - `student2` now references `ObjectA` (the same object as `student1`)
+    - `student4` still points to `ObjectB` and is unaffected by this reassignment.
+  - Output:
+    - The name of `student4` ("Raj") is printed
+    - The name of `student2` ("Mike") is printed
+- Creating a New Object and Reassigning `student4`
+  - `student4 = new Student();`
+    - A new `Student` object (`ObjectD`) is created.
+    - `student4` now references `ObjectD`
+  - `student4.updatedProfile("Alex")` updates `ObjectD`
+    - The name in `ObjectD` changes to "Alex".
+  - Output:
+    - The name of `student4` ("Alex") is printed.
+    - The names of `student2` ("Mike") and `student1` ("Mike") are unaffected, as they reference `ObjectA`.
+- Key Takeaways
+  - References and Objects
+    - A reference variable holds the memory address of an object.
+    - Multiple references can point to the same object, causing changes made via one reference to be visible through others.
+  - Reassignments:
+    - Reassigning a reference variable makes it point to a different object.
+    - The original object remains unchanged unless it is still referenced by another variable.
+  - Creating New Objects
+    - A new object occupies a distinct memory location.
+    - Reassigning a reference to a new object breaks its link with the previous object.
+  - Memory Visualization
+    - Understanding which object each reference variable points to is crucial for predicting how the code behaves.
+  - This flow demonstrates the dynamic relationship between references and objects, which is vital for effectively managing state in Java programs.
 
 ## Author
 
