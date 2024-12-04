@@ -119,6 +119,7 @@
     - [Minor Note on Method Invocation \& Implicit Narrowing Conversion](#minor-note-on-method-invocation--implicit-narrowing-conversion)
     - [`this` Reference](#this-reference)
     - [Reinitializing Object References](#reinitializing-object-references)
+    - [Minor Note on Executing StudentTest and A Java 11 Feature](#minor-note-on-executing-studenttest-and-a-java-11-feature)
   - [Author](#author)
 
 ## Agenda
@@ -2634,6 +2635,18 @@ public class Student {
   - Memory Visualization
     - Understanding which object each reference variable points to is crucial for predicting how the code behaves.
   - This flow demonstrates the dynamic relationship between references and objects, which is vital for effectively managing state in Java programs.
+
+### Minor Note on Executing StudentTest and A Java 11 Feature
+
+- We will get the following error when executing `StudentTest` in the last lesson if we execute the program like this in the terminal: `java StudentTest.java`
+- ![image](https://github.com/user-attachments/assets/5bd9dea9-1fd2-48f0-8764-58283cfa5922)
+- Here `java` was used instead of `javac`. So, it should be: `javac StudentTest.java` for compilation and `java StudentTest` for execution.
+- The above issue seems to be due to un-intentional execution of `java StudentTest.java`.
+- However, from Java 11, this particular command will still work and will both compile the code and will execute it in one step.
+- Compilation will happen in memory and so, it will not generate a `.class` file like the way we get when we explicitly compile the file using `javac` command.
+- `java StudentTest.java` only works if the class does not use any other class.
+- In this case, `StudentTest` is using `Student` and so it will not work, as seen above.
+- This new feature just helps in avoiding a separate compilation step and hence saves little bit of time.
 
 ## Author
 
