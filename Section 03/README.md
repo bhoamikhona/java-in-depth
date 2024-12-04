@@ -117,6 +117,7 @@
     - [Constructor Overloading](#constructor-overloading)
     - [Constructor Overloading - Alternate Way of Delegating](#constructor-overloading---alternate-way-of-delegating)
     - [Minor Note on Method Invocation \& Implicit Narrowing Conversion](#minor-note-on-method-invocation--implicit-narrowing-conversion)
+    - [`this` Reference](#this-reference)
   - [Author](#author)
 
 ## Agenda
@@ -2293,6 +2294,240 @@ public class Test {
 - References:
   - [1](https://docs.oracle.com/javase/specs/jls/se7/html/jls-5.html#jls-5.2)
   - [2](https://docs.oracle.com/javase/specs/jls/se7/html/jls-5.html#jls-5.3)
+
+### `this` Reference
+
+```java
+public class Student {
+  int id;
+  String name;
+  double gpa;
+
+  Student(int newId, String newName, double newGpa) {
+    id = newId;
+    name = newName;
+    gpa = newGpa;
+  }
+}
+```
+
+- When we first defined the parameterized constructor, we mentioned that we were going to come back to it and change the constructor parameter names, and it is time to do that.
+- It is sort of odd to have these kinds of names like `newId`, `newName`, and `newGpa`.
+- It is kind of difficult to come up with these names because they had to be different from the instance variable names.
+- This is because these parameter names are being used to intiialize the instance variables.
+- Therefore, we had to come up with names that are different from the instance variable names, which can be a bit challenging.
+- However, in reality, we can use the same names as the instance variable names.
+- So, let's go ahead and do that and see what happens and in the process, we will learn about a new keyword.
+
+```java
+public class Student {
+  int id;
+  String name;
+  double gpa;
+
+  // Using the same name as instance variables for the parameters
+  Student(int id, String name, double gpa) {
+    id = id;
+    name = name;
+    gpa = gpa;
+  }
+
+  public static void main(String[] args) {
+    Student student1 = new Student(1000, "John", 3.8);
+    Student student2 = new Student(1001, "Anita", 4.0);
+
+    System.out.println("Name of Student 1: " + student1.name);
+    System.out.println("Name of Student 2: " + student2.name);
+  }
+}
+```
+
+- Now if we run this code, we get `null` as the name of the students.
+- So, what is happening here?
+- In the constructor, the line of code `id = id` is referring the `id` from its parameters.
+- So, the `id` on the left hand side (LHS) of the `=` is not referencing to the instance variable `id`.
+- Because of that, all of the variables in the constructor are not getting initialized.
+- Therefore, we are getting `null` when we are trying to print the names of the students.
+- The reason for that is because, the parameters are local variables, and they have the same name as the instance variables.
+- Recall that method parameters (or constructor parameters) are also local variables.
+- What is happening is that we are using the same name as the instance variable names.
+- So, if local variable names have the same names as the instance variable names then we say that those local variables are **hiding** or **shadowing the instance variables (or static variables)**.
+- Generally, you will see them hiding the instance variables.
+- When we say that they are hiding the instance variables, what it means is, if we use that variable name within that constructor then it would reference the local variable rather than the instance variable (or static variable) declared at the class level.
+- So, local variables are hiding or shadowing class level variables.
+- That's the reason why, `id = id` is referencing local variables.
+- How can we access the instance variables?
+- For that we use something called as `this` reference.
+- Because it is a reference, we can use the dot operator to access the instance variables, like so:
+
+```java
+public class Student {
+  int id;
+  String name;
+  double gpa;
+
+  // Using the same name as instance variables for the parameters
+  Student(int id, String name, double gpa) {
+    // Using `this` reference with dot operator to access instance variables
+    this.id = id;
+    this.name = name;
+    this.gpa = gpa;
+  }
+
+  public static void main(String[] args) {
+    Student student1 = new Student(1000, "John", 3.8);
+    Student student2 = new Student(1001, "Anita", 4.0);
+
+    System.out.println("Name of Student 1: " + student1.name);
+    System.out.println("Name of Student 2: " + student2.name);
+  }
+}
+```
+
+- With this, the instance variables will be initialized.
+
+> [!NOTE]
+>
+> `this` reference and `this()` invocation statement are two different things.
+>
+> `this()` is an invocation statement with which we are calling an overloaded constructor.
+>
+> `this` is a reference variable (object reference) with which we reference to the current object.
+
+- Now the question is, what is `this` referencing? It is referencing the current object.
+- We know about object referencing.
+- In this line of code: `Student student1 = new Student(1001, "John", 3.8)`, the variable `student1` is referencing the object on the right hand side (RHS) of the `=`.
+- And within the student object itself, let's say we want to reference the object itself i.e. the current object, then we would use the `this` reference.
+- For example, if you want to reference an object inside an instance method, then you can do that by using the `this` reference because the `this` keyword is referencing the current object.
+- The same works for constructor.
+- Hence, to access the instance variables inside the constructor, we have to use the `this` reference.
+- So, before using the `this` keyword, the local variable in the constructor was getting initialized by itself, which is meaningless.
+- NOTE: We only need to use the `this` keyword if the local variable is hiding an instance variable, and we want to refer to the instance variable. If there is no hiding or shadowing, we do not need to use the `this` keyword to access the instance variable.
+- Example: the `tuitionFees` and `internationalFees` are instance variables but, they are not hidden by local variables and thus, we do not need to use the `this` reference.
+
+```java
+public class Student {
+  int id;
+  String name;
+  double gpa;
+  boolean international;
+
+  // Using the same name as instance variables for the parameters
+  Student(int id, String name, double gpa, boolean international) {
+    // Using `this` reference with dot operator to access instance variables
+    this.id = id;
+    this.name = name;
+    this.gpa = gpa;
+    this.international = international;
+
+    // tuitionFees and internationalFees are not hidden by local variable so, no need to use `this` reference.
+    if (international) {
+      tuitionFees = tuitionFees + internationalFees;
+    }
+  }
+
+  public static void main(String[] args) {
+    Student student1 = new Student(1000, "John", 3.8, false);
+    Student student2 = new Student(1001, "Anita", 4.0, true);
+
+    System.out.println("Name of Student 1: " + student1.name);
+    System.out.println("Name of Student 2: " + student2.name);
+  }
+}
+```
+
+- Note that the same applies for static variables, if they are hidden and you need to access them. However, this is not very common but, it is possible.
+- Now if you compile and run the code above, this time it will print all the names.
+- So, the instance variables got initialized this time.
+- Also, because `this` is just a reference to the current object, you can also use it access instance methods also. However, typically you wouldn't do that, you can directly access the instance methods from constructor or from inside another instance method.
+- Aside from constructor, the `this` reference can also be used in methods as well.
+
+```java
+public class Student {
+  int id;
+  String name;
+  double gpa;
+  boolean international;
+
+  // Using the same name as instance variables for the parameters
+  Student(int id, String name, double gpa, boolean international) {
+    // Using `this` reference with dot operator to access instance variables
+    this.id = id;
+    this.name = name;
+    this.gpa = gpa;
+    this.international = international;
+
+    // tuitionFees and internationalFees are not hidden by local variable so, no need to use `this` reference.
+    if (international) {
+      tuitionFees = tuitionFees + internationalFees;
+    }
+  }
+
+  // Using `this` reference in a method
+  boolean updateProfile(String name) {
+    this.name = name;
+    return true;
+  }
+
+  public static void main(String[] args) {
+    Student student1 = new Student(1000, "Joan", 3.8, false);
+    Student student2 = new Student(1001, "Anita", 4.0, true);
+
+    System.out.println("Name of Student 1: " + student1.name);
+    System.out.println("Name of Student 2: " + student2.name);
+
+    student1.updateProfile("John");
+    System.out.println("\nUpdated name of Student 1: " + student1.name);
+  }
+}
+```
+
+- Note that `this` is actually an instance variable so, it is allowing us to access instance variables and instance methods.
+- But, `this` cannot be used within a static method.
+- Since, `main()` is a static method, if we use `this` in the `main()` method, we will get an error because from static methods we cannot access instance variables and `this` is an instance variable.
+
+```java
+public class Student {
+  int id;
+  String name;
+  double gpa;
+  boolean international;
+
+  // Using the same name as instance variables for the parameters
+  Student(int id, String name, double gpa, boolean international) {
+    // Using `this` reference with dot operator to access instance variables
+    this.id = id;
+    this.name = name;
+    this.gpa = gpa;
+    this.international = international;
+
+    // tuitionFees and internationalFees are not hidden by local variable so, no need to use `this` reference.
+    if (international) {
+      tuitionFees = tuitionFees + internationalFees;
+    }
+  }
+
+  // Using `this` reference in a method
+  boolean updateProfile(String name) {
+    this.name = name;
+    return true;
+  }
+
+  public static void main(String[] args) {
+    Student student1 = new Student(1000, "Joan", 3.8, false);
+    Student student2 = new Student(1001, "Anita", 4.0, true);
+
+    System.out.println("Name of Student 1: " + student1.name);
+    System.out.println("Name of Student 2: " + student2.name);
+
+    student1.updateProfile("John");
+    System.out.println("\nUpdated name of Student 1: " + student1.name);
+
+    // ERROR: Cannot access `this` from a static method, and `main()` is a static method
+    System.out.println("Name of Student 2: " + this.name); // error
+  }
+}
+```
 
 ## Author
 
