@@ -120,6 +120,7 @@
     - [`this` Reference](#this-reference)
     - [Reinitializing Object References](#reinitializing-object-references)
     - [Minor Note on Executing StudentTest and A Java 11 Feature](#minor-note-on-executing-studenttest-and-a-java-11-feature)
+    - [Coding Exercise 02 - Implementing Instructor Class - Manipulating Arrays with Object References](#coding-exercise-02---implementing-instructor-class---manipulating-arrays-with-object-references)
   - [Author](#author)
 
 ## Agenda
@@ -2647,6 +2648,8 @@ public class Student {
 - `java StudentTest.java` only works if the class does not use any other class.
 - In this case, `StudentTest` is using `Student` and so it will not work, as seen above.
 - This new feature just helps in avoiding a separate compilation step and hence saves little bit of time.
+
+### Coding Exercise 02 - Implementing Instructor Class - Manipulating Arrays with Object References
 
 ## Author
 
