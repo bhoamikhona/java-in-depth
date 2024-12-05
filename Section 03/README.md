@@ -129,6 +129,15 @@
       - [Arrays](#arrays-1)
       - [Methods](#methods)
       - [Constructors](#constructors-1)
+    - [Quiz 03 - Section Quiz](#quiz-03---section-quiz)
+    - [Important Q\&A Discussions!](#important-qa-discussions)
+      - [What is Algorithm Complexity?](#what-is-algorithm-complexity)
+      - [How can you draw a Java smiley using UTF-16 code in Eclipse.](#how-can-you-draw-a-java-smiley-using-utf-16-code-in-eclipse)
+      - [If every statement in Java ends with a semicolon then how is an `if` condition called a control flow "statement" since it does not end with a semicolon.](#if-every-statement-in-java-ends-with-a-semicolon-then-how-is-an-if-condition-called-a-control-flow-statement-since-it-does-not-end-with-a-semicolon)
+      - [It was mentioned that the integer range is related to the bit depth. PLease explain how we can get range from the bit depth.](#it-was-mentioned-that-the-integer-range-is-related-to-the-bit-depth-please-explain-how-we-can-get-range-from-the-bit-depth)
+      - [Why byte is first converted to int and then to char? Why an intermediate conversion to int is required?](#why-byte-is-first-converted-to-int-and-then-to-char-why-an-intermediate-conversion-to-int-is-required)
+      - [In a single application, can we have 1D, 2D, and 3D arrays representing the same data?](#in-a-single-application-can-we-have-1d-2d-and-3d-arrays-representing-the-same-data)
+      - [Is there any specific reason for `this()` statement to be first?](#is-there-any-specific-reason-for-this-statement-to-be-first)
   - [Author](#author)
 
 ## Agenda
@@ -2720,6 +2729,91 @@ public class Student {
 - We can have multiple constructors in the same class.
 - `this()` invocation statement is used to invoke an overloaded constructor.
 - `this()` invocation statement must also be the first statement in the constructor.
+
+### Quiz 03 - Section Quiz
+
+### Important Q&A Discussions!
+
+#### What is Algorithm Complexity?
+
+- It is related to algorithm complexity and it comes from the field of Algorithms and is one of the first things taught in an algorithm course.
+- It is often referred to as "asymptotic analysis".
+- It is difficult to explain the concepts here, but I will give a very high-level idea.
+- "O" is referred to as Big-Oh notation and it tells how an algorithm performs in the worst-case.
+- Generally, if you design an algorithm, then one might ask you what the complexity of the algorithm is to get an idea of how it works.
+- N in the parenthesis is the input size. O(N) means linear complexity.
+- For instance to search an element in a list of 1000 elements (N is 1000), one way is to scan the elements from the beginning until the element is found or you don't find the element.
+- In the worst-case, the element you are searching may not be there or it may be the 1000th element.
+- This search might take some time.
+- Now, if N is 10000 or 1 million, then your worst-case search time also grows linearly with the input size.
+- In this case, your algorithm is doing a naive lookup of one item at a time.
+- But, some other algorithm might do it in a better way.
+- One example is hash algorithm, which we will see in Collections Framework chapter.
+- Here the elements are stored in some special way (via a technique called hashing) and when you search for an element, it would return the element almost instantly.
+- Here it doesn't matter whether your N is 1000 or 10k or 1 million, it will almost always take the same amount of time to find whether your element is there in the list or not.
+- In this case, the complexity is said to be O(1) ~ it is referred to as constant time, i.e., performance is constant regardless of the size of the data.
+- Now, if your data is sorted and if an algorithm like binary search is applied, then the complexity would be logarithmic, i.e., O(log(n)), which is better than O(N), but worse than O(1), i.e., when you move from 1000 elements to 10k, the time would not grow as significantly as an O(N) algorithm.
+- There are also other complexities like quadratic ~ O(N2), cubic ~ O(N3), which are even worse. Here N2 is N raised to the power of 2 and same applies to N3.
+- You may want to get a high-level understanding of algorithm complexity when you get to Section 15 (Collections Framework), which deals with data structures and we will be seeing how different data structures perform.
+- Generally, if you are into Web development and stuff like that you may never have to worry that much about them.
+- But, if you are into algorithm development, then understanding of algorithm complexity is a MUST and you will definitely encounter some questions on it in the interview.
+- But, even for Web development, I would recommend to have a basic understanding of it.
+- You can also read about it from the following link, which describes these concepts in a pretty simple way.
+- I read it long time back and I felt it was explained in a very simple way ~ generally in many cases it is explained in not so easy way as authors get into some math behind these concepts.
+- But, below article should give you a better idea. It is also a good online Java book and so you can bookmark it.
+- [reference](http://math.hws.edu/javanotes/c8/s5.html)
+
+#### How can you draw a Java smiley using UTF-16 code in Eclipse.
+
+- `char CharacterUnicodeDemo='\uE056';`
+- I am not sure about that character. But, try '\u263A'. Ensure the following too:
+- In Eclipse, go to Window -> Preferences -> General -> Workspace -> Text File Encoding -> Other (UTF-8)
+- Font selection: In Eclipse, go to Window -> Preferences -> General -> Appearance -> Colors and Fonts -> Console Font -> Click Edit button and select "Segoe UI Symbol" in Font and hit ok -> hit apply and try running the program. If you don't see "Segoe UI Symbol", click on See more fonts and see if you can find it. If you still cannot find it try 3rd step
+- Control Panel --> Fonts --> Font settings -> Ensure 'Hide fonts based on language settings' is disabled and hit ok. Now, restart Eclipse and do step 2 above to see if "Segoe UI Symbol" can be seen
+- [reference 1](http://paranoid-engineering.blogspot.com/2008/05/getting-unicode-output-in-eclipse.html)
+- [reference 2](https://stackoverflow.com/questions/1799458/display-the-unicode-value-in-the-java-screen)
+- [reference 3](https://superuser.com/questions/336197/unicode-characters-suddenly-start-displaying-as-boxes-in-some-applications)
+- [reference 4](https://stackoverflow.com/questions/44337894/what-is-the-microsoft-office-smiley-face-character-really)
+
+#### If every statement in Java ends with a semicolon then how is an `if` condition called a control flow "statement" since it does not end with a semicolon.
+
+- The most likely reason is the ending brace `}` implicitly signals the end of the statement. Below is a good post discussing this:
+- [reference](https://stackoverflow.com/questions/5561869/why-semicolon-is-not-required-after-a-curled-bracket)
+
+#### It was mentioned that the integer range is related to the bit depth. PLease explain how we can get range from the bit depth.
+
+- Let's consider byte whose bit-depth is 8.
+- With 8 bits you can represent 256 numbers (2 raised to 8).
+- And these 256 numbers fall in the range -128 to +127 including 0.
+- In binary, whether a number is +ve or –ve is represented by 1 bit (called sign bit), which would be the most significant bit and it appears on the left most end; the remaining 7 bits indicate the magnitude of the number.
+- That’s the reason the range says -2 raised to 7 to 2 raised to 7 – 1 (i.e., -128 to +127).
+
+#### Why byte is first converted to int and then to char? Why an intermediate conversion to int is required?
+
+- byte's bit-depth is smaller than char's.
+- So, we need to widen it.
+- Next question could be why not widen to short instead of int?
+- I don't know the reason for that as it is not documented and I never came across an answer for that. Below are two guesses and it may be wrong:
+  - They perhaps wanted to widen it to the next higher type who range covers char. short does not do that and int does and so it is widened to int via sign-extension (i.e., widening) and then int is then narrowed down to char. Below is what Java language specification has to say and below is the link too.
+  - [reference](https://docs.oracle.com/javase/specs/jls/se8/html/jls-5.html#jls-5.1.4)
+  - When dealing with arithmetic operations, we have operand promotion rule (discussed in next section) where operands smaller than int are promoted to int. May be for consistency sake they are doing the same.
+
+#### In a single application, can we have 1D, 2D, and 3D arrays representing the same data?
+
+- Yes. With each added dimension, the corresponding array would provide more details.
+- Go through the lesson for more details.
+
+#### Is there any specific reason for `this()` statement to be first?
+
+- The main reason is to do with inheritance, which is discussed in OOPS-related sections few sections from here.
+- There you come across the concept of super class & subclass where subclass extends super class and inherits properties (e.g., certain variables & methods) of super class.
+- So, a super class object should first be constructed before a subclass object is constructed.
+- Otherwise, subclass object can inherit variables that are not initialized in super class, which is meaningless.
+- To make this work properly, super class constructors are invoked from the sub-class constructors by using a super() call (can be done by compiler too, but let's not worry about this as this will be clear when we get to inheritance)
+- So, coming to your question, if you have a this() statement as first one, then it would invoke another constructor, which in turn invokes the super class constructor via super() thus ALWAYS ensuring that super class object is fully constructed before subclass object.
+- Below post is relevant and I found the user Randa Sbeity's answer useful.
+- However, this restriction is not that popular as discussed in few answers in the below post (including language designers) and why that is the case is not entirely clearly to me at this point -- probably requires to do much more in-depth reading.
+- [reference](https://stackoverflow.com/questions/1168345/why-do-this-and-super-have-to-be-the-first-statement-in-a-constructor)
 
 ## Author
 
