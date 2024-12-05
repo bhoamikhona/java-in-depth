@@ -122,6 +122,7 @@
     - [Minor Note on Executing StudentTest and A Java 11 Feature](#minor-note-on-executing-studenttest-and-a-java-11-feature)
     - [Coding Exercise 02 - Implementing Instructor Class - Manipulating Arrays with Object References](#coding-exercise-02---implementing-instructor-class---manipulating-arrays-with-object-references)
     - [Review of Exercise Solution with Best Practices](#review-of-exercise-solution-with-best-practices)
+    - [Cafe Order Processor - Taking Customer Orders via Constructors](#cafe-order-processor---taking-customer-orders-via-constructors)
   - [Author](#author)
 
 ## Agenda
@@ -2660,6 +2661,8 @@ public class Student {
   - We will learn all about accessor methods and access modifiers (`private`, `public`, etc) later.
 - When you want to create a new object without initializing its instance variables, create an overloading constructor with no arguments i.e. no-args constructor.
 - Note: Strings can be assigned `null`.
+
+### Cafe Order Processor - Taking Customer Orders via Constructors
 
 ## Author
 
