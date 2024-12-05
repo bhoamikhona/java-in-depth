@@ -121,6 +121,7 @@
     - [Reinitializing Object References](#reinitializing-object-references)
     - [Minor Note on Executing StudentTest and A Java 11 Feature](#minor-note-on-executing-studenttest-and-a-java-11-feature)
     - [Coding Exercise 02 - Implementing Instructor Class - Manipulating Arrays with Object References](#coding-exercise-02---implementing-instructor-class---manipulating-arrays-with-object-references)
+    - [Review of Exercise Solution with Best Practices](#review-of-exercise-solution-with-best-practices)
   - [Author](#author)
 
 ## Agenda
@@ -2650,6 +2651,15 @@ public class Student {
 - This new feature just helps in avoiding a separate compilation step and hence saves little bit of time.
 
 ### Coding Exercise 02 - Implementing Instructor Class - Manipulating Arrays with Object References
+
+### Review of Exercise Solution with Best Practices
+
+- We need the `this` reference only if there is a local variable hiding the instance variable i.e. if we have local variable with the same name as the instance variable.
+- Best Practice: Instead of using a property from another class to access its value, you should always use the accessor methods to access it.
+  - In order to enforce it, we use the `private` keyword but, since all of those topics are not discussed yet, it is fine for now.
+  - We will learn all about accessor methods and access modifiers (`private`, `public`, etc) later.
+- When you want to create a new object without initializing its instance variables, create an overloading constructor with no arguments i.e. no-args constructor.
+- Note: Strings can be assigned `null`.
 
 ## Author
 
