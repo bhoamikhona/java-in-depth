@@ -123,6 +123,12 @@
     - [Coding Exercise 02 - Implementing Instructor Class - Manipulating Arrays with Object References](#coding-exercise-02---implementing-instructor-class---manipulating-arrays-with-object-references)
     - [Review of Exercise Solution with Best Practices](#review-of-exercise-solution-with-best-practices)
     - [Cafe Order Processor - Taking Customer Orders via Constructors](#cafe-order-processor---taking-customer-orders-via-constructors)
+    - [Conclusion](#conclusion-4)
+      - [Object Oriented Programming (OOP)](#object-oriented-programming-oop)
+      - [Variables](#variables)
+      - [Arrays](#arrays-1)
+      - [Methods](#methods)
+      - [Constructors](#constructors-1)
   - [Author](#author)
 
 ## Agenda
@@ -2663,6 +2669,57 @@ public class Student {
 - Note: Strings can be assigned `null`.
 
 ### Cafe Order Processor - Taking Customer Orders via Constructors
+
+### Conclusion
+
+- This is the end of this section.
+- Through this section, we got started with the Java language basics.
+- We have taken a top-down approach in learning the concepts i.e. we first introduced a concept of OOP by learning what classes and objects are.
+- We studied variables, methods, and constructors in detail which are the core building-blocks of a class.
+- We also look at the first data structure of the course, which is an array.
+- Now let's look at some of the important points we covered in this section.
+
+#### Object Oriented Programming (OOP)
+
+- We started by looking at OOP which helps model real world scenarios in a more natural way.
+- In Java, an object is used to represent a real-world entity like a student.
+- Objects are defined using a class i.e. classes are like a blueprint and objects are instances of a class.
+
+#### Variables
+
+- A variable is simply a container that holds something and the type of data that a variable can hold is defined at the variable creation time itself by stating the variable's type.
+- So, once a variable's type is defined, it can only hold data of that particular type and it cannot hold any other type of data.
+- Due to this, Java is referred to as a statically typed language.
+- A variable's type can either be a primitive type or a class name.
+- In Java, we have 8 primitive data types.
+- There are 3 kinds of variables:
+  - Instance - They are unique to each object and they hold an object's state.
+  - Static - They are class variables that are shared across all objects of the class.
+  - Local - They are defined within methods and constructors. Also, method parameters and constructor parameters are considered local variables.
+
+#### Arrays
+
+- In Java, array is an object i.e. it gets stored on the heap, like any other Java object.
+- It is used to store a fixed number of elements of a single type.
+- The type can be either primitive or object reference.
+- Array supports fast random access, and by fast, we mean constant time.
+- So, accessing 1000th element would take the same amount of time as accessing the 5th element.
+
+#### Methods
+
+- Methods basically represent behavior.
+- Java always uses pass-by-value mechanism while passing data to methods.
+- Even for object references, we know that it passes a copy of the memory address of the object.
+- We then learned about method overloading where we can have multiple methods with the same name but, different parameter list.
+- To be considered a valid overload, method parameters must be different.
+
+#### Constructors
+
+- A constructor is invoked when an object is being created.
+- It is typically used to initialize object's state.
+- We can have multiple constructors in the same class.
+- `this()` invocation statement is used to invoke an overloaded constructor.
+- `this()` invocation statement must also be the first statement in the constructor.
 
 ## Author
 
