@@ -16,6 +16,7 @@
       - [Operand Promotion](#operand-promotion)
       - [Same-Type Operations](#same-type-operations)
       - [Mixed-Type Operations](#mixed-type-operations)
+    - [Minor Clarification on Arithmetic Operator Precedence Rule](#minor-clarification-on-arithmetic-operator-precedence-rule)
   - [Author](#author)
 
 ## Agenda
@@ -208,5 +209,25 @@ array[index--] = 10; // Uses index 0, then decrements to -1
 - Order of promotion: `int` -> `long` -> `float`, -> `double`
 - Note that if you have `long` and `float operands, `long`is promoted to`float`even though`long`is 64 bit and`float` is 32 bit.
 - Type of final result will be of the largest data type in the expression.
+
+### Minor Clarification on Arithmetic Operator Precedence Rule
+
+- This is a minor clarification on Operator Precedence rules that were discussed in the beginning of the previous lesson.
+- We had the following two rules that help with implicit grouping of operators and operands.
+- Once grouped, the evaluation of sub-expressions happen from left-to-right.
+- Below is an explanation of grouping and evaluation process with the same example `5 + 9 - 3 + 2 * 5` from the lesson.
+- Rule 01: Multiplicative operators (\*, /, %) have higher precendence over additive operators (+, -)
+- Rule 02: Operators with same precedence are groupd left-to-right.
+- By applying rule 1, our expression becomes `5 + 9 - 3 + (2 * 5)`. Here 2 \* 5 is only grouped, but not yet evaluated to 10.
+- Next by applying rule 2, our expression `5 + 9 - 3 + (2 * 5)` becomes `((5 + 9) - 3) + (2 * 5)` as remaining expression is left with only additive operators.
+- Finally, our expression will be evaluated from left-to-right. That is evaluation happens in following sequence:
+- `(5 + 9)` is evaluated first resulting in `(14 - 3) + (2 * 5)`.
+- Next, `(14 - 3)`, which is the left operand of `+` is evaluated resulting in `11 + (2 * 5)`.
+- Next, the right operand of `+` is evaluated resulting in `11 + 10`.
+- Finally, since both operands of `+` are evaluated, `+` operator will be applied resulting in `21` as the final value.
+- As another example, let's consider the following statement where we are invoking methods `foo()` & `bar()` and the values returned are added.
+- Since we have only a single `+` operator, we just evaluate from left-to-right, i.e., we first evaluate left operand (invoking `foo()`) and then the right operand would be evaluated (invoking `bar()`).
+- Finally, the returned values are added.
+- In general, for any arithmetic operator, the operands are first evaluated completely (left followed by right) before the operator is applied: `int val = foo() + bar();`
 
 ## Author
