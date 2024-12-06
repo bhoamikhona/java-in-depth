@@ -9,6 +9,8 @@
   - [Agenda](#agenda)
   - [Lessons Learned](#lessons-learned)
     - [Operators](#operators)
+    - [Arithmetic Operators](#arithmetic-operators)
+      - [Understanding How `++` and `--` Works with Arrays](#understanding-how--and----works-with-arrays)
   - [Author](#author)
 
 ## Agenda
@@ -78,5 +80,104 @@
     - `x > 3` is a condition being tested and if the result is true then the expression returns `x`, which is the second operand. Otherwise, it returns `0`, which is the third operand.
     - `>` is a comparison operator, which we will discuss in one of subsequent lessons.
     - We will discuss the ternary operator while discussing the control flow statements, as it can be used as an alternative to one of them.
+
+### Arithmetic Operators
+
+- Java supports 5 arithmetic operations:
+  - Addition: `+`
+    - A unary plus, example: `int i = +5` is used to indicate that a number is positive.
+    - A binary plus, example `int y = 2 + 3` is used for addition.
+    - If one of the operands in the binary plus is a string then, it is used as a string concatenation operator.
+  - Subtraction: `-`
+    - A unary minus, example: `int i = -2` can be used to indicate that the number or the expression is negative.
+  - Multiplication: `*`
+  - Division: `/`
+  - Modulus: `%`
+- These arithmetic operations are onl applicable to numeric primitive data types.
+- Shorthand Operators
+  - Increment/Decrement
+    - Applies to addition and subtraction
+    - `++` (increment) or `--` (decrement)
+    - They are used for incrementing/decrementing a variable's value by 1.
+    - `x++` is identical to `x = x + 1`
+    - `x--` is identical to `x = x - 1`
+  - Compound Arithmetic Assignment Operators
+    - Applies to all arithmetic operators
+      - `+=`
+      - `-=`
+      - `*=`
+      - `/=`
+      - `%=`
+    - Example: `x += 5` is equivalent to `x = x + 5`
+  - Pre and Post Operators
+    - Let's consider a variable `x` which is initialized to the value `5` i.e. `x = 5`.
+    - Post increment operator would look like this: `x++`
+    - This would increment `x` to `6`.
+    - Pre increment operator looks like this: `++x`, where `++` is followed by the variable. This would also increment `x` to `6`.
+    - Essentially, both are incrementing `x` by 1.
+    - So, what is pre and post then?
+    - For that we need to consider either an assignment or a declaration statement.
+    - Consider this delcaration statement: `int y = x++;`
+    - This statement would first assign the current value of `x` to `y`, and then increment the value of `x`.
+    - Here the value of `x` will be 6 and the value of `y` will be `5`.
+    - Essentially, it is identical to these two statements, in that order: `int y = x` and `x = x + 1`.
+    - Now, let's consider this statement to understand pre increment operation: `int y = ++x;`
+    - This would first increment `x` and then assign the resulting value to `y` i.e. `x` is first incremented to `6` and the value `6` is assigned to `y`.
+    - So, both `x` and `y` would be 6 after this statement is executed.
+    - It is identical to these two statements, in that order: `x = x + 1` and `int y = x`.
+    - Comparing the two, just the order of both operations is swapped.
+    - So, pre implies that increment will happen first and then the assignment.
+    - Post implies that assignment will happen first and then the increment.
+    - Pre and Post decrement will also work in the same way, except that it will decrease the value by 1, instead of increasing it.
+    - Example: `int y = x--` Here `y` is equal to `5` and `x` is equal to `4`.
+    - Example: `int y = --x` Here `y` is equal to `4` and `x` is equal to `4`.
+
+#### Understanding How `++` and `--` Works with Arrays
+
+- The `++` and `--` operator, when used in conjunction with arrays, determines which index is accessed or modified and whether the index value changes before or after the operation.
+- Behavior of `++` and `--` with arrays:
+  - `++` increases the value of the index
+  - `--` decreases the value of the index
+  - Can be applied as pre or post operators
+- Pre-Increment/Decrement (`++index`/`--index`)
+  - The index is modified before accessing the array.
+  - Example:
+  ```java
+  array[++index] = value; // Increment index, then assign
+  array[--index] = value; // Decrement index, then assign
+  ```
+- Post-Increment/Decrement(`index++`/`index--`)
+  - The current value of the index is used first, and then the modification happens after the operation.
+  - Example:
+  ```java
+  array[index++] = value; // Assign, then increment index
+  array[index--] = value; // Assign, then decrement index
+  ```
+- Example for `++`:
+
+```java
+int index = 0;
+int[] array = new int[3];
+array[index++] = 10; // Uses index 0, then increments to 1
+array[index++] = 20; // Uses index 1, then increments to 2
+array[index++] = 30; // Uses index 2, then increments to 3
+// Final array: [10, 20, 30]
+```
+
+- Example for `--`:
+
+```java
+int index = 2;
+int[] array = new int[3];
+array[index--] = 30; // Uses index 2, then decrements to 1
+array[index--] = 20; // Uses index 1, then decrements to 0
+array[index--] = 10; // Uses index 0, then decrements to -1
+// Final array: [10, 20, 30]
+```
+
+- Key notes:
+  - Pre (`++index`, `--index`): Modify index before array access.
+  - Post (`index++`, `index--`): Modify index after array access.
+  - Ensure index remains within valid array bounds to avoid exceptions.
 
 ## Author
