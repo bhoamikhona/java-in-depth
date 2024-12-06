@@ -17,6 +17,7 @@
       - [Same-Type Operations](#same-type-operations)
       - [Mixed-Type Operations](#mixed-type-operations)
     - [Minor Clarification on Arithmetic Operator Precedence Rule](#minor-clarification-on-arithmetic-operator-precedence-rule)
+    - [Quiz 04 - Arithmetic Operators](#quiz-04---arithmetic-operators)
   - [Author](#author)
 
 ## Agenda
@@ -229,5 +230,7 @@ array[index--] = 10; // Uses index 0, then decrements to -1
 - Since we have only a single `+` operator, we just evaluate from left-to-right, i.e., we first evaluate left operand (invoking `foo()`) and then the right operand would be evaluated (invoking `bar()`).
 - Finally, the returned values are added.
 - In general, for any arithmetic operator, the operands are first evaluated completely (left followed by right) before the operator is applied: `int val = foo() + bar();`
+
+### Quiz 04 - Arithmetic Operators
 
 ## Author
