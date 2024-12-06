@@ -18,6 +18,7 @@
       - [Mixed-Type Operations](#mixed-type-operations)
     - [Minor Clarification on Arithmetic Operator Precedence Rule](#minor-clarification-on-arithmetic-operator-precedence-rule)
     - [Quiz 04 - Arithmetic Operators](#quiz-04---arithmetic-operators)
+    - [Note on Student Class](#note-on-student-class)
   - [Author](#author)
 
 ## Agenda
@@ -232,5 +233,7 @@ array[index--] = 10; // Uses index 0, then decrements to -1
 - In general, for any arithmetic operator, the operands are first evaluated completely (left followed by right) before the operator is applied: `int val = foo() + bar();`
 
 ### Quiz 04 - Arithmetic Operators
+
+### Note on Student Class
 
 ## Author
