@@ -11,6 +11,11 @@
     - [Operators](#operators)
     - [Arithmetic Operators](#arithmetic-operators)
       - [Understanding How `++` and `--` Works with Arrays](#understanding-how--and----works-with-arrays)
+    - [Aritmetic Operation Precedence \& Promotion Rules](#aritmetic-operation-precedence--promotion-rules)
+      - [Operator Precedence](#operator-precedence)
+      - [Operand Promotion](#operand-promotion)
+      - [Same-Type Operations](#same-type-operations)
+      - [Mixed-Type Operations](#mixed-type-operations)
   - [Author](#author)
 
 ## Agenda
@@ -179,5 +184,29 @@ array[index--] = 10; // Uses index 0, then decrements to -1
   - Pre (`++index`, `--index`): Modify index before array access.
   - Post (`index++`, `index--`): Modify index after array access.
   - Ensure index remains within valid array bounds to avoid exceptions.
+
+### Aritmetic Operation Precedence & Promotion Rules
+
+#### Operator Precedence
+
+- Arithmetic Operations in Java follow PEMDAS-LR.
+- PEMDAS-LR rule guides the correct sequence for solving a mathematical expression.
+- It prioritizes operations within parentheses first, followed by exponents or powers.
+- Then, it proceeds with multiplication or division (from left to right), and finally, addition or subtraction (from left to right).
+
+#### Operand Promotion
+
+- Operands smaller than `int` viz `byte`, `short`, or `char` are first promoted to `int`.
+
+#### Same-Type Operations
+
+- If both operands are `int`, `long`, `float`, or `double`, then operations are carried in that type and evaluated to a value of that type.
+
+#### Mixed-Type Operations
+
+- If operands belong to different types, then smaller type is promoted to larger type.
+- Order of promotion: `int` -> `long` -> `float`, -> `double`
+- Note that if you have `long` and `float operands, `long`is promoted to`float`even though`long`is 64 bit and`float` is 32 bit.
+- Type of final result will be of the largest data type in the expression.
 
 ## Author

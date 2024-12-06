@@ -231,11 +231,27 @@ public class BasicsDemo {
     System.out.println(num % 2);
   }
 
+  static void charTypePromotion() {
+    System.out.println("\n\nInside charTypePromotion...");
+
+    char char1 = 50; // Will be assigned corresponding to UTF-16 value 2
+    System.out.println("char1: " + char1);
+    System.out.println("(73 - char1): " + (73 - char1)); // char 1 gets promoted to int i.e. decimal equivalent 50 in
+                                                         // UTF-16 is used
+    System.out.println("(char1 - '3'): " + (char1 - '3')); // char1 & '3' are promoted to int
+
+    // prettier-ignore
+    System.out.println("('a' + 'b'): " + ('a' + 'b')); // 'a' & 'b' are promoted ot int and the respective equivalents
+                                                       // 97 & 98 are added
+  }
+
   public static void main(String[] args) {
 
-    isOddOrEven(50);
-    compoundArithmeticAssignment();
-    preAndPost();
+    charTypePromotion();
+
+    // isOddOrEven(50);
+    // compoundArithmeticAssignment();
+    // preAndPost();
 
     // varargsOverload(true, 1, 2, 3);
     // varargsOverload(true, 1, 2, 3, 4, 5, 6, 7, 8);
