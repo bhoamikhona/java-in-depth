@@ -19,6 +19,7 @@
     - [Minor Clarification on Arithmetic Operator Precedence Rule](#minor-clarification-on-arithmetic-operator-precedence-rule)
     - [Quiz 04 - Arithmetic Operators](#quiz-04---arithmetic-operators)
     - [Note on Student Class](#note-on-student-class)
+    - [Comparison Operators](#comparison-operators)
   - [Author](#author)
 
 ## Agenda
@@ -235,5 +236,42 @@ array[index--] = 10; // Uses index 0, then decrements to -1
 ### Quiz 04 - Arithmetic Operators
 
 ### Note on Student Class
+
+### Comparison Operators
+
+- THere are six comparison operators (also known as relational operators), and they are very straightforward:
+  - `>` - only applicable to numeric primitive data types
+  - `<` - only applicable to numeric primitive data types
+  - `>=` - only applicable to numeric primitive data types
+  - `<=` - only applicable to numeric primitive data types
+  - `==` - applicable to all primitive data types and to object references
+  - `!=` - applicable to all primitive data types and to object references
+- A comparison operator is used for comparing one operand with another operand.
+- A comparison operation evaluates to a `boolean` value i.e. `true` or `false`.
+- This means that, they are used for condition, and conditions are useful in control flow statements like `if` statement.
+- When comparing two object references using equality operators i.e. `==` and `!=` then it is called identity comparison.
+- Equality operators are also great for `null` checks. Example:
+
+```java
+static boolean update(Student s, String name) {
+
+  /*
+   * We are checking for `null` here because if the object is empty and
+   * we try to access its `name` property then it will throw a
+   * NullPointerException.
+   *
+   * So, equality operators can be used for checking `null` values.
+   *
+   * Also, since we are checking for a value of a parameter, such checking
+   * is called parameter validation.
+   */
+  if (s == null) {
+    return false;
+  }
+
+  s.name = name;
+  return true;
+}
+```
 
 ## Author

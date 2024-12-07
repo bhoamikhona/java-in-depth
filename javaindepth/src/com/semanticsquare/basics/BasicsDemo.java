@@ -209,7 +209,7 @@ public class BasicsDemo {
   }
 
   static void compoundArithmeticAssignment() {
-    System.out.println("\n\nInside compoundArithmeticAssignment");
+    System.out.println("\n\nInside compoundArithmeticAssignment...");
 
     int x = 100;
 
@@ -245,9 +245,53 @@ public class BasicsDemo {
                                                        // 97 & 98 are added
   }
 
+  static boolean update(Student s, String name) {
+
+    if (s == null) {
+      return false;
+    }
+
+    s.name = name;
+    return true;
+  }
+
+  static void comparisonOperators() {
+    System.out.println("\n\nInside comparisonOperators...");
+
+    int age = 25;
+
+    if (age > 21) {
+      System.out.println("Graduate Student");
+    }
+
+    System.out.println("age > 21: " + (age > 21));
+    System.out.println("age >= 21: " + (age >= 21));
+    System.out.println("age < 21: " + (age < 21));
+    System.out.println("age <= 21: " + (age <= 21));
+    System.out.println("age == 21: " + (age == 21)); // equal to (equality operator)
+    System.out.println("age != 21: " + (age != 21)); // not equal to (equality operator)
+
+    boolean isInternational = true;
+
+    // System.out.println("isInternational <= true: " + (isInternational <= true));
+    // // invalid
+    System.out.println("isInternational == true: " + (isInternational == true));
+    System.out.println("isInternational != true: " + (isInternational != true));
+
+    Student s1 = new Student(1000, "John");
+    Student s2 = new Student(1000, "John");
+
+    System.out.println("s1 == s2: " + (s1 == s2));
+    System.out.println("s1 != s2: " + (s1 != s2));
+
+    update(null, "John");
+  }
+
   public static void main(String[] args) {
 
-    charTypePromotion();
+    comparisonOperators();
+
+    // charTypePromotion();
 
     // isOddOrEven(50);
     // compoundArithmeticAssignment();
