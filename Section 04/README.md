@@ -25,13 +25,14 @@
     - [Car Price Estimator - Coding Exercise for Comparison \& Logical Operators Overview](#car-price-estimator---coding-exercise-for-comparison--logical-operators-overview)
     - [Coding Exercise 04 - Car Price Estimator - Putting Comparison \& Logical Operators in Action](#coding-exercise-04---car-price-estimator---putting-comparison--logical-operators-in-action)
     - [Car Price Estimator - Exercise Solution Review](#car-price-estimator---exercise-solution-review)
-    - [Bitwise Operator](#bitwise-operator)
+    - [Bitwise Operators](#bitwise-operators)
       - [Bitwise AND (`&`)](#bitwise-and-)
       - [Bitwise OR (`|`)](#bitwise-or-)
       - [Bitwise XOR (`^`)](#bitwise-xor-)
       - [Bitwise NOT (`~`)](#bitwise-not-)
       - [Non Short Circuit Operators](#non-short-circuit-operators)
       - [Compound Bitwise Assignment](#compound-bitwise-assignment)
+    - [Quick Note on Bitwise Operators with Boolean Operands](#quick-note-on-bitwise-operators-with-boolean-operands)
   - [Author](#author)
 
 ## Agenda
@@ -517,5 +518,13 @@ operand1 ^= operand2; // bitwise compound XOR operator
 > Bitwise only works on integer and boolean data types. It does not work on float/double or object references.
 
 - If you apply bitwise operators on `char` then it is first converted to `int` and then the binary representation of `int` value is used for bitwise operation.
+
+### Quick Note on Bitwise Operators with Boolean Operands
+
+- In the last lesson, we mainly discussed about bitwise operators applied on integer primitives as they are most commonly used as operands.
+- We said using bitwise operators with boolean operands is very rare and did not discuss it.
+- However, there are a couple of things that need to be highlighted about applying bitwise on boolean operands:
+  - Among bitwise operators, only `&`, `|`, and `^` can be used with boolean operands. Bitwise NOT (`~`) will not even compile with boolean. If we need such beahvior then we would use logical NOT (`!`) operator.
+  - Also, strictly speaking, to be consisten with the Java language specification (JLS), the operators `&`, `|`, and `^` when applied on boolean operands are referred to as logical operators and not bitwise. In other words, the operators `&`, `|` and `^` are referref to as bitwise ONLY when they are applied on integer operands and this is the common scenario as we discussed. Also, keep in mind that the logical operators `&&` and `||` have the short-circuit property due to which JLS refers to them as conditional AND and conditional OR respectively. With `&` and `|`, as discussed in the lesson, they do not have the short-circuit property i.e. they always force JVM to evaluate both operands.
 
 ## Author
