@@ -24,6 +24,14 @@
       - [Short Circuit](#short-circuit)
     - [Car Price Estimator - Coding Exercise for Comparison \& Logical Operators Overview](#car-price-estimator---coding-exercise-for-comparison--logical-operators-overview)
     - [Coding Exercise 04 - Car Price Estimator - Putting Comparison \& Logical Operators in Action](#coding-exercise-04---car-price-estimator---putting-comparison--logical-operators-in-action)
+    - [Car Price Estimator - Exercise Solution Review](#car-price-estimator---exercise-solution-review)
+    - [Bitwise Operator](#bitwise-operator)
+      - [Bitwise AND (`&`)](#bitwise-and-)
+      - [Bitwise OR (`|`)](#bitwise-or-)
+      - [Bitwise XOR (`^`)](#bitwise-xor-)
+      - [Bitwise NOT (`~`)](#bitwise-not-)
+      - [Non Short Circuit Operators](#non-short-circuit-operators)
+      - [Compound Bitwise Assignment](#compound-bitwise-assignment)
   - [Author](#author)
 
 ## Agenda
@@ -373,5 +381,141 @@ if (age > 35 && salary > 90000 || !hasBadCredit) {
 ### Car Price Estimator - Coding Exercise for Comparison & Logical Operators Overview
 
 ### Coding Exercise 04 - Car Price Estimator - Putting Comparison & Logical Operators in Action
+
+### Car Price Estimator - Exercise Solution Review
+
+### Bitwise Operators
+
+- Bitwise operators work with individual bits of operands.
+- Operands can be either integer primtiives or boolean.
+- Boolean as an operand is very rarely used.
+- When we were discussing about arithmetic operators, we said something about the operand promotion rule, where operand smaller than `int` are automatically promoted to `int`. That rule also applies here, for bitwise oeprators.
+- NOTE: We said that bitwise operators work at bit level but, then we also said that the operands can be integers so, what does that mean?
+- That means that the bitwise operators would actually consider the binary representation of integer operands and then operate on them at bit level.
+- Bitwise operators are heavily used in embedded system applications, where there are limited amount of resources, for example, very limited memory.
+- In such cases, things have to be manipulated very efficiently, and bitwise operators can play a vital role here.
+- They are also typically used in hash tables, which is a fundamental data structure, like an array.
+- Bitwise operators are also heavily used in data compression and data encryption fields.
+- Generally speaking, there is a good chance that you may never use bitwise operators unless you are doing some really low-level programming where performance is critical and things have to be managed efficiently.
+- However, it is always a good idea to learn about them, just in case.
+- There 4 bitwise operators:
+  - `&` Bitwise AND
+  - `|` Bitwise OR
+  - `^` Bitwise XOR (exclusive OR)
+  - `~` Bitwise NOT
+- Now let's look at each of them.
+
+#### Bitwise AND (`&`)
+
+- Bitwise AND operator (`&`) will return 1 if both input bits are 1, otherwise it will return 0.
+- Consider this Example:
+
+```java
+x = 1;
+y = 3;
+```
+
+- Applying Bitwise AND on `x` and `y` would return an integer value of 1.
+
+```java
+x = 1;
+y = 3;
+
+System.out.println(x & y); // 1
+```
+
+- To understand how it works, consider the binary representations of `x` and `y`:
+- ![bitwise-4](https://github.com/user-attachments/assets/7f6218a1-bfb5-48ed-9eda-027275ccebe1)
+- As you can see, only the last bit of both numbers is 1, and so in the output, only the last bit would be 1, the rest would be 0.
+- So, the result is the decimal value 1.
+
+> [!NOTE]
+>
+> If the operands are booleans instead of integers then all bitwise oeprators would treat the boolean value `true` as `1` and `false` as `0`.
+
+#### Bitwise OR (`|`)
+
+- Bitwise OR would return 1 if at least one of the input bits is 1.
+
+```java
+x = 1;
+y = 3;
+
+System.out.println(x | y); // 3
+```
+
+- Binary representation:
+- ![bitwise-5](https://github.com/user-attachments/assets/9b7caa47-c3d1-48ac-a79b-f4a29b60777e)
+- As you can see, we have 1 in the output if one of the input bits is 1.
+- So, the result is the decimal value 3.
+
+#### Bitwise XOR (`^`)
+
+- Bitwise XOR returns 1 if and only if one of the inputs is 1, but not both.
+
+```java
+x = 1;
+y = 3;
+
+System.out.println(x ^ y); // 2
+```
+
+- Binary representation:
+- ![bitwise-6](https://github.com/user-attachments/assets/3e2e0942-b4da-4488-a454-f414a310f140)
+- As you can see, we have 1 in the output if and only if one of the inputs is 1.
+- But, we get a 0 if either both are 1 or both are 0.
+- So, the final result is the decimal value 2.
+
+#### Bitwise NOT (`~`)
+
+- Bitwise NOT is a unary operator.
+- It simply inverts the bits of its operand.
+- Consider this example:
+
+```java
+x = 1;
+
+System.out.println(~x); // -2
+```
+
+- Binary represenation:
+- ![bitwise-7](https://github.com/user-attachments/assets/ae20316a-4884-43a3-841a-b70edf4bfc00)
+- As you can see, all the 0s are made 1s, and the last bit 1 is made 0.
+- The corresponding decimal number is integer -2.
+
+#### Non Short Circuit Operators
+
+- Bitwise operators do not short circuit and therefore, they are referred to as non-short-circuit operators.
+- This means that these operators force JVM to always check both the operands.
+
+#### Compound Bitwise Assignment
+
+- Bitwise can also be compounded:
+  - `&=`
+  - `|=`
+  - `^=`
+- Example:
+
+```java
+opearand1 = operand1 & operand2; // expanded form
+operand1 &= operand2; // compounded form
+
+// example:
+boolean b = true;
+b &= false; // b = b & false --> b = true & false --> b = false
+```
+
+- Similarly, we have compounded bitwise OR operator and bitwise compound XOR operator:
+
+```java
+operand1 |= operand2; // bitwise compound OR operator
+operand1 ^= operand2; // bitwise compound XOR operator
+```
+
+> [!NOTE]
+>
+> Bitwise only works on integer and boolean data types. It does not work on float/double or object references.
+
+- If you apply bitwise operators on `char` then it is first converted to `int` and then the binary representation of `int` value is used for bitwise operation.
 
 ## Author
