@@ -22,6 +22,7 @@
     - [Comparison Operators](#comparison-operators)
     - [Logical Operators with Operator Precedence](#logical-operators-with-operator-precedence)
       - [Short Circuit](#short-circuit)
+    - [Car Price Estimator - Coding Exercise for Comparison \& Logical Operators Overview](#car-price-estimator---coding-exercise-for-comparison--logical-operators-overview)
   - [Author](#author)
 
 ## Agenda
@@ -367,5 +368,7 @@ if (age > 35 && salary > 90000 || !hasBadCredit) {
   - ! > arithmetic > comparison > &&, ||
 - ![operator-precedence](https://github.com/user-attachments/assets/c7112a9a-c660-46ce-8aca-1316197cf04d)
 - Always use parentheses to make it clear and for readability purposes.
+
+### Car Price Estimator - Coding Exercise for Comparison & Logical Operators Overview
 
 ## Author
