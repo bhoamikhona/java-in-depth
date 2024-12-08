@@ -20,6 +20,8 @@
     - [Quiz 04 - Arithmetic Operators](#quiz-04---arithmetic-operators)
     - [Note on Student Class](#note-on-student-class)
     - [Comparison Operators](#comparison-operators)
+    - [Logical Operators with Operator Precedence](#logical-operators-with-operator-precedence)
+      - [Short Circuit](#short-circuit)
   - [Author](#author)
 
 ## Agenda
@@ -273,5 +275,97 @@ static boolean update(Student s, String name) {
   return true;
 }
 ```
+
+### Logical Operators with Operator Precedence
+
+- There are 3 logical operators and they have something to do with creating logic:
+  - AND: `&&`
+    - This is a binary operator.
+    - Returns true only if both the operands are true, otherwise returns false.
+  - OR: `||`
+    - This is a binary operator.
+    - Returns true if at least one of the operands is true, otherwise returns false.
+  - NOT: `!`
+    - This is a unary operator.
+    - This simply returns the inverse of its operand i.e. if the operand is true, it returns false and if the operand if false, it returns true.
+    - It is also referred to as logical complement operator.
+- Logical operators help to check multiple conditions at once, for example, in an `if` statement. This helps reduce the number of nested `if` statements.
+- Example:
+
+```java
+// nested if statements:
+if (age > 35) {
+  if (salary > 90_000) {
+    // approve loan
+  }
+}
+
+// using logical operators
+if (age > 35 && salary > 90_000) {
+  // approve loan
+}
+```
+
+- Essentially what we have here, with these logcial operations is Boolean Algebra.
+- In Boolean Algebra, AND oepration is referred to as conjunction, OR is referred to as disjunction, and NOT as negation.
+- We can refer to all these expressions with local operations as just Boolean expressions.
+- ![truth-table](https://github.com/user-attachments/assets/2fe005ec-cee9-4b9d-8d1a-a46aea1cba9a)
+- The above image is of something called Truth Table (as referred in Boolean Algebra).
+- So, logical operators take boolean operands and evaluate to a boolean value.
+- If the operands are something other than boolean then we get a compiler error.
+- Control statements are where we see logical operations being commonly used.
+
+#### Short Circuit
+
+- Short Circuit AND:
+  - With regards to AND operator, if the first operand is false, then the entire expression results to false. It short circuits and doesn't even bother checking the second operand.
+  - So, the second operand is conditionally evaluated, rather than always.
+  - For this reason, AND operator is also referred to as Conditional-AND operator.
+  - That is, the evaluation of the second operand is conditionally dependent on evaluation of left operand.
+- Short Circuit OR:
+  - With regards to OR operator, if the first operand is true, the entire expression results to true, regardless of what the second operand is.
+  - So, the OR operator short circuits if the first operand is true.
+  - So, OR is also a short circuit operator, and it is also referred to as Conditional-OR.
+- Short circuit is featured in Java for optimization because sometimes only one operand is evaluated and that improves performs.
+- Among the two short-circuit operators, the short-circuit nature of AND operator is also extremely useful in preventing the `NullPointerException`.
+- We know that a `NullPointerException` is generated at runtime when an object reference is `null` and we try to access one of its members (methods or variables) using the dot operator.
+- For example, consider this:
+
+```java
+if (s.age > 21) {
+  // code
+}
+```
+
+- `s` is referencing some object.
+- Now, if `s` happens to be `null` then we know that we will get a `NullPointerException` at runtime.
+- To prevent it, we can add a null check, like so:
+
+```java
+if (s.age > 21) {
+  // code
+}
+
+if (s != null && s.age > 21) {
+  // code
+}
+```
+
+- So, we first check if `s` is not equal to `null`.
+- If that is true, only then our condition of `s.age > 21` will be evaluated.
+- If `s` is `null`, then the first condition of the AND operator will be false and due to its short-circuit nature, the AND operator will not evaluate the second condition, thereby preventing the `NullPointerException`.
+- Logical Operator Chaining, example:
+
+```java
+if (age > 35 && salary > 90000 || !hasBadCredit) {
+  // code
+}
+```
+
+- Operator Precedence of Logical Operators: ! > && > ||
+- Operator Precedence across logical, comparison and arithmetic:
+  - ! > arithmetic > comparison > &&, ||
+- ![operator-precedence](https://github.com/user-attachments/assets/c7112a9a-c660-46ce-8aca-1316197cf04d)
+- Always use parentheses to make it clear and for readability purposes.
 
 ## Author
