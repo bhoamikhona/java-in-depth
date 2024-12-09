@@ -40,6 +40,7 @@
       - [Applications](#applications)
       - [Compound Bit Shift Assignment](#compound-bit-shift-assignment)
     - [Quiz 05 - Bitwise \& Bit Shift Operators](#quiz-05---bitwise--bit-shift-operators)
+    - [Control Flow - `if` Statement](#control-flow---if-statement)
   - [Author](#author)
 
 ## Agenda
@@ -607,6 +608,22 @@ operand1 ^= operand2; // bitwise compound XOR operator
 - In the image above you can see both, the expanded form and also the shorter/compounded notation.
 
 ### Quiz 05 - Bitwise & Bit Shift Operators
+
+### Control Flow - `if` Statement
+
+- A control flow statement affects the flow of control in a program, and it does so by using one or more boolean conditions.
+- If a particular boolean condition is true then it may execute a particular set of statements, and if the condition is false, then it may execute a different set of statements.
+- `if` statement
+- `if` - `else if` - `else` statement
+- `if` - `else` statement
+- nested `if` statements
+- If you are returning a value individually, in either `if` or `else if` or `else` block, make sure that there are `return` statements for all of those options. The compiler will check for it and if you have a missing `return` statement, you will get an error.
+
+> [!NOTE]
+>
+> Java does not have the notion of truthy or falsy values like JavaScript does.
+>
+> So, the condition in the `if` block or `else if` block must be boolean.
 
 ## Author
 
