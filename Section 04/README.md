@@ -33,6 +33,13 @@
       - [Non Short Circuit Operators](#non-short-circuit-operators)
       - [Compound Bitwise Assignment](#compound-bitwise-assignment)
     - [Quick Note on Bitwise Operators with Boolean Operands](#quick-note-on-bitwise-operators-with-boolean-operands)
+    - [Bit Shift Operators](#bit-shift-operators)
+      - [Left Shift Operator (`<<`)](#left-shift-operator-)
+      - [Unsigned Right-Shift Operator (`>>>`)](#unsigned-right-shift-operator-)
+      - [Signed Right Shift Operator (`>>`)](#signed-right-shift-operator-)
+      - [Applications](#applications)
+      - [Compound Bit Shift Assignment](#compound-bit-shift-assignment)
+    - [Quiz 05 - Bitwise \& Bit Shift Operators](#quiz-05---bitwise--bit-shift-operators)
   - [Author](#author)
 
 ## Agenda
@@ -527,4 +534,80 @@ operand1 ^= operand2; // bitwise compound XOR operator
   - Among bitwise operators, only `&`, `|`, and `^` can be used with boolean operands. Bitwise NOT (`~`) will not even compile with boolean. If we need such beahvior then we would use logical NOT (`!`) operator.
   - Also, strictly speaking, to be consisten with the Java language specification (JLS), the operators `&`, `|`, and `^` when applied on boolean operands are referred to as logical operators and not bitwise. In other words, the operators `&`, `|` and `^` are referref to as bitwise ONLY when they are applied on integer operands and this is the common scenario as we discussed. Also, keep in mind that the logical operators `&&` and `||` have the short-circuit property due to which JLS refers to them as conditional AND and conditional OR respectively. With `&` and `|`, as discussed in the lesson, they do not have the short-circuit property i.e. they always force JVM to evaluate both operands.
 
+### Bit Shift Operators
+
+- Like bitwise operators, bit shift operators also work with individual bits of its operands.
+- As the name implies, bit shift operators, simply shift bits.
+- That is, their operands must be integers and if you consider their binary representation then the bitshift operators can shift the bits in either left or right direction.
+- Here are the 3 bit shift operators:
+  - `<<` Left Shift
+  - `>>>` Unsigned Right Shift
+  - `>>` Signed Right Shift
+- Now let's look at each of these operators.
+
+#### Left Shift Operator (`<<`)
+
+- ![bitshift-1](https://github.com/user-attachments/assets/4fda5bb1-8e6a-4766-9bae-bce79df0a4b3)
+- Left shift operator is a binary operator and it left shifts, left operand by the number of bits specified on the right.
+- Look at the example in the image above.
+- Let's consider the value 6 along with its binary representation in full 32 bits.
+- Now let's say we want to left-shift 6 by 1. Here is the syntax: `6 << 1`
+- As you can see, all the bits are shifted by 1 position to the left.
+- After performing left shift, the resulting binary number corresponds to the decimal 12.
+- As bits get shifted left-wards, we need to fill the newly generated empty slots.
+- With left-shift operators, 0s are inserted in those empty slots.
+- Applying left-shift operator is the same as multiplying by powers of 2.
+- For example, if you left-shift 6 by 1, then it is same as multiplying 6 by 2<sup>1</sup>, which will result in 12.
+- Similarly, if we left-shift 6 by 3, then it is same as 6 &times; 2<sup>3</sup>, which is 6 &times; 8, which is 48.
+
+#### Unsigned Right-Shift Operator (`>>>`)
+
+- ![bitshift-2](https://github.com/user-attachments/assets/0937b856-0d03-4ae0-9728-14ad122a8301)
+- Unsigned right shift operator does the exact opposite of left shift operator i.e. it right shifts the left operand by the number of bits specified on the right.
+- Due to right-shifting, the higher order bit positions, which are on the left side, are empty now; and they would get filled by 0s.
+- Look at the example in the image above.
+- Let's consider the value 12 along with its binary representation.
+- Now, let's say that we want to right-shift 12 by 1. Here is the syntax: `12 >>> 1`.
+- You can see that all bits are shifted by 1 position towards right (in the image above).
+- After performing right shift, the resulting binary number corresponds to the decimal value 6.
+- Applying right shift operator is same as division by powers of 2.
+- For example, if you right shift 12 by 1, then it is same as dividing 12 by 2<sup>1</sup>, which is 12/2, which is 6.
+- So, the left shift corresponds to the multiplication by powers of 2, and unsigned right shift corresponds to the division by powers of 2.
+
+#### Signed Right Shift Operator (`>>`)
+
+- ![bitshift-3](https://github.com/user-attachments/assets/a3460d4b-2b3a-431f-bb63-1add035c2343)
+- The signed right shift operator is same as the unsigned right shift operator but, it is signed so, the higher order bits are now padded with MSB (most significant bit) instead of 0s.
+- Basically, the sign is preserved.
+- Look at the example in the image above.
+- We have a very large negative number.
+- Let's say we want to right shift it by 4.
+- So, we can see the digits are shifted right by 4 positions.
+- Since the MSB is 1, the higher order bit positions are now filled with 1.
+- Since the sign is preserved, the resulting number is still negative.
+- In general, for all bit shift operators, regardless of whether it is left shift or right shift, always remember that the left operand indicates the number to be shifted while the right operand tells by how many bits the left operand should be shifted.
+
+#### Applications
+
+- ![bitshift-4](https://github.com/user-attachments/assets/933e26a0-9308-44c6-b0c7-8225ac18c4ab)
+- Where are these bit shift operators used?
+- One area is during compilation process.
+- Compilers, as part of optimization, may replace multiplication and division with appropriate bit shift operations which are much more faster.
+- Like in the case of bitwise operators, bit shift operators are also used in Java's hashmap data structure, which is an implementation of hash table.
+- Both hash map and hash table will be discussed later in the course.
+- Bit shift operators, like bitwise operators are also heavily used in embedded programming.
+- They are also used in game programming, where performance is critical.
+- They are also used in systems that do not have floating point support in hardware.
+- Link to an interesting discussion on applications of bit shift operators: [Reference](https://stackoverflow.com/questions/520625/have-you-ever-had-to-use-bit-shifting-in-real-projects)
+
+#### Compound Bit Shift Assignment
+
+- ![bitshift-5](https://github.com/user-attachments/assets/e68f1026-4914-4fdb-9229-30a11e1be489)
+- Like Arithmetic and Bitwise operators, Bit Shift operators can also be expressed using the compound assignment notation.
+- In the image above you can see both, the expanded form and also the shorter/compounded notation.
+
+### Quiz 05 - Bitwise & Bit Shift Operators
+
 ## Author
+
+- [@bhoamikhona](https://github.com/bhoamikhona)
