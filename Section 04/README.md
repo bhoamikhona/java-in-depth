@@ -41,6 +41,7 @@
       - [Compound Bit Shift Assignment](#compound-bit-shift-assignment)
     - [Quiz 05 - Bitwise \& Bit Shift Operators](#quiz-05---bitwise--bit-shift-operators)
     - [Control Flow - `if` Statement](#control-flow---if-statement)
+    - [Switch Statement - Introduction](#switch-statement---introduction)
   - [Author](#author)
 
 ## Agenda
@@ -624,6 +625,32 @@ operand1 ^= operand2; // bitwise compound XOR operator
 > Java does not have the notion of truthy or falsy values like JavaScript does.
 >
 > So, the condition in the `if` block or `else if` block must be boolean.
+
+### Switch Statement - Introduction
+
+- Switch statement can be used as an alternative to an if-statement if the conditions involved are much more simpler.
+- For example, if the conditions involved include a single variable and only an equality operation, then a switch statement can be used instead of if-statement.
+- In such simple conditional checks, it is preferable to use switch statement instead of if-statement because it can be much more readable, concise, and efficient since it is designed to be more efficient.
+- Switch statement has been around from Java 1 onwards, and its syntax has been constant up until Java 13.
+- But, there are some limitations with the basic syntax and hence, in Java 14, the language designers have extended the syntax to include something called as arrow labels, and they also introduced a new feature called as switch expressions.
+- Keep in mind that switch statement and switch expression are two different things, and in this lesson we are going to look at switch statement.
+- Note that switch expression is simply an expression, which means that it would evaluate to a value and hence, it can be used in an assignment statement or even as part of a return statement.
+- After Java 14, the syntax has been further extended in Java 21 to include something called as pattern matching.
+- So, there are a series of enhancements in the syntax and maybe there will be more in the future but, the basic syntax has been there from Java 1 onwards, which is more than two decades.
+- ![switch-statement](https://github.com/user-attachments/assets/a492332a-ebbe-489d-8220-e25f1d2b61e0)
+- The switch statement starts with a keyword called `switch`, followed by parentheses, followed by switch body - which starts and ends with curly braces. Switch body is called as switch block.
+- In the parentheses we will have an expression and it is called as the selector expression.
+- In the `if` statement, we have conditions in the parentheses but, in the selector expression we will not have conditions represented in the exact same way.
+- The conditions in the switch statement are represented by selector expression along with case statements.
+- The case statement starts with the keyword `case`, followed by case label, followed by colon, followed by 0 or more code statements corresponding to that particular case.
+- The code statements corresponding to the case, together is called case block.
+- In the switch statement, we also have something called as the default statement and it is optional. We can use it like the else block in if-else statement.
+- We can only have one default statement.
+- The default block need not be the last block, it can be followed by other case statements, although that is not a common convention. Typically, you will the default statement as the last one.
+- The fall through mechanism - this condition occus when there is no break statement in switch statement and causes the execution of all the cases until either a break statement is reached or the switch statement is completely executed.
+- To address the issue of fall through mechanism, we use the break statement which breaks out of the enclosing switch statement.
+- In comparison to if-else, in switch statement, the advantage is that the intent is very clear - that we are using a single variable, and trying to check if its value is one of the case labels.
+- The code also looks more compact and readable in most cases - in switch statement.
 
 ## Author
 

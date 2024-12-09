@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.time.Month;
 
 public class BasicsDemo {
   int id1 = 0;
@@ -393,9 +394,91 @@ public class BasicsDemo {
     return approved;
   }
 
+  static String getSeason(int month) {
+    String season = null;
+
+    // if (month == 1) {
+    // season = "Spring";
+    // } else if (month == 2) {
+    // season = "Spring";
+    // } else if (month == 3) {
+    // season = "Spring";
+    // } else if (month == 4) {
+    // season = "Summer";
+    // } else if (month == 5) {
+    // season = "Summer";
+    // } else if (month == 6) {
+    // season = "Summer";
+    // } else if (month == 7) {
+    // season = "Rainy";
+    // } else if (month == 8) {
+    // season = "Rainy";
+    // } else if (month == 9) {
+    // season = "Rainy";
+    // } else if (month == 10) {
+    // season = "Winter";
+    // } else if (month == 11) {
+    // season = "Winter";
+    // } else if (month == 12) {
+    // season = "Winter";
+    // } else {
+    // season = "unknown";
+    // }
+
+    // Integer temp = null; // Integer.valueOf(month);
+
+    final int temp = 100;
+
+    switch (month) {
+      case 1:
+        season = "Spring";
+        break;
+      case 2:
+        season = "Spring";
+        break;
+      case 3:
+        season = "Spring";
+        break;
+      case 4:
+        season = "Summer";
+        break;
+      case 5:
+        season = "Summer";
+        break;
+      case 6:
+        season = "Summer";
+        break;
+      case 7:
+        season = "Rainy";
+        break;
+      case 8:
+        season = "Rainy";
+        break;
+      case 9:
+        season = "Rainy";
+        break;
+      case 10:
+        season = "Winter";
+        break;
+      case 11:
+        season = "Winter";
+        break;
+      case 12:
+        season = "Winter";
+        break;
+      default:
+        season = "unknown";
+        break;
+    }
+
+    return season;
+  }
+
   public static void main(String[] args) {
 
-    ifStatement();
+    String season = getSeason(3);
+
+    // ifStatement();
 
     // bitwiseOperators();
 
