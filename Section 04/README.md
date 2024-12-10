@@ -42,6 +42,11 @@
     - [Quiz 05 - Bitwise \& Bit Shift Operators](#quiz-05---bitwise--bit-shift-operators)
     - [Control Flow - `if` Statement](#control-flow---if-statement)
     - [Switch Statement - Introduction](#switch-statement---introduction)
+    - [Switch Restrictions](#switch-restrictions)
+      - [Selector Expression Type Restrictions](#selector-expression-type-restrictions)
+      - [Case Label Restrictions](#case-label-restrictions)
+      - [Efficiency of Switch](#efficiency-of-switch)
+      - [Limitations of Switch](#limitations-of-switch)
   - [Author](#author)
 
 ## Agenda
@@ -651,6 +656,96 @@ operand1 ^= operand2; // bitwise compound XOR operator
 - To address the issue of fall through mechanism, we use the break statement which breaks out of the enclosing switch statement.
 - In comparison to if-else, in switch statement, the advantage is that the intent is very clear - that we are using a single variable, and trying to check if its value is one of the case labels.
 - The code also looks more compact and readable in most cases - in switch statement.
+
+### Switch Restrictions
+
+- There are certain restrictions on the selector expression type as well as on the case labels so, let's go ahead and look at what those are.
+
+#### Selector Expression Type Restrictions
+
+- ![switch-restrictions-1](https://github.com/user-attachments/assets/684cf8f4-4ec5-442c-b9ac-43827ed4c4db)
+- Integer Types Only
+  - The selector expression (the value inside the parentheses in `switch`) must evaluate to one of these integer types:
+    - `byte`
+    - `short`
+    - `char`
+    - `int`
+
+> [!NOTE]
+>
+> `long` is excluded for performance reasons - it uses more memory and CPU cycles.
+
+- Exclusions
+  - Floating-point types (`float`, `double`): Not supported because they represent approximate values, which can lead to rounding errors. `switch` requires precise values for comparisons.
+  - Boolean: Not supported because `boolean` values are better handled with `if` statements or the ternary operator.
+- Wrapper Types
+  - Boxex primitives (wrapper classes) for integer types are supported:
+    - `Byte`
+    - `Short`
+    - `Character`
+    - `Integer`
+  - These are supported due to Java's autoboxing featuer, which allows primitives and their wrapper objects to be used interchangeably.
+- Strings
+  - From Java 7 onwards, `switch` supports `String`.
+- Enums
+  - Enums are supported, representing a fixed set of values known as **enum constants**.
+  - Internally, enums are compiled into a regular class.
+- Pattern Matching
+  - From Java 21 onwards, any object reference can be used as a selector expression.
+  - A `null` selector expression is also permitted starting with Java 21.
+  - Pattern Matching expands the functionality of `switch` to include advanced features like type checks and deconstruction, which we will explore later.
+
+#### Case Label Restrictions
+
+- ![switch-restrictions-2](https://github.com/user-attachments/assets/d390279c-91f2-4e98-ad8d-6907a2555b50)
+- Range Restriction
+  - The value of a case label must fall within the range of the selector expression's type.
+  - Example: If the selector expression is of type `int`, the case label must also fall within the range of `int`.
+- Constant Expression
+  - Case labels must be a constant expressions, meaning their values are determined at compile time.
+  - This allowes for optimizations like the creation of **jump tables** (a jump table is essentially an array of addresses, where the index corresponds to the case value), enabling constant-time execution O(1).
+- Unique Lables
+  - Case labels must be unique within a `switch` block. Duplicates are not allowed.
+- Null Case
+  - Until Java 20, case labels could not be `null`.
+  - From Java 21 onwards, `null` is a valid case label.
+- Patterns
+  - Java 21 onwards, case labels can use patterns for more advanced matching.
+- Final Variables
+  - To use a variable as a case label, it must be declared as `final` and initialized.
+  - Example:
+  ```java
+  final int TEMP = 100;
+  switch(value) {
+    case TEMP:
+      // code
+  }
+  ```
+- Allowed Case Label Types
+  - Integer literals (`byte`, `short`, `char`, `int`)
+  - String literals
+  - Enum constants
+  - Final variables of permissible types (not enums).
+
+> [!NOTE]
+>
+> Enum constants and constant variables are distinct concepts.
+
+#### Efficiency of Switch
+
+- Contiguous Case Labels
+  - If case labels are contiguous (e.g. 1, 2, 3), the `switch` statement can use a jump table (a jump table is essentially an array of addresses, where the index corresponds to the case value) for constant-time execution (O(1)).
+- Gaps in Case Lables
+  - If case labels are sparse or have gaps, the implementation may use a binary search tree or other efficient structures, leading to logarithmic time complexity (O(log n)).
+
+> [!NOTE]
+>
+> The actual implementation of optimizations may vary by JVM.
+
+#### Limitations of Switch
+
+- `switch` is designed for scenarios involving single-variable comparisons with equality operations.
+- It is not suitable for complex conditions involving multiple variables or operators.
 
 ## Author
 

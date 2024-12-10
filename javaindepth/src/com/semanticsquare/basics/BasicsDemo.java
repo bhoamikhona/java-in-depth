@@ -394,7 +394,48 @@ public class BasicsDemo {
     return approved;
   }
 
-  static String getSeason(int month) {
+  enum Month {
+    JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER
+  };
+
+  static String getSeason(Month month) {
+    String season = null;
+
+    switch (month) {
+      case JANUARY:
+        season = "Spring";
+      case FEBRUARY:
+        season = "Spring";
+      case MARCH:
+        season = "Spring";
+        break;
+      case APRIL:
+        season = "Summer";
+      case MAY:
+        season = "Summer";
+      case JUNE:
+        season = "Summer";
+      case JULY:
+        season = "Rainy";
+      case AUGUST:
+        season = "Rainy";
+      case SEPTEMBER:
+        season = "Rainy";
+      case OCTOBER:
+        season = "Winter";
+      case NOVEMBER:
+        season = "Winter";
+      case DECEMBER:
+        season = "Winter";
+      default:
+        season = "unknown";
+    }
+
+    return season;
+  }
+
+  static String getSeason(byte month) {
+
     String season = null;
 
     // if (month == 1) {
@@ -431,39 +472,81 @@ public class BasicsDemo {
 
     switch (month) {
       case 1:
+        // case null:
         season = "Spring";
-        break;
       case 2:
         season = "Spring";
-        break;
+        // case 128:
+        // case 127:
       case 3:
         season = "Spring";
         break;
       case 4:
+        // case 3:
         season = "Summer";
-        break;
-      case 5:
+        // case 5:
+      case temp:
         season = "Summer";
-        break;
       case 6:
         season = "Summer";
-        break;
       case 7:
         season = "Rainy";
-        break;
       case 8:
         season = "Rainy";
-        break;
       case 9:
         season = "Rainy";
-        break;
       case 10:
         season = "Winter";
-        break;
       case 11:
         season = "Winter";
-        break;
       case 12:
+        season = "Winter";
+      default:
+        season = "unknown";
+    }
+
+    return season;
+  }
+
+  // String -> from Java 7
+  static String getSeason(String month) {
+    String season = null;
+
+    switch (month) {
+      case "January":
+        season = "Spring";
+        break;
+      case "February":
+        season = "Spring";
+        break;
+      case "March":
+        season = "Spring";
+        break;
+      case "April":
+        season = "Summer";
+        break;
+      case "May":
+        season = "Summer";
+        break;
+      case "June":
+        season = "Summer";
+        break;
+      case "July":
+        season = "Rainy";
+        break;
+      case "August":
+        season = "Rainy";
+        break;
+      case "September":
+        season = "Rainy";
+        break;
+      case "October":
+        season = "Winter";
+        break;
+      case "November":
+        season = "Winter";
+        break;
+      case "December":
         season = "Winter";
         break;
       default:
@@ -476,7 +559,11 @@ public class BasicsDemo {
 
   public static void main(String[] args) {
 
-    String season = getSeason(3);
+    String season = getSeason((byte) 3);
+    // String season = getSeason("March"); // Java 7
+    // String season = getSeason(Month.MARCH);
+
+    System.out.println(season);
 
     // ifStatement();
 
