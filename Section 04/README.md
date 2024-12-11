@@ -48,6 +48,11 @@
       - [Efficiency of Switch](#efficiency-of-switch)
       - [Limitations of Switch](#limitations-of-switch)
     - [Coding Exercise 05 - Cafe Order Processor - Menu with Switch Statement](#coding-exercise-05---cafe-order-processor---menu-with-switch-statement)
+    - [Arrow Labels in Switch](#arrow-labels-in-switch)
+      - [Traditional Switch Statements](#traditional-switch-statements)
+      - [Arrow Labels (Java 14 and Later)](#arrow-labels-java-14-and-later)
+      - [Additional Features](#additional-features)
+      - [Conclusion](#conclusion)
   - [Author](#author)
 
 ## Agenda
@@ -749,6 +754,97 @@ operand1 ^= operand2; // bitwise compound XOR operator
 - It is not suitable for complex conditions involving multiple variables or operators.
 
 ### Coding Exercise 05 - Cafe Order Processor - Menu with Switch Statement
+
+### Arrow Labels in Switch
+
+#### Traditional Switch Statements
+
+- Switch statements allow conditional logic based on the value of a variable.
+- They are preferred over if-else chains for readability and potential performance benefits.
+- Limitations of Traditional Switch Statement:
+  - Verbose due to multiple `case` blocks and `break` statements.
+  - Error prone due to fall-through behavior when `break` is missed.
+  - Often results in duplicate code across multiple `case` blocks.
+
+> [!NOTE]
+>
+> In traditional switch statements, if instead of just using `:` and indentation, you can use curly braces to define the code related to that particular case.
+>
+> The same applies for arrow lables as well.
+>
+> The benefit of using braces is that you can then define local variables only accessible by that particular case.
+>
+> Without the braces, if you declare a local variable then the local variable will be accessible by the entire switch.
+
+> [!NOTE]
+>
+> Comma separated case labels are also allowed in traditional switch statement syntax.
+
+#### Arrow Labels (Java 14 and Later)
+
+- Arrow labels simplify and enhance switch statements by addressing their limitations:
+  - Compact Syntax
+    - Use arrow (`->`) instead of `:` and remove `break` statements.
+    - No fall through behavior, making code safer and more predictable.
+    - Example:
+    ```java
+    switch (month) {
+      case 1, 2, 3 -> season = "Spring";
+      case 4, 5, 6 -> season = "Summer";
+      case 7, 8, 9 -> season = "Rainy";
+      case 10, 11, 12 -> season = "Winter";
+      default -> season = "Unkown";
+    }
+    ```
+  - Support for Expressions and Blocks
+    - Arrow labels can directly return a value or execute a block of statements.
+    - Expressions:
+    ```java
+    case 1, 2, 3 -> "Spring";
+    ```
+    - Blocks:
+    ```java
+    case 1, 2, 3 -> {
+      System.out.println("Spring is here!");
+      season = "Spring";
+    }
+    ```
+  - Enhanced Readability
+    - Reduces boilerplate code.
+    - The switch structure becomes concise and easier to understand.
+  - Improved Safety
+    - Eliminates fall-through by design, removing the need for `break`.
+
+#### Additional Features
+
+- Multi-Labeled Cases:
+  - Comma-separated values for cases sharing the same logic.
+  - Example:
+  ```java
+  case 1, 2, 3 -> "Spring";
+  ```
+- Throw Statements:
+  - Can generate exceptions within a switch block.
+  - Example:
+  ```java
+  default -> throw new IllegalArgumentException("Invalid Month: " + );
+  ```
+- Mixing Prohibited:
+  - Cannot mix arrow labels with traditional colon syntax in the same switch block.
+  - Example:
+  ```java
+  // compilation error
+  case 1 -> "Spring";
+  case 2: season = "Spring"; break;
+  ```
+
+#### Conclusion
+
+- Arrow labels introduced in Java 14 make switch statements:
+  - Compact: Fewer lines of code.
+  - Readable: Easy to follow the logic.
+  - Safe: No accidental fall-through issues.
+- These features contribute to writing cleaner and more robust Java programs.
 
 ## Author
 

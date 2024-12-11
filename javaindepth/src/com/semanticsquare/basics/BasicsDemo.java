@@ -434,7 +434,7 @@ public class BasicsDemo {
     return season;
   }
 
-  static String getSeason(byte month) {
+  static String getSeason(int month) {
 
     String season = null;
 
@@ -468,41 +468,52 @@ public class BasicsDemo {
 
     // Integer temp = null; // Integer.valueOf(month);
 
-    final int temp = 100;
+    // final int temp = 100;
+
+    // switch (month) {
+    // case 1:
+    // // case null:
+    // season = "Spring";
+    // case 2:
+    // season = "Spring";
+    // // case 128:
+    // // case 127:
+    // case 3:
+    // season = "Spring";
+    // break;
+    // case 4:
+    // // case 3:
+    // season = "Summer";
+    // // case 5:
+    // case temp:
+    // season = "Summer";
+    // case 6:
+    // season = "Summer";
+    // case 7:
+    // season = "Rainy";
+    // case 8:
+    // season = "Rainy";
+    // case 9:
+    // season = "Rainy";
+    // case 10:
+    // season = "Winter";
+    // case 11:
+    // season = "Winter";
+    // case 12:
+    // season = "Winter";
+    // default:
+    // season = "unknown";
+    // }
 
     switch (month) {
-      case 1:
-        // case null:
+      case 1, 2, 3 -> {
+        System.out.println("Spring is here!");
         season = "Spring";
-      case 2:
-        season = "Spring";
-        // case 128:
-        // case 127:
-      case 3:
-        season = "Spring";
-        break;
-      case 4:
-        // case 3:
-        season = "Summer";
-        // case 5:
-      case temp:
-        season = "Summer";
-      case 6:
-        season = "Summer";
-      case 7:
-        season = "Rainy";
-      case 8:
-        season = "Rainy";
-      case 9:
-        season = "Rainy";
-      case 10:
-        season = "Winter";
-      case 11:
-        season = "Winter";
-      case 12:
-        season = "Winter";
-      default:
-        season = "unknown";
+      }
+      case 4, 5, 6 -> season = "Summer";
+      case 7, 8, 9 -> season = "Rainy";
+      case 10, 11, 12 -> season = "Winter";
+      default -> throw new IllegalArgumentException("Unknown"); // season = "Unkown";
     }
 
     return season;
@@ -559,7 +570,7 @@ public class BasicsDemo {
 
   public static void main(String[] args) {
 
-    String season = getSeason((byte) 3);
+    String season = getSeason(3);
     // String season = getSeason("March"); // Java 7
     // String season = getSeason(Month.MARCH);
 
