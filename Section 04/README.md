@@ -47,6 +47,7 @@
       - [Case Label Restrictions](#case-label-restrictions)
       - [Efficiency of Switch](#efficiency-of-switch)
       - [Limitations of Switch](#limitations-of-switch)
+    - [Coding Exercise 05 - Cafe Order Processor - Menu with Switch Statement](#coding-exercise-05---cafe-order-processor---menu-with-switch-statement)
   - [Author](#author)
 
 ## Agenda
@@ -746,6 +747,8 @@ operand1 ^= operand2; // bitwise compound XOR operator
 
 - `switch` is designed for scenarios involving single-variable comparisons with equality operations.
 - It is not suitable for complex conditions involving multiple variables or operators.
+
+### Coding Exercise 05 - Cafe Order Processor - Menu with Switch Statement
 
 ## Author
 
